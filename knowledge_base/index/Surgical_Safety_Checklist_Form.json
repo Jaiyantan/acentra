@@ -1,0 +1,25 @@
+{
+  "file_id": "Surgical_Safety_Checklist_Form",
+  "title": "WHO Surgical Safety Sign-In & Time-Out",
+  "file_path": "forms/Surgical_Safety_Checklist_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.0",
+  "content": "FORM: WHO Surgical Safety Sign-In & Time-Out (FORM-SUR-01)\nVERSION: v2.0\nFIELDS:\n- Patient UHID\n- Surgical Procedure\n- Site Marked (Y/N)\n- Sign-In Verified\n- Time-Out Confirmed\n- Sign-Out Swab Count",
+  "tags": [
+    "form",
+    "pdf",
+    "form-sur-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-SUR-01 WHO Surgical Safety Sign-In & Time-Out v2.0"
+}

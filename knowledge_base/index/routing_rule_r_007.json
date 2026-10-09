@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_007",
+  "title": "Escalation Routing Rule R-007: UHID not found in system",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Front Office and Registration",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-007 -- UHID not found in system\nTRIGGER TYPE: Data State\nCONDITION: Query yields zero results across DB\nROUTE TO: Front Office and Registration (Extension 1026)\nQUEUE: QUEUE_FRONTOFFICE\nPRIORITY: NORMAL\nSLA: 4.0 hour(s)\nESCALATION RATIONALE: Demographic reconciliation needed. Possible duplicate Aadhaar or typo. Contact Front Office ext. 1026.\nEXAMPLE QUERY 1: Cannot find patient Senthil Kumar with UHID-999999\nEXAMPLE QUERY 2: Patient card says UHID-000088 but no records",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-007",
+    "data state",
+    "queue_frontoffice",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-007 (UHID not found in system) v1.0"
+}

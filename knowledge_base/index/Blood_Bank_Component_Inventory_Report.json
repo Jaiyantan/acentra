@@ -1,0 +1,25 @@
+{
+  "file_id": "Blood_Bank_Component_Inventory_Report",
+  "title": "Blood Bank Stock & Crossmatch Summary",
+  "file_path": "reports/Blood_Bank_Component_Inventory_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Blood Bank Stock & Crossmatch Summary\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Blood Bank Stock & Crossmatch Summary v1.0, SMCH Central Reporting"
+}

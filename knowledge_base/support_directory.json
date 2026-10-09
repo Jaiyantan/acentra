@@ -1,0 +1,196 @@
+{
+  "teams": [
+    {
+      "team_id": "TEAM-001",
+      "name": "IT and HIS Support",
+      "handles": [
+        "HIS workstation software freezes",
+        "RIS and LIS system connectivity issues",
+        "Barcode and prescription printer jams",
+        "User login credentials and role permissions",
+        "Hospital local area network and WiFi failures"
+      ],
+      "contact_extension": "1033",
+      "email": "it@smch.in",
+      "helpdesk_queue": "QUEUE_IT_SUPPORT",
+      "sla_hours": 1,
+      "escalation_to": "TEAM-011"
+    },
+    {
+      "team_id": "TEAM-002",
+      "name": "Insurance and TPA",
+      "handles": [
+        "Cashless pre-authorization submissions",
+        "Third-party administrator (TPA) RFI queries",
+        "Cashless claim rejection dispute appeals",
+        "Ayushman Bharat PMJAY scheme eligibility verification",
+        "Corporate health insurance guarantee letters"
+      ],
+      "contact_extension": "1029",
+      "email": "tpa@smch.in",
+      "helpdesk_queue": "QUEUE_INSURANCE",
+      "sla_hours": 2,
+      "escalation_to": "TEAM-011"
+    },
+    {
+      "team_id": "TEAM-003",
+      "name": "Pharmacy Operations",
+      "handles": [
+        "Inpatient medication dispensing",
+        "Unused drug return credits and reconciliations",
+        "Emergency bedside STAT drug indents",
+        "Schedule X and narcotic drug registry sign-offs",
+        "Ward medication inventory replenishment"
+      ],
+      "contact_extension": "1023",
+      "email": "pharmacy@smch.in",
+      "helpdesk_queue": "QUEUE_PHARMACY",
+      "sla_hours": 1,
+      "escalation_to": "TEAM-012"
+    },
+    {
+      "team_id": "TEAM-004",
+      "name": "Lab Operations",
+      "handles": [
+        "Phlebotomy sample accessioning and tube barcoding",
+        "Routine biochemistry and pathology investigation runs",
+        "STAT emergency diagnostic processing",
+        "Critical panic value telephone notifications",
+        "Quality control and pathologist report verifications"
+      ],
+      "contact_extension": "1021",
+      "email": "lab@smch.in",
+      "helpdesk_queue": "QUEUE_LAB",
+      "sla_hours": 1,
+      "escalation_to": "TEAM-012"
+    },
+    {
+      "team_id": "TEAM-005",
+      "name": "Radiology Operations",
+      "handles": [
+        "X-Ray and ultrasound appointment scheduling",
+        "CT and MRI imaging slot allocations",
+        "PACS DICOM image archiving and network viewing",
+        "Intravenous contrast renal safety screenings",
+        "Urgent trauma diagnostic reporting alerts"
+      ],
+      "contact_extension": "1022",
+      "email": "radiology@smch.in",
+      "helpdesk_queue": "QUEUE_RADIOLOGY",
+      "sla_hours": 1,
+      "escalation_to": "TEAM-012"
+    },
+    {
+      "team_id": "TEAM-006",
+      "name": "Billing",
+      "handles": [
+        "Consolidated department charge audits",
+        "Inpatient interim and final tax invoices",
+        "Patient co-pay and deposit receipt collections",
+        "Discharge billing clearance authorizations",
+        "Attender billing grievance and discount reviews"
+      ],
+      "contact_extension": "1028",
+      "email": "billing@smch.in",
+      "helpdesk_queue": "QUEUE_BILLING",
+      "sla_hours": 2,
+      "escalation_to": "TEAM-011"
+    },
+    {
+      "team_id": "TEAM-007",
+      "name": "Admission and Discharge",
+      "handles": [
+        "Real-time ward and bed allocations",
+        "Patient wristband barcode verification",
+        "Intra-hospital ward and bed transfers",
+        "Four-point discharge gate pass checklists",
+        "Admission consent collection"
+      ],
+      "contact_extension": "1027",
+      "email": "admissions@smch.in",
+      "helpdesk_queue": "QUEUE_ADMISSIONS",
+      "sla_hours": 1,
+      "escalation_to": "TEAM-011"
+    },
+    {
+      "team_id": "TEAM-008",
+      "name": "Front Office",
+      "handles": [
+        "Outpatient and inpatient UHID registrations",
+        "Government Aadhaar card demographic verifications",
+        "Specialist clinic appointment bookings",
+        "Inpatient visitor badges and security gate passes",
+        "General hospital direction and counter inquiries"
+      ],
+      "contact_extension": "1026",
+      "email": "frontoffice@smch.in",
+      "helpdesk_queue": "QUEUE_FRONTOFFICE",
+      "sla_hours": 4,
+      "escalation_to": "TEAM-011"
+    },
+    {
+      "team_id": "TEAM-009",
+      "name": "Medical Records",
+      "handles": [
+        "Archived physical inpatient chart retrievals",
+        "Medico-Legal Case (MLC) dossier maintenance",
+        "ICD-10 clinical diagnostic coding audits",
+        "Death summary register and birth notifications",
+        "Statutory legal court summons record submissions"
+      ],
+      "contact_extension": "1030",
+      "email": "mrd@smch.in",
+      "helpdesk_queue": "QUEUE_MRD",
+      "sla_hours": 2,
+      "escalation_to": "TEAM-011"
+    },
+    {
+      "team_id": "TEAM-010",
+      "name": "Facility Management",
+      "handles": [
+        "Ward housekeeping and sanitization calls",
+        "Terminal bed ultraviolet disinfection cycles",
+        "Clean hospital linen and gown replenishment",
+        "Plumbing, HVAC, and medical gas pipeline maintenance",
+        "Hospital waste segregation and bio-hazard disposal"
+      ],
+      "contact_extension": "1035",
+      "email": "facility@smch.in",
+      "helpdesk_queue": "QUEUE_FACILITY",
+      "sla_hours": 2,
+      "escalation_to": "TEAM-011"
+    },
+    {
+      "team_id": "TEAM-011",
+      "name": "Biomedical Engineering",
+      "handles": [
+        "Ventilator and bipap malfunction troubleshooting",
+        "Multipara patient vital monitor calibrations",
+        "Dialysis unit operational breakdowns",
+        "Syringe pump and infusion device repairs",
+        "Defibrillator preventive maintenance checks"
+      ],
+      "contact_extension": "1036",
+      "email": "biomedical@smch.in",
+      "helpdesk_queue": "QUEUE_BIOMEDICAL",
+      "sla_hours": 1,
+      "escalation_to": "TEAM-011"
+    },
+    {
+      "team_id": "TEAM-012",
+      "name": "Clinical Review",
+      "handles": [
+        "Unnotified critical panic laboratory result escalations",
+        "Physician medication dosage and cross-reaction reviews",
+        "Complex diagnosis and treatment plan escalations",
+        "Schedule X narcotic prescription verifications",
+        "Discharge against medical advice (DAMA) risk reviews"
+      ],
+      "contact_extension": "1012",
+      "email": "clinicalreview@smch.in",
+      "helpdesk_queue": "QUEUE_CLINICAL",
+      "sla_hours": 0.5,
+      "escalation_to": "TEAM-012"
+    }
+  ]
+}

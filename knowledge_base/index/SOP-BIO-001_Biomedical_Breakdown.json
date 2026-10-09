@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-BIO-001_Biomedical_Breakdown",
+  "title": "Biomedical Equipment Defect and Breakdown",
+  "file_path": "sops/SOP-BIO-001_Biomedical_Breakdown.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Biomedical Engineering",
+  "applicable_roles": [
+    "nurse",
+    "biomedical_engineer"
+  ],
+  "version": "1.9",
+  "content": "SOP: Biomedical Equipment Defect and Breakdown (SOP-BIO-001)\nDEPARTMENT: Biomedical Engineering\nVERSION: 1.9\nROLES: nurse, biomedical_engineer\nPURPOSE: Rapid response within 15 minutes for critical life support equipment.\nSTEPS:\nStep 1: Execute phase 1 of Biomedical Equipment Defect and Breakdown in full compliance with Biomedical Engineering hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Biomedical Equipment Defect and Breakdown in full compliance with Biomedical Engineering hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Biomedical Equipment Defect and Breakdown in full compliance with Biomedical Engineering hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Biomedical Equipment Defect and Breakdown in full compliance with Biomedical Engineering hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Biomedical Equipment Defect and Breakdown in full compliance with Biomedical Engineering hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Biomedical Engineering.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-bio-001",
+    "biomedical engineering",
+    "biomedical breakdown",
+    "smch"
+  ],
+  "source_citation": "SOP-BIO-001 Biomedical Equipment Defect and Breakdown v1.9, Section 4"
+}

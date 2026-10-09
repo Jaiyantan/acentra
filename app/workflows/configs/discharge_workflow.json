@@ -1,0 +1,36 @@
+{
+  "workflow_id": "WF-DISCHARGE-01",
+  "name": "Inpatient Clinical Discharge & Recovery Handoff Workflow",
+  "category": "Inpatient Operations",
+  "target_journey_transition": "DISCHARGE_PENDING -> DISCHARGED",
+  "allowed_roles": ["Doctor", "Specialist", "Admin"],
+  "is_irreversible": true,
+  "approval_role": "Doctor",
+  "description": "Compiles discharge summary, verifies clinical stability, coordinates pharmacy takeaway medications, and gates final bed release on human physician approval.",
+  "steps": [
+    {
+      "step_id": "STEP_1_CLINICAL_SUMMARY",
+      "step_name": "Compile Clinical Discharge Summary",
+      "required_fields": ["admission_id", "uhid", "primary_consultant_id", "final_diagnosis", "procedures_performed"],
+      "optional_fields": ["hospital_course_summary"],
+      "action_tool": "compile_discharge_summary",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_2_MEDICATION_HANDOFF",
+      "step_name": "Formulate Take-Home Medication & Follow-Up Plan",
+      "required_fields": ["discharge_medications", "follow_up_date", "dietary_instructions"],
+      "optional_fields": ["warning_signs_to_return"],
+      "action_tool": "prescribe_discharge_medications",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_3_FINAL_DISCHARGE_GATE",
+      "step_name": "Physician Final Clearance & Bed Release Gate",
+      "required_fields": ["physician_clearance_signoff", "vitals_stability_confirmed", "bills_reconciled"],
+      "optional_fields": ["attendant_counseling_completed"],
+      "action_tool": "discharge_patient",
+      "irreversible": true
+    }
+  ]
+}

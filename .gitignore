@@ -1,0 +1,48 @@
+# =====================================================================
+# Git Ignore - SMCH Acentra Operations Intelligence Platform
+# =====================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Python Virtual Environments
+env/
+venv/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# Environment Variables & Secrets (NEVER COMMIT)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Logs
+*.log
+server_log.txt
+
+# Cognee / Vector / Local cache
+.cognee/
+.cognee_system/
+.cognee_kb_state.json
+.smch_operational_vectors/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editor & OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

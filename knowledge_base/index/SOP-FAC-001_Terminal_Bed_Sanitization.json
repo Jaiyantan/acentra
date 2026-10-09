@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-FAC-001_Terminal_Bed_Sanitization",
+  "title": "Terminal Bed Cleaning and Room Sanitization",
+  "file_path": "sops/SOP-FAC-001_Terminal_Bed_Sanitization.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Facility Management",
+  "applicable_roles": [
+    "housekeeping",
+    "nurse"
+  ],
+  "version": "1.7",
+  "content": "SOP: Terminal Bed Cleaning and Room Sanitization (SOP-FAC-001)\nDEPARTMENT: Facility Management\nVERSION: 1.7\nROLES: housekeeping, nurse\nPURPOSE: Ultraviolet surface disinfection and 45-minute bed turnaround.\nSTEPS:\nStep 1: Execute phase 1 of Terminal Bed Cleaning and Room Sanitization in full compliance with Facility Management hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Terminal Bed Cleaning and Room Sanitization in full compliance with Facility Management hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Terminal Bed Cleaning and Room Sanitization in full compliance with Facility Management hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Terminal Bed Cleaning and Room Sanitization in full compliance with Facility Management hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Terminal Bed Cleaning and Room Sanitization in full compliance with Facility Management hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Facility Management.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-fac-001",
+    "facility management",
+    "terminal bed sanitization",
+    "smch"
+  ],
+  "source_citation": "SOP-FAC-001 Terminal Bed Cleaning and Room Sanitization v1.7, Section 4"
+}

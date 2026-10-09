@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-HR-001_Clinical_Privileging",
+  "title": "Medical Staff Credentialing and Privileging",
+  "file_path": "sops/SOP-HR-001_Clinical_Privileging.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Human Resources and Administration",
+  "applicable_roles": [
+    "medical_superintendent",
+    "hr_officer"
+  ],
+  "version": "2.2",
+  "content": "SOP: Medical Staff Credentialing and Privileging (SOP-HR-001)\nDEPARTMENT: Human Resources and Administration\nVERSION: 2.2\nROLES: medical_superintendent, hr_officer\nPURPOSE: Verify medical council registration and operative surgical scopes.\nSTEPS:\nStep 1: Execute phase 1 of Medical Staff Credentialing and Privileging in full compliance with Human Resources and Administration hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Medical Staff Credentialing and Privileging in full compliance with Human Resources and Administration hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Medical Staff Credentialing and Privileging in full compliance with Human Resources and Administration hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Medical Staff Credentialing and Privileging in full compliance with Human Resources and Administration hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Medical Staff Credentialing and Privileging in full compliance with Human Resources and Administration hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Human Resources and Administration.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-hr-001",
+    "human resources and administration",
+    "clinical privileging",
+    "smch"
+  ],
+  "source_citation": "SOP-HR-001 Medical Staff Credentialing and Privileging v2.2, Section 4"
+}

@@ -1,0 +1,24 @@
+{
+  "file_id": "KA-003_LIS_Lab_Order",
+  "title": "How to Submit a Lab Order in the LIS",
+  "file_path": "knowledge_articles/KA-003_LIS_Lab_Order.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Laboratory Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "lab_tech"
+  ],
+  "version": "1.8",
+  "content": "ARTICLE: How to Submit a Lab Order in the LIS (KA-003)\nSYSTEM: LIS\nDEPARTMENT: Laboratory Operations\nVERSION: 1.8\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the LIS module to execute how to submit a lab order in the lis safely and reliably.\nSTEPS:\nStep 1: Open the LIS client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Submit a Lab Order in the LIS and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Laboratory Operations coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-003",
+    "lis",
+    "laboratory operations",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-003 How to Submit a Lab Order in the LIS v1.8"
+}

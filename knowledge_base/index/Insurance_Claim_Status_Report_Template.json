@@ -1,0 +1,25 @@
+{
+  "file_id": "Insurance_Claim_Status_Report_Template",
+  "title": "Cashless Insurance Claims Registry",
+  "file_path": "reports/Insurance_Claim_Status_Report_Template.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Cashless Insurance Claims Registry\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Cashless Insurance Claims Registry v1.0, SMCH Central Reporting"
+}

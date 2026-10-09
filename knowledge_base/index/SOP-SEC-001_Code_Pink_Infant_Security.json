@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-SEC-001_Code_Pink_Infant_Security",
+  "title": "Infant and Pediatric Abduction Code Pink",
+  "file_path": "sops/SOP-SEC-001_Code_Pink_Infant_Security.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Quality and Patient Safety",
+  "applicable_roles": [
+    "security",
+    "nurse",
+    "front_office"
+  ],
+  "version": "2.0",
+  "content": "SOP: Infant and Pediatric Abduction Code Pink (SOP-SEC-001)\nDEPARTMENT: Quality and Patient Safety\nVERSION: 2.0\nROLES: security, nurse, front_office\nPURPOSE: Immediate perimeter lockdown and CCTV inspection on alarm trigger.\nSTEPS:\nStep 1: Execute phase 1 of Infant and Pediatric Abduction Code Pink in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Infant and Pediatric Abduction Code Pink in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Infant and Pediatric Abduction Code Pink in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Infant and Pediatric Abduction Code Pink in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Infant and Pediatric Abduction Code Pink in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Quality and Patient Safety.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-sec-001",
+    "quality and patient safety",
+    "code pink infant security",
+    "smch"
+  ],
+  "source_citation": "SOP-SEC-001 Infant and Pediatric Abduction Code Pink v2.0, Section 4"
+}

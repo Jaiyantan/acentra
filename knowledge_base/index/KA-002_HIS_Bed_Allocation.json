@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-002_HIS_Bed_Allocation",
+  "title": "How to Allocate a Bed to an Admitted Patient",
+  "file_path": "knowledge_articles/KA-002_HIS_Bed_Allocation.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Admission and Discharge",
+  "applicable_roles": [
+    "admission",
+    "nurse"
+  ],
+  "version": "2.0",
+  "content": "ARTICLE: How to Allocate a Bed to an Admitted Patient (KA-002)\nSYSTEM: HIS\nDEPARTMENT: Admission and Discharge\nVERSION: 2.0\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the HIS module to execute how to allocate a bed to an admitted patient safely and reliably.\nSTEPS:\nStep 1: Open the HIS client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Allocate a Bed to an Admitted Patient and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Admission and Discharge coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-002",
+    "his",
+    "admission and discharge",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-002 How to Allocate a Bed to an Admitted Patient v2.0"
+}

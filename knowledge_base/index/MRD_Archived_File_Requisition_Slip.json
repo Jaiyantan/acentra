@@ -1,0 +1,25 @@
+{
+  "file_id": "MRD_Archived_File_Requisition_Slip",
+  "title": "Medical Records Physical Archive Requisition",
+  "file_path": "forms/MRD_Archived_File_Requisition_Slip.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.4",
+  "content": "FORM: Medical Records Physical Archive Requisition (FORM-MRD-01)\nVERSION: v1.4\nFIELDS:\n- Patient UHID\n- Previous Admission\n- Requisition Purpose\n- Requesting Doctor\n- Token Number\n- Return Due Date",
+  "tags": [
+    "form",
+    "pdf",
+    "form-mrd-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-MRD-01 Medical Records Physical Archive Requisition v1.4"
+}

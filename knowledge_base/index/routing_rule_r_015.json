@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_015",
+  "title": "Escalation Routing Rule R-015: Low confidence score under 0.6",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Front Office and Registration",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-015 -- Low confidence score under 0.6\nTRIGGER TYPE: System Logic\nCONDITION: Agent confidence score below 0.60 threshold\nROUTE TO: Front Office and Registration (Extension 1026)\nQUEUE: QUEUE_FRONTOFFICE\nPRIORITY: NORMAL\nSLA: 4.0 hour(s)\nESCALATION RATIONALE: Ambiguous query that agent cannot resolve with confidence. Route to human triage. Contact Front Office ext. 1026.\nEXAMPLE QUERY 1: I need that document about the thing from last month\nEXAMPLE QUERY 2: Can you process the green file for room five?",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-015",
+    "system logic",
+    "queue_frontoffice",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-015 (Low confidence score under 0.6) v1.0"
+}

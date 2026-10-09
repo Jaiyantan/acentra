@@ -1,0 +1,25 @@
+{
+  "file_id": "Clinical_Readmission_Within_30Days_Report",
+  "title": "30-Day Unplanned Inpatient Readmissions",
+  "file_path": "reports/Clinical_Readmission_Within_30Days_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: 30-Day Unplanned Inpatient Readmissions\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "30-Day Unplanned Inpatient Readmissions v1.0, SMCH Central Reporting"
+}

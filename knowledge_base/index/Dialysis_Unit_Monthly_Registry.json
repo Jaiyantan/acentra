@@ -1,0 +1,25 @@
+{
+  "file_id": "Dialysis_Unit_Monthly_Registry",
+  "title": "Hemodialysis Sessions & Serology Register",
+  "file_path": "reports/Dialysis_Unit_Monthly_Registry.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Hemodialysis Sessions & Serology Register\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Hemodialysis Sessions & Serology Register v1.0, SMCH Central Reporting"
+}

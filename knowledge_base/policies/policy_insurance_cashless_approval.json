@@ -1,0 +1,16 @@
+{
+  "policy_id": "POL-INS-003",
+  "title": "Third-Party Administrator (TPA) and PMJAY Cashless Authorization Policy",
+  "version": "1.5",
+  "department": "Billing",
+  "effective_date": "2026-01-01",
+  "rules": [
+    "Pre-authorization claims must be electronically transmitted within statutory timeframes (24 hours for emergency, 48 hours prior for elective).",
+    "Patients with denied cashless claims must be given written notification within 60 minutes and converted to self-pay tariff.",
+    "No patient may be detained or denied emergency care due to pending or rejected insurance pre-authorizations.",
+    "Any bill revision exceeding 20% of pre-approved sanction requires immediate interim enhancement submission."
+  ],
+  "exceptions": [
+    "PMJAY/CMCHIS emergency golden hour cases where pre-auth approval is deemed retrospective by state nodal agency."
+  ]
+}

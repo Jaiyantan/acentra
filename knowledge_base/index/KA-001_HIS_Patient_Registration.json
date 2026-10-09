@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-001_HIS_Patient_Registration",
+  "title": "How to Register a New Patient in the HIS",
+  "file_path": "knowledge_articles/KA-001_HIS_Patient_Registration.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Front Office and Registration",
+  "applicable_roles": [
+    "front_office",
+    "admission"
+  ],
+  "version": "1.4",
+  "content": "ARTICLE: How to Register a New Patient in the HIS (KA-001)\nSYSTEM: HIS\nDEPARTMENT: Front Office and Registration\nVERSION: 1.4\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the HIS module to execute how to register a new patient in the his safely and reliably.\nSTEPS:\nStep 1: Open the HIS client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Register a New Patient in the HIS and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Front Office and Registration coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-001",
+    "his",
+    "front office and registration",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-001 How to Register a New Patient in the HIS v1.4"
+}

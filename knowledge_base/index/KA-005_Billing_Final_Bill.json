@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-005_Billing_Final_Bill",
+  "title": "How to Generate a Final Bill at Discharge",
+  "file_path": "knowledge_articles/KA-005_Billing_Final_Bill.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Billing",
+  "applicable_roles": [
+    "billing",
+    "discharge"
+  ],
+  "version": "2.3",
+  "content": "ARTICLE: How to Generate a Final Bill at Discharge (KA-005)\nSYSTEM: Billing System\nDEPARTMENT: Billing\nVERSION: 2.3\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the Billing System module to execute how to generate a final bill at discharge safely and reliably.\nSTEPS:\nStep 1: Open the Billing System client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Generate a Final Bill at Discharge and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Billing coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-005",
+    "billing system",
+    "billing",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-005 How to Generate a Final Bill at Discharge v2.3"
+}

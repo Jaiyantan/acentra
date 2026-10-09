@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-LAB-001_Lab_Order_Processing",
+  "title": "Laboratory Order Processing Procedure",
+  "file_path": "sops/SOP-LAB-001_Lab_Order_Processing.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Laboratory Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "lab_tech"
+  ],
+  "version": "2.0",
+  "content": "SOP: Laboratory Order Processing Procedure (SOP-LAB-001)\nDEPARTMENT: Laboratory Operations\nVERSION: 2.0\nROLES: doctor, nurse, lab_tech\nPURPOSE: Prompt, error-free accessioning and panic value reporting.\nSTEPS:\nStep 1: Execute phase 1 of Laboratory Order Processing Procedure in full compliance with Laboratory Operations hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Laboratory Order Processing Procedure in full compliance with Laboratory Operations hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Laboratory Order Processing Procedure in full compliance with Laboratory Operations hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Laboratory Order Processing Procedure in full compliance with Laboratory Operations hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Laboratory Order Processing Procedure in full compliance with Laboratory Operations hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Laboratory Order Processing Procedure in full compliance with Laboratory Operations hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Laboratory Operations.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-lab-001",
+    "laboratory operations",
+    "lab order processing",
+    "smch"
+  ],
+  "source_citation": "SOP-LAB-001 Laboratory Order Processing Procedure v2.0, Section 4"
+}

@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-MLC-001_MLC_Registration",
+  "title": "Medico-Legal Case Registration Procedure",
+  "file_path": "sops/SOP-MLC-001_MLC_Registration.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Medical Records (MRD / HIM)",
+  "applicable_roles": [
+    "front_office",
+    "doctor",
+    "medical_records"
+  ],
+  "version": "2.2",
+  "content": "SOP: Medico-Legal Case Registration Procedure (SOP-MLC-001)\nDEPARTMENT: Medical Records (MRD / HIM)\nVERSION: 2.2\nROLES: front_office, doctor, medical_records\nPURPOSE: Statutory police intimation within 1 hour for forensic trauma cases.\nSTEPS:\nStep 1: Execute phase 1 of Medico-Legal Case Registration Procedure in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Medico-Legal Case Registration Procedure in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Medico-Legal Case Registration Procedure in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Medico-Legal Case Registration Procedure in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Medico-Legal Case Registration Procedure in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Medical Records (MRD / HIM).\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-mlc-001",
+    "medical records (mrd / him)",
+    "mlc registration",
+    "smch"
+  ],
+  "source_citation": "SOP-MLC-001 Medico-Legal Case Registration Procedure v2.2, Section 4"
+}

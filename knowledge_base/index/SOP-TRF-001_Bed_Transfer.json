@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-TRF-001_Bed_Transfer",
+  "title": "Patient Bed and Ward Transfer Procedure",
+  "file_path": "sops/SOP-TRF-001_Bed_Transfer.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Admission and Discharge",
+  "applicable_roles": [
+    "admission",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.5",
+  "content": "SOP: Patient Bed and Ward Transfer Procedure (SOP-TRF-001)\nDEPARTMENT: Admission and Discharge\nVERSION: 1.5\nROLES: admission, nurse, doctor\nPURPOSE: Intra-hospital patient transfers and HIS bed state tracking.\nSTEPS:\nStep 1: Execute phase 1 of Patient Bed and Ward Transfer Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Patient Bed and Ward Transfer Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Patient Bed and Ward Transfer Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Patient Bed and Ward Transfer Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Patient Bed and Ward Transfer Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Admission and Discharge.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-trf-001",
+    "admission and discharge",
+    "bed transfer",
+    "smch"
+  ],
+  "source_citation": "SOP-TRF-001 Patient Bed and Ward Transfer Procedure v1.5, Section 4"
+}

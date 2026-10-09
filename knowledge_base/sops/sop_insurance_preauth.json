@@ -1,0 +1,33 @@
+{
+  "sop_id": "SOP-INS-004",
+  "title": "Cashless Insurance Pre-Authorization and Query Resolution",
+  "version": "2.4",
+  "department": "Billing",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Obtain patient government photo ID, health insurance policy card, and signed cashless claim declaration."
+    },
+    {
+      "step": 2,
+      "description": "Admitting physician completes clinical pre-authorization form with ICD-10 diagnosis code and proposed procedure."
+    },
+    {
+      "step": 3,
+      "description": "TPA executive uploads pre-auth docket to payer portal within 6 hours of planned admission or 24 hours of emergency admission."
+    },
+    {
+      "step": 4,
+      "description": "Monitor portal for insurer queries (RFI) regarding past medical history or investigation reports, and respond within 2 hours."
+    },
+    {
+      "step": 5,
+      "description": "On receipt of initial approval letter, record preauth_amount and change status to 'approved' in HIS."
+    }
+  ],
+  "common_blockers": [
+    "Pre-existing disease clause exclusions invoked by insurer without clinical substantiation",
+    "Delay in obtaining past treatment records or prescription slips from attender",
+    "Payer server downtime or API portal integration failure during emergency admissions"
+  ]
+}

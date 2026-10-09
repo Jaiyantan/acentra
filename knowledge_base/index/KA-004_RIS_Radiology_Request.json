@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-004_RIS_Radiology_Request",
+  "title": "How to Submit a Radiology Request",
+  "file_path": "knowledge_articles/KA-004_RIS_Radiology_Request.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Radiology Operations",
+  "applicable_roles": [
+    "doctor",
+    "rad_tech"
+  ],
+  "version": "1.7",
+  "content": "ARTICLE: How to Submit a Radiology Request (KA-004)\nSYSTEM: RIS\nDEPARTMENT: Radiology Operations\nVERSION: 1.7\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the RIS module to execute how to submit a radiology request safely and reliably.\nSTEPS:\nStep 1: Open the RIS client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Submit a Radiology Request and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Radiology Operations coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-004",
+    "ris",
+    "radiology operations",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-004 How to Submit a Radiology Request v1.7"
+}

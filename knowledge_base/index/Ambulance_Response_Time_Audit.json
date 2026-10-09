@@ -1,0 +1,25 @@
+{
+  "file_id": "Ambulance_Response_Time_Audit",
+  "title": "Ambulance Emergency Dispatch Response",
+  "file_path": "reports/Ambulance_Response_Time_Audit.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Ambulance Emergency Dispatch Response\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Ambulance Emergency Dispatch Response v1.0, SMCH Central Reporting"
+}

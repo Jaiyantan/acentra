@@ -1,0 +1,17 @@
+{
+  "policy_id": "POL-MRD-002",
+  "title": "Medical Records Privacy, Auditability, and Information Governance Policy",
+  "version": "2.0",
+  "department": "Medical Records",
+  "effective_date": "2026-01-01",
+  "rules": [
+    "All electronic patient record queries must record session_id, staff_id, and action in the audit_log.",
+    "Access to patient demographics and diagnostic records requires verified role-based access control (RBAC).",
+    "Physical or exported clinical summaries can only be released upon signed consent by the patient or registered next of kin.",
+    "Unidentified patient clinical data retained for research must be de-identified in compliance with DISHA guidelines."
+  ],
+  "exceptions": [
+    "Statutory court summons and medico-legal requests signed by Chief Judicial Magistrate.",
+    "Public health contagious disease mandatory reporting to Department of Public Health."
+  ]
+}

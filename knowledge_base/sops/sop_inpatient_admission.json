@@ -1,0 +1,33 @@
+{
+  "sop_id": "SOP-ADM-002",
+  "title": "Inpatient Admission and Ward Bed Placement",
+  "version": "3.0",
+  "department": "IPD",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Verify admission recommendation order entered by treating consultant or emergency medical officer."
+    },
+    {
+      "step": 2,
+      "description": "Counsel attender regarding room category preferences, tariff structure, and estimate of hospital stay."
+    },
+    {
+      "step": 3,
+      "description": "Check real-time bed inventory in target ward (General Ward or ICU) and allocate available bed ID."
+    },
+    {
+      "step": 4,
+      "description": "Collect admission initial deposit or initiate insurance pre-authorization request with TPA."
+    },
+    {
+      "step": 5,
+      "description": "Escort patient to allocated ward bed and hand over medical chart to receiving staff nurse."
+    }
+  ],
+  "common_blockers": [
+    "Zero ICU bed vacancy requiring clinical hold in emergency observation",
+    "Insurance policy inactive or mismatch between patient name on ID and insurance card",
+    "Attender refusing allocated bed category due to tariff disagreement"
+  ]
+}

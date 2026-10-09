@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-029_CSSD_Packaging_Validation",
+  "title": "Sterile Reprocessing Packaging and Expiry Dating Policy",
+  "file_path": "policies/POL-029_CSSD_Packaging_Validation.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Operation Theatre",
+  "applicable_roles": [
+    "cssd_tech",
+    "nurse"
+  ],
+  "version": "2.0",
+  "content": "POLICY: Sterile Reprocessing Packaging and Expiry Dating Policy (POL-029)\nDEPARTMENT: Operation Theatre\nVERSION: 2.0\nROLES: cssd_tech, nurse\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-029",
+    "operation theatre",
+    "cssd packaging validation",
+    "smch"
+  ],
+  "source_citation": "POL-029 Sterile Reprocessing Packaging and Expiry Dating Policy v2.0"
+}

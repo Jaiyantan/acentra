@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_005",
+  "title": "Escalation Routing Rule R-005: Pre-auth pending over 48 hours",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Insurance and TPA",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-005 -- Pre-auth pending over 48 hours\nTRIGGER TYPE: Time Threshold\nCONDITION: Pre-auth unacknowledged after 48h\nROUTE TO: Insurance and TPA (Extension 1029)\nQUEUE: QUEUE_INSURANCE\nPRIORITY: HIGH\nSLA: 2.0 hour(s)\nESCALATION RATIONALE: Unreasonable insurer delay threatening planned admission. Escalate to Senior Insurance Officer.\nEXAMPLE QUERY 1: Preauth for UHID-000002 has had no response for 2 days\nEXAMPLE QUERY 2: Status still submitted after 50 hours",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-005",
+    "time threshold",
+    "queue_insurance",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-005 (Pre-auth pending over 48 hours) v1.0"
+}

@@ -1,0 +1,22 @@
+{
+  "file_id": "workflow_definitions",
+  "title": "SMCH Operational Workflow State Machine Definitions",
+  "file_path": "workflow_definitions.json",
+  "file_type": "json",
+  "category": "workflow_definition",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "WORKFLOW STATE MACHINE DEFINITIONS: Saveetha Medical College and Hospital (SMCH) Operational Workflow State Machine Definitions (workflow_definitions.json).\nSPECIFIED WORKFLOWS:\n- WF-001: Patient Emergency and Inpatient Admission (5 states: Demographic Check, Clinical Triage, Bed Allocation, Pre-Auth Check, Admission Finalization)\n- WF-002: Four-Point Inpatient Discharge Clearance (4 states: Clinical Order, Pharmacy Audit, Billing Settlement, Nursing Gate Pass Release)\n- WF-003: Cashless Insurance Pre-Authorization & Query Resolution (4 states: Card Verification, Estimate Packet, TPA Query Reply, Approval Confirmation)\n- WF-004: Inpatient Ward and ICU Bed Transfer (4 states: Clinical Requisition, Vacancy Check, Buffer Override, SBAR Handover)\n- WF-005: STAT Critical Lab Investigation & Panic Alert Escalation (4 states: STAT Order, Accessioning, Critical Trigger, Mandatory 15-Min Phone Readback)\n- WF-006: Adverse Clinical & Operational Incident Reporting (4 states: Containment, Incident Logging, Quality Classification, CAPA Signoff)\n- WF-007: Medico-Legal Case (MLC) Protocol & Intimation (4 states: Trauma Stabilization, Police Intimation Memo, Forensic Sealing, Legal Chart Lock)\n- WF-008: High-Alert & Schedule X Narcotic Requisition (4 states: Consultant Indent, Bedside Dual-Witness, Vault Register Log, Ampoule Reconciliation)\nAll workflows enforce human-in-the-loop checkpoints, validation schemas, and automated escalation to support teams.",
+  "tags": [
+    "workflow",
+    "state_machine",
+    "automation",
+    "human_in_the_loop",
+    "escalations",
+    "smch"
+  ],
+  "source_citation": "SMCH Operational Workflow State Machine Specifications v1.0, Operations Management"
+}

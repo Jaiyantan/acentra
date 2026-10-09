@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-004_Emergency_Triage_Policy",
+  "title": "Emergency Severity Index (ESI) Prioritization Policy",
+  "file_path": "policies/POL-004_Emergency_Triage_Policy.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Emergency Department",
+  "applicable_roles": [
+    "doctor",
+    "nurse"
+  ],
+  "version": "2.1",
+  "content": "POLICY: Emergency Severity Index (ESI) Prioritization Policy (POL-004)\nDEPARTMENT: Emergency Department\nVERSION: 2.1\nROLES: doctor, nurse\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-004",
+    "emergency department",
+    "emergency triage policy",
+    "smch"
+  ],
+  "source_citation": "POL-004 Emergency Severity Index (ESI) Prioritization Policy v2.1"
+}

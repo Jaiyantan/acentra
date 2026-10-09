@@ -1,0 +1,23 @@
+{
+  "file_id": "POL-008_Blood_Transfusion_Safety_Policy",
+  "title": "Hemovigilance and Blood Transfusion Safety Policy",
+  "file_path": "policies/POL-008_Blood_Transfusion_Safety_Policy.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Blood Bank",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "lab_tech"
+  ],
+  "version": "2.5",
+  "content": "POLICY: Hemovigilance and Blood Transfusion Safety Policy (POL-008)\nDEPARTMENT: Blood Bank\nVERSION: 2.5\nROLES: doctor, nurse, lab_tech\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-008",
+    "blood bank",
+    "blood transfusion safety policy",
+    "smch"
+  ],
+  "source_citation": "POL-008 Hemovigilance and Blood Transfusion Safety Policy v2.5"
+}

@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_011",
+  "title": "Escalation Routing Rule R-011: IT system down reported",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "IT and HIS Support",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-011 -- IT system down reported\nTRIGGER TYPE: Incident\nCONDITION: Workstation or HIS connectivity failure\nROUTE TO: IT and HIS Support (Extension 1033)\nQUEUE: QUEUE_IT_SUPPORT\nPRIORITY: URGENT\nSLA: 1.0 hour(s)\nESCALATION RATIONALE: Hospital operational continuity at risk. ICU terminals get priority 1 dispatch within 15 minutes. Call IT helpline ext. 1033.\nEXAMPLE QUERY 1: EMR workstation in ICU Bed 02 freezing\nEXAMPLE QUERY 2: Cannot access HIS admission portal from counter",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-011",
+    "incident",
+    "queue_it_support",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-011 (IT system down reported) v1.0"
+}

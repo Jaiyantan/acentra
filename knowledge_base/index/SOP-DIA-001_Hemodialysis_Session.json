@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-DIA-001_Hemodialysis_Session",
+  "title": "Hemodialysis Session Initiation and Monitoring",
+  "file_path": "sops/SOP-DIA-001_Hemodialysis_Session.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Nephrology and Dialysis",
+  "applicable_roles": [
+    "doctor",
+    "dialysis_tech",
+    "nurse"
+  ],
+  "version": "2.6",
+  "content": "SOP: Hemodialysis Session Initiation and Monitoring (SOP-DIA-001)\nDEPARTMENT: Nephrology and Dialysis\nVERSION: 2.6\nROLES: doctor, dialysis_tech, nurse\nPURPOSE: Dialyzer priming, vital stability monitoring, and heparinization.\nSTEPS:\nStep 1: Execute phase 1 of Hemodialysis Session Initiation and Monitoring in full compliance with Nephrology and Dialysis hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Hemodialysis Session Initiation and Monitoring in full compliance with Nephrology and Dialysis hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Hemodialysis Session Initiation and Monitoring in full compliance with Nephrology and Dialysis hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Hemodialysis Session Initiation and Monitoring in full compliance with Nephrology and Dialysis hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Hemodialysis Session Initiation and Monitoring in full compliance with Nephrology and Dialysis hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Hemodialysis Session Initiation and Monitoring in full compliance with Nephrology and Dialysis hospital policy, verifying patient UHID and audit stamps.\nStep 7: Execute phase 7 of Hemodialysis Session Initiation and Monitoring in full compliance with Nephrology and Dialysis hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Nephrology and Dialysis.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-dia-001",
+    "nephrology and dialysis",
+    "hemodialysis session",
+    "smch"
+  ],
+  "source_citation": "SOP-DIA-001 Hemodialysis Session Initiation and Monitoring v2.6, Section 4"
+}

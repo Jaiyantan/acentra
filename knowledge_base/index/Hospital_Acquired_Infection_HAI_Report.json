@@ -1,0 +1,25 @@
+{
+  "file_id": "Hospital_Acquired_Infection_HAI_Report",
+  "title": "HAI Infection Surveillance Metrics",
+  "file_path": "reports/Hospital_Acquired_Infection_HAI_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: HAI Infection Surveillance Metrics\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "HAI Infection Surveillance Metrics v1.0, SMCH Central Reporting"
+}

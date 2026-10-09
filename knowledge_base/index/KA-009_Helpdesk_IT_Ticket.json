@@ -1,0 +1,22 @@
+{
+  "file_id": "KA-009_Helpdesk_IT_Ticket",
+  "title": "How to Raise an IT Support Ticket for HIS or System Issues",
+  "file_path": "knowledge_articles/KA-009_Helpdesk_IT_Ticket.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "IT and HIS Support",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "2.5",
+  "content": "ARTICLE: How to Raise an IT Support Ticket for HIS or System Issues (KA-009)\nSYSTEM: ITSM Helpdesk\nDEPARTMENT: IT and HIS Support\nVERSION: 2.5\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the ITSM Helpdesk module to execute how to raise an it support ticket for his or system issues safely and reliably.\nSTEPS:\nStep 1: Open the ITSM Helpdesk client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Raise an IT Support Ticket for HIS or System Issues and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact IT and HIS Support coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-009",
+    "itsm helpdesk",
+    "it and his support",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-009 How to Raise an IT Support Ticket for HIS or System Issues v2.5"
+}

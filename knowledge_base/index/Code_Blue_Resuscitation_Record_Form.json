@@ -1,0 +1,25 @@
+{
+  "file_id": "Code_Blue_Resuscitation_Record_Form",
+  "title": "Cardiopulmonary Arrest Code Blue Flowsheet",
+  "file_path": "forms/Code_Blue_Resuscitation_Record_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.8",
+  "content": "FORM: Cardiopulmonary Arrest Code Blue Flowsheet (FORM-CBL-01)\nVERSION: v2.8\nFIELDS:\n- Patient UHID\n- Arrest Rhythm\n- CPR Start Time\n- Defibrillation Joules\n- Epinephrine Doses\n- ROSC Achieved (Y/N)",
+  "tags": [
+    "form",
+    "pdf",
+    "form-cbl-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-CBL-01 Cardiopulmonary Arrest Code Blue Flowsheet v2.8"
+}

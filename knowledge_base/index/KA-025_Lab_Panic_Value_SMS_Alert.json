@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-025_Lab_Panic_Value_SMS_Alert",
+  "title": "How to Broadcast Automated SMS Panic Alerts for Critical Labs",
+  "file_path": "knowledge_articles/KA-025_Lab_Panic_Value_SMS_Alert.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Laboratory Operations",
+  "applicable_roles": [
+    "lab_tech",
+    "quality"
+  ],
+  "version": "2.1",
+  "content": "ARTICLE: How to Broadcast Automated SMS Panic Alerts for Critical Labs (KA-025)\nSYSTEM: LIS Engine\nDEPARTMENT: Laboratory Operations\nVERSION: 2.1\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the LIS Engine module to execute how to broadcast automated sms panic alerts for critical labs safely and reliably.\nSTEPS:\nStep 1: Open the LIS Engine client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Broadcast Automated SMS Panic Alerts for Critical Labs and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Laboratory Operations coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-025",
+    "lis engine",
+    "laboratory operations",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-025 How to Broadcast Automated SMS Panic Alerts for Critical Labs v2.1"
+}

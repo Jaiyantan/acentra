@@ -1,0 +1,25 @@
+{
+  "file_id": "High_Risk_Informed_Consent_Form",
+  "title": "High-Risk Surgical / Anesthesia Consent",
+  "file_path": "forms/High_Risk_Informed_Consent_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v3.0",
+  "content": "FORM: High-Risk Surgical / Anesthesia Consent (FORM-HRC-01)\nVERSION: v3.0\nFIELDS:\n- Patient UHID\n- Surgery Name\n- High Risk Factors\n- Blood Loss Risk\n- Surgeon Signature\n- Anesthetist Seal",
+  "tags": [
+    "form",
+    "pdf",
+    "form-hrc-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-HRC-01 High-Risk Surgical / Anesthesia Consent v3.0"
+}

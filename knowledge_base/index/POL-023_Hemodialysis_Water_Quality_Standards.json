@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-023_Hemodialysis_Water_Quality_Standards",
+  "title": "AAMI Hemodialysis Reverse Osmosis Water Quality Policy",
+  "file_path": "policies/POL-023_Hemodialysis_Water_Quality_Standards.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Nephrology and Dialysis",
+  "applicable_roles": [
+    "dialysis_tech",
+    "biomedical_engineer"
+  ],
+  "version": "2.5",
+  "content": "POLICY: AAMI Hemodialysis Reverse Osmosis Water Quality Policy (POL-023)\nDEPARTMENT: Nephrology and Dialysis\nVERSION: 2.5\nROLES: dialysis_tech, biomedical_engineer\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-023",
+    "nephrology and dialysis",
+    "hemodialysis water quality standards",
+    "smch"
+  ],
+  "source_citation": "POL-023 AAMI Hemodialysis Reverse Osmosis Water Quality Policy v2.5"
+}

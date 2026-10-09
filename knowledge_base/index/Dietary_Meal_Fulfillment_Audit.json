@@ -1,0 +1,25 @@
+{
+  "file_id": "Dietary_Meal_Fulfillment_Audit",
+  "title": "Inpatient Meal Delivery & Diet Accuracy",
+  "file_path": "reports/Dietary_Meal_Fulfillment_Audit.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Inpatient Meal Delivery & Diet Accuracy\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Inpatient Meal Delivery & Diet Accuracy v1.0, SMCH Central Reporting"
+}

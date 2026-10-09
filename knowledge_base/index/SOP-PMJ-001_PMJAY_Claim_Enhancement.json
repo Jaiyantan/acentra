@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-PMJ-001_PMJAY_Claim_Enhancement",
+  "title": "PMJAY Cashless Enhancement Requisition",
+  "file_path": "sops/SOP-PMJ-001_PMJAY_Claim_Enhancement.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Insurance and TPA",
+  "applicable_roles": [
+    "insurance_tpa",
+    "billing"
+  ],
+  "version": "3.2",
+  "content": "SOP: PMJAY Cashless Enhancement Requisition (SOP-PMJ-001)\nDEPARTMENT: Insurance and TPA\nVERSION: 3.2\nROLES: insurance_tpa, billing\nPURPOSE: Submit interim package enhancements to state nodal agency within 24h.\nSTEPS:\nStep 1: Execute phase 1 of PMJAY Cashless Enhancement Requisition in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of PMJAY Cashless Enhancement Requisition in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of PMJAY Cashless Enhancement Requisition in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of PMJAY Cashless Enhancement Requisition in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of PMJAY Cashless Enhancement Requisition in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Insurance and TPA.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-pmj-001",
+    "insurance and tpa",
+    "pmjay claim enhancement",
+    "smch"
+  ],
+  "source_citation": "SOP-PMJ-001 PMJAY Cashless Enhancement Requisition v3.2, Section 4"
+}

@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-005_ICU_Admission_Discharge_Criteria",
+  "title": "Critical Care Admission and Discharge Priority Policy",
+  "file_path": "policies/POL-005_ICU_Admission_Discharge_Criteria.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Intensive Care Unit (ICU)",
+  "applicable_roles": [
+    "doctor",
+    "nurse"
+  ],
+  "version": "2.4",
+  "content": "POLICY: Critical Care Admission and Discharge Priority Policy (POL-005)\nDEPARTMENT: Intensive Care Unit (ICU)\nVERSION: 2.4\nROLES: doctor, nurse\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-005",
+    "intensive care unit (icu)",
+    "icu admission discharge criteria",
+    "smch"
+  ],
+  "source_citation": "POL-005 Critical Care Admission and Discharge Priority Policy v2.4"
+}

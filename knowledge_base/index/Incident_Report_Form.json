@@ -1,0 +1,25 @@
+{
+  "file_id": "Incident_Report_Form",
+  "title": "Patient Safety Incident & Adverse Event Form",
+  "file_path": "forms/Incident_Report_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.1",
+  "content": "FORM: Patient Safety Incident & Adverse Event Form (FORM-INC-02)\nVERSION: v2.1\nFIELDS:\n- Incident ID\n- Department / Ward\n- Incident Category\n- Severity (L/M/H/C)\n- Immediate Action\n- Reporter Staff ID",
+  "tags": [
+    "form",
+    "pdf",
+    "form-inc-02",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-INC-02 Patient Safety Incident & Adverse Event Form v2.1"
+}

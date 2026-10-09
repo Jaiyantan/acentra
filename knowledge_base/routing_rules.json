@@ -1,0 +1,44 @@
+[
+  {
+    "rule_id": "RR-001",
+    "trigger": "IT workstation malfunction, terminal freeze, or printer offline",
+    "route_to": "IT Support",
+    "priority": "high",
+    "sla_hours": 2
+  },
+  {
+    "rule_id": "RR-002",
+    "trigger": "Discharge clearance failure due to pharmacy unbilled items or bill variance",
+    "route_to": "Billing",
+    "priority": "urgent",
+    "sla_hours": 1
+  },
+  {
+    "rule_id": "RR-003",
+    "trigger": "Insurance pre-auth rejection or additional information query",
+    "route_to": "Insurance TPA",
+    "priority": "normal",
+    "sla_hours": 4
+  },
+  {
+    "rule_id": "RR-004",
+    "trigger": "Patient or attender complaint regarding housekeeping, food, or delays",
+    "route_to": "Operations Management",
+    "priority": "normal",
+    "sla_hours": 6
+  },
+  {
+    "rule_id": "RR-005",
+    "trigger": "Unnotified critical lab panic value flag detected without documented readback",
+    "route_to": "Operations Management",
+    "priority": "urgent",
+    "sla_hours": 0.5
+  },
+  {
+    "rule_id": "RR-006",
+    "trigger": "Bed allocation request when primary ward capacity exceeds 90%",
+    "route_to": "Case Management",
+    "priority": "high",
+    "sla_hours": 1
+  }
+]

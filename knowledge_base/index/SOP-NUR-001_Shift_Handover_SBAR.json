@@ -1,0 +1,21 @@
+{
+  "file_id": "SOP-NUR-001_Shift_Handover_SBAR",
+  "title": "Nursing Shift Changeover and SBAR Handover",
+  "file_path": "sops/SOP-NUR-001_Shift_Handover_SBAR.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Nursing Administration",
+  "applicable_roles": [
+    "nurse"
+  ],
+  "version": "3.0",
+  "content": "SOP: Nursing Shift Changeover and SBAR Handover (SOP-NUR-001)\nDEPARTMENT: Nursing Administration\nVERSION: 3.0\nROLES: nurse\nPURPOSE: Bedside verbal SBAR handover between incoming and outgoing shifts.\nSTEPS:\nStep 1: Execute phase 1 of Nursing Shift Changeover and SBAR Handover in full compliance with Nursing Administration hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Nursing Shift Changeover and SBAR Handover in full compliance with Nursing Administration hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Nursing Shift Changeover and SBAR Handover in full compliance with Nursing Administration hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Nursing Shift Changeover and SBAR Handover in full compliance with Nursing Administration hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Nursing Shift Changeover and SBAR Handover in full compliance with Nursing Administration hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Nursing Administration.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-nur-001",
+    "nursing administration",
+    "shift handover sbar",
+    "smch"
+  ],
+  "source_citation": "SOP-NUR-001 Nursing Shift Changeover and SBAR Handover v3.0, Section 4"
+}

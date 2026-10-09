@@ -1,0 +1,25 @@
+{
+  "file_id": "ICU_Central_Line_Insertion_Bundle",
+  "title": "Central Venous Catheter Insertion Checklist",
+  "file_path": "forms/ICU_Central_Line_Insertion_Bundle.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.3",
+  "content": "FORM: Central Venous Catheter Insertion Checklist (FORM-CVC-01)\nVERSION: v2.3\nFIELDS:\n- Patient UHID\n- Insertion Site\n- Maximal Barrier Used\n- Chlorhexidine Prep\n- Post-Xray Confirmed\n- Operator Doctor",
+  "tags": [
+    "form",
+    "pdf",
+    "form-cvc-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-CVC-01 Central Venous Catheter Insertion Checklist v2.3"
+}

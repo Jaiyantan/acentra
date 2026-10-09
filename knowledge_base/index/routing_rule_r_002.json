@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_002",
+  "title": "Escalation Routing Rule R-002: Medication dosage asked",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Clinical Review",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-002 -- Medication dosage asked\nTRIGGER TYPE: Intent\nCONDITION: Dosage calculation inquiry\nROUTE TO: Clinical Review (Extension 1012)\nQUEUE: QUEUE_CLINICAL\nPRIORITY: URGENT\nSLA: 1.0 hour(s)\nESCALATION RATIONALE: Severe risk of drug toxicity if answered by non-clinician. Dosing must be verified by licensed pharmacist or physician.\nEXAMPLE QUERY 1: What is the pediatric dose of amikacin?\nEXAMPLE QUERY 2: How many units of insulin should I give?",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-002",
+    "intent",
+    "queue_clinical",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-002 (Medication dosage asked) v1.0"
+}

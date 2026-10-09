@@ -1,0 +1,184 @@
+{
+  "requests": [
+    {
+      "request_id": "REQ-001",
+      "title": "Admit Emergency Patient to ICU",
+      "submitted_by_role": "doctor",
+      "description": "Patient presenting with acute respiratory failure in emergency requires immediate ICU bed booking.",
+      "category": "workflow_request",
+      "expected_intent": "create_admission",
+      "sample_query": "Please admit patient UHID-000008 into the ICU under Dr. Anbarasan for acute respiratory distress."
+    },
+    {
+      "request_id": "REQ-002",
+      "title": "Check Vacant Bed Availability in ICU",
+      "submitted_by_role": "nurse",
+      "description": "Ward nurse needs to check whether there are any open ICU beds before moving a deteriorating patient.",
+      "category": "workflow_request",
+      "expected_intent": "check_beds",
+      "sample_query": "Are there any available beds in the ICU right now?"
+    },
+    {
+      "request_id": "REQ-003",
+      "title": "Submit Cashless Pre-Authorization Request",
+      "submitted_by_role": "admission",
+      "description": "New admission has Star Health insurance; pre-authorization packet needs submission.",
+      "category": "workflow_request",
+      "expected_intent": "submit_preauth",
+      "sample_query": "How do I submit an insurance pre-auth request for Star Health policy POL-STAR-7821?"
+    },
+    {
+      "request_id": "REQ-004",
+      "title": "Inquire About Insurance Claim Rejection Status",
+      "submitted_by_role": "case_management",
+      "description": "Case manager checking why claim CLM-002 for Anitha Selvam was turned down.",
+      "category": "workflow_request",
+      "expected_intent": "check_insurance",
+      "sample_query": "Can you check the claim status and rejection reason for patient UHID-000004?"
+    },
+    {
+      "request_id": "REQ-005",
+      "title": "Generate Four-Point Discharge Clearance",
+      "submitted_by_role": "discharge",
+      "description": "Discharge desk coordinator verifying whether UHID-000007 has cleared pharmacy and billing.",
+      "category": "workflow_request",
+      "expected_intent": "discharge_clearance",
+      "sample_query": "Is patient UHID-000007 cleared for discharge across billing, pharmacy, and nursing?"
+    },
+    {
+      "request_id": "REQ-006",
+      "title": "Order STAT Serum Electrolytes Panel",
+      "submitted_by_role": "doctor",
+      "description": "Physician needs emergency STAT electrolytes panel ordered in LIS for ICU Bed 01.",
+      "category": "workflow_request",
+      "expected_intent": "order_lab",
+      "sample_query": "Please order a STAT Serum Electrolytes panel for patient UHID-000001 in ICU."
+    },
+    {
+      "request_id": "REQ-007",
+      "title": "Report Ward Patient Fall Incident",
+      "submitted_by_role": "nurse",
+      "description": "Staff nurse reporting an elderly patient slip in General Ward bathroom.",
+      "category": "workflow_request",
+      "expected_intent": "report_incident",
+      "sample_query": "I need to file an incident report for an elderly patient fall in General Ward Bed 03."
+    },
+    {
+      "request_id": "REQ-008",
+      "title": "Retrieve Historical Case File from MRD",
+      "submitted_by_role": "doctor",
+      "description": "Consultant requesting physical previous admission file of re-admitted cardiac patient.",
+      "category": "knowledge_query",
+      "expected_intent": "mrd_request",
+      "sample_query": "How do I request a physical archived patient case file from Medical Records?"
+    },
+    {
+      "request_id": "REQ-009",
+      "title": "Report Frozen EMR Terminal in ICU",
+      "submitted_by_role": "nurse",
+      "description": "Workstation terminal frozen during vitals entry in ICU Bed 02.",
+      "category": "escalation",
+      "expected_intent": "it_support_ticket",
+      "sample_query": "The EMR workstation terminal at ICU Bed 02 is frozen and not accepting entries. Raise a ticket."
+    },
+    {
+      "request_id": "REQ-010",
+      "title": "Review Current Inpatient Bill Summary",
+      "submitted_by_role": "billing",
+      "description": "Billing executive reviewing unbilled consumables and insurance balance for patient in ICU.",
+      "category": "report_request",
+      "expected_intent": "check_bill",
+      "sample_query": "What is the latest bill summary and patient payable balance for UHID-000001?"
+    },
+    {
+      "request_id": "REQ-011",
+      "title": "Transfer Deteriorating Patient from Ward to ICU",
+      "submitted_by_role": "doctor",
+      "description": "Patient in General Ward Bed 01 experiencing severe respiratory decline needs step-up to ICU.",
+      "category": "workflow_request",
+      "expected_intent": "transfer_patient",
+      "sample_query": "Transfer patient UHID-000003 from General Ward Bed 01 to an available ICU bed immediately."
+    },
+    {
+      "request_id": "REQ-012",
+      "title": "Requisition Emergency Packed Red Blood Cells",
+      "submitted_by_role": "doctor",
+      "description": "Polytrauma patient in emergency resuscitation bay requires 2 units of O-negative PRBC.",
+      "category": "workflow_request",
+      "expected_intent": "request_blood",
+      "sample_query": "Request 2 units of Packed Red Blood Cells STAT from the Blood Bank for trauma patient UHID-000005."
+    },
+    {
+      "request_id": "REQ-013",
+      "title": "Check Unnotified Critical Lab Result Alert",
+      "submitted_by_role": "quality",
+      "description": "Quality auditor identifying unalerted critical potassium value for UHID-000001.",
+      "category": "escalation",
+      "expected_intent": "critical_lab_alert",
+      "sample_query": "Show me any critical lab results that have not yet been alerted to the treating physician."
+    },
+    {
+      "request_id": "REQ-014",
+      "title": "Find Inpatient Admission Standard Operating Procedure",
+      "submitted_by_role": "front_office",
+      "description": "Front office staff looking up protocol for admitting a patient without a government ID.",
+      "category": "knowledge_query",
+      "expected_intent": "find_sop",
+      "sample_query": "Where can I find the SOP for patient admission and what are the required documents?"
+    },
+    {
+      "request_id": "REQ-015",
+      "title": "Query How to Allocate Bed in HIS",
+      "submitted_by_role": "admission",
+      "description": "New admission clerk requesting step-by-step guidance on bed allocation screen.",
+      "category": "knowledge_query",
+      "expected_intent": "his_guidance",
+      "sample_query": "Explain how to allocate a bed in the HIS system."
+    },
+    {
+      "request_id": "REQ-016",
+      "title": "Resolve Patient Attender Billing Dispute",
+      "submitted_by_role": "discharge",
+      "description": "Attender of UHID-000007 disputing Rs 13,000 extra consumable charge.",
+      "category": "escalation",
+      "expected_intent": "billing_dispute",
+      "sample_query": "The attender of patient UHID-000007 is disputing the final bill. What is the escalation process?"
+    },
+    {
+      "request_id": "REQ-017",
+      "title": "Verify PMJAY Ayushman Bharat Claim Protocol",
+      "submitted_by_role": "billing",
+      "description": "Billing clerk inquiring how to upload discharge summary into NHA portal.",
+      "category": "knowledge_query",
+      "expected_intent": "pmjay_procedure",
+      "sample_query": "How do we submit a PMJAY claim through the NHA portal at discharge?"
+    },
+    {
+      "request_id": "REQ-018",
+      "title": "Check Mandatory Documents Needed for Patient Discharge",
+      "submitted_by_role": "nurse",
+      "description": "Ward nurse verifying list of required papers before patient leaves ward.",
+      "category": "knowledge_query",
+      "expected_intent": "discharge_documents",
+      "sample_query": "What documents are required to complete a patient discharge according to SOP-DIS-001?"
+    },
+    {
+      "request_id": "REQ-019",
+      "title": "Identify Responsible Team for TPA Denial Dispute",
+      "submitted_by_role": "admission",
+      "description": "Admission clerk asking which team to contact when cashless preauth is rejected.",
+      "category": "knowledge_query",
+      "expected_intent": "team_contact",
+      "sample_query": "Who do I contact when an insurance pre-authorization claim is rejected by the TPA?"
+    },
+    {
+      "request_id": "REQ-020",
+      "title": "Clinical Escalation for Patient Refusing Life-Saving Treatment",
+      "submitted_by_role": "nurse",
+      "description": "ICU patient demanding discharge against medical advice despite critical hypoxemia.",
+      "category": "escalation",
+      "expected_intent": "clinical_review_escalation",
+      "sample_query": "A severe respiratory distress patient in the ICU is refusing treatment and demanding immediate discharge. What should we do?"
+    }
+  ]
+}

@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SMCH Operations Intelligence Center · Palantir Foundry Architecture</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <script src="vis-network.min.js"></script>
+  <style>
+    :root {
+      --bg-canvas: #060911;
+      --bg-panel: rgba(11, 17, 30, 0.92);
+      --bg-surface: #0E1626;
+      --border-subtle: rgba(255, 255, 255, 0.07);
+      --border-strong: rgba(255, 255, 255, 0.14);
+      --text-primary: #F8FAFC;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --accent-blue: #2563EB;
+      --accent-emerald: #10B981;
+      --accent-rose: #F43F5E;
+      --accent-amber: #F59E0B;
+      --accent-cyan: #06B6D4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Executive Header ── */
+    header {
+      background: #090E19;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 9px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .brand-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: linear-gradient(135deg, #1E293B, #0F172A);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 12px rgba(14, 165, 233, 0.2);
+    }
+    .brand-icon svg { width: 18px; height: 18px; fill: none; stroke: #38BDF8; stroke-width: 2; }
+    .brand-text { display: flex; flex-direction: column; }
+    .brand-text .eyebrow {
+      font-size: 9.5px; font-weight: 700; color: #64748B;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .brand-text h1 {
+      font-size: 14.5px; font-weight: 700; color: #F8FAFC;
+      letter-spacing: -0.01em; line-height: 1.2;
+    }
+    .live-badge {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(16, 185, 129, 0.09); border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 3px 9px; border-radius: 12px; margin-left: 10px;
+      font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: #34D399; font-family: 'JetBrains Mono', monospace;
+    }
+    .live-dot {
+      width: 6px; height: 6px; background: #10B981; border-radius: 50%;
+      box-shadow: 0 0 8px #10B981; animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.25); }
+    }
+
+    .actions-bar { display: flex; gap: 8px; align-items: center; }
+    button.btn {
+      padding: 6px 13px; border-radius: 6px; font-size: 11px; font-weight: 600;
+      cursor: pointer; transition: all 0.15s ease; border: 1px solid transparent;
+      display: flex; align-items: center; gap: 6px; letter-spacing: 0.01em;
+      font-family: inherit;
+    }
+    button.btn-settle {
+      background: rgba(16, 185, 129, 0.12); color: #34D399;
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+    button.btn-settle:hover {
+      background: rgba(16, 185, 129, 0.22); border-color: #34D399;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.25);
+    }
+    button.btn-panic {
+      background: rgba(244, 63, 94, 0.12); color: #FB7185;
+      border-color: rgba(244, 63, 94, 0.35);
+    }
+    button.btn-panic:hover {
+      background: rgba(244, 63, 94, 0.22); border-color: #FB7185;
+      box-shadow: 0 0 10px rgba(244, 63, 94, 0.25);
+    }
+    button.btn-turnaround {
+      background: rgba(6, 182, 212, 0.12); color: #22D3EE;
+      border-color: rgba(6, 182, 212, 0.35);
+    }
+    button.btn-turnaround:hover {
+      background: rgba(6, 182, 212, 0.22); border-color: #22D3EE;
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.25);
+    }
+    button.btn-reset {
+      background: rgba(148, 163, 184, 0.08); color: #94A3B8;
+      border-color: rgba(148, 163, 184, 0.2);
+    }
+    button.btn-reset:hover {
+      background: rgba(148, 163, 184, 0.16); color: #F1F5F9;
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    /* ── Sub Navigation & Perspective Ribbon ── */
+    .sub-bar {
+      background: #0A0F1D; border-bottom: 1px solid var(--border-subtle);
+      padding: 6px 24px; display: flex; justify-content: space-between;
+      align-items: center; z-index: 15;
+    }
+    .perspectives-tabs {
+      display: flex; gap: 3px; align-items: center;
+      background: #060A13; padding: 3px; border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+    }
+    .tab-btn {
+      background: transparent; color: #94A3B8; border: none;
+      padding: 5px 12px; border-radius: 6px; font-size: 11px; font-weight: 500;
+      cursor: pointer; transition: all 0.15s ease; font-family: inherit;
+    }
+    .tab-btn:hover { color: #F1F5F9; background: rgba(255, 255, 255, 0.05); }
+    .tab-btn.active {
+      background: #1D4ED8; color: #FFFFFF; font-weight: 600;
+      box-shadow: 0 2px 8px rgba(29, 78, 216, 0.35);
+    }
+    #tab-full_ontology {
+      color: #64748B; margin-left: 2px; border-left: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0 6px 6px 0;
+    }
+    #tab-full_ontology.active { background: #1E293B; color: #CBD5E1; }
+
+    .telemetry-indicator {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; color: #64748B; font-family: 'JetBrains Mono', monospace;
+    }
+    .telemetry-indicator b { color: #94A3B8; font-weight: 600; }
+    .telemetry-indicator .sep { color: rgba(255, 255, 255, 0.12); }
+
+    .sub-controls { display: flex; gap: 8px; align-items: center; }
+    .search-wrapper {
+      position: relative; display: flex; align-items: center;
+    }
+    .search-icon {
+      position: absolute; left: 9px; width: 13px; height: 13px;
+      fill: none; stroke: #64748B; stroke-width: 2; pointer-events: none;
+    }
+    input#searchBox {
+      background: #080D18; border: 1px solid var(--border-strong);
+      color: #E2E8F0; padding: 5px 28px 5px 28px; border-radius: 6px;
+      font-size: 11px; width: 220px; outline: none; font-family: inherit;
+      transition: all 0.15s ease;
+    }
+    input#searchBox:focus {
+      border-color: #3B82F6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.25);
+      background: #0B1322;
+    }
+    .search-shortcut {
+      position: absolute; right: 7px; font-size: 9px;
+      color: #475569; background: #0F172A; padding: 1px 4px;
+      border-radius: 3px; font-family: 'JetBrains Mono', monospace;
+    }
+    select.ctx-select {
+      background: #080D18; border: 1px solid var(--border-strong);
+      color: #E2E8F0; padding: 5px 10px; border-radius: 6px;
+      font-size: 11px; outline: none; font-family: inherit; cursor: pointer;
+    }
+    .icon-btn {
+      background: rgba(255, 255, 255, 0.04); color: #94A3B8;
+      border: 1px solid var(--border-subtle); padding: 5px 10px;
+      border-radius: 6px; font-size: 11px; font-weight: 500; cursor: pointer;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .icon-btn:hover {
+      background: rgba(255, 255, 255, 0.08); color: #F1F5F9;
+      border-color: var(--border-strong);
+    }
+
+    /* ── Main Canvas Viewport ── */
+    main {
+      display: flex; flex: 1; height: calc(100vh - 96px);
+      position: relative; overflow: hidden;
+    }
+    #network {
+      flex: 1; width: 100%; height: 100%;
+      background-color: var(--bg-canvas);
+      background-image: radial-gradient(rgba(148, 163, 184, 0.11) 1.2px, transparent 1.2px);
+      background-size: 26px 26px;
+    }
+
+    /* ── Floating Operational KPI Deck ── */
+    .kpi-deck {
+      position: absolute; top: 16px; left: 20px;
+      background: var(--bg-panel); backdrop-filter: blur(16px);
+      border: 1px solid var(--border-strong); padding: 10px 16px;
+      border-radius: 10px; display: flex; flex-direction: column; gap: 6px;
+      z-index: 10; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+      min-width: 280px;
+    }
+    .kpi-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 5px; border-bottom: 1px solid var(--border-subtle);
+    }
+    .kpi-title {
+      font-size: 9.5px; font-weight: 700; letter-spacing: 0.07em;
+      text-transform: uppercase; color: #64748B;
+    }
+    .kpi-pulse {
+      width: 6px; height: 6px; border-radius: 50%; background: #F43F5E;
+      box-shadow: 0 0 6px #F43F5E;
+    }
+    .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 3px; }
+    .kpi-box { display: flex; flex-direction: column; gap: 2px; }
+    .kpi-box .lbl { font-size: 9px; color: #64748B; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em; }
+    .kpi-box .val { font-size: 16px; font-weight: 800; line-height: 1.1; font-family: 'JetBrains Mono', monospace; }
+    .kpi-box .val.rose { color: #FB7185; }
+    .kpi-box .val.amber { color: #FBBF24; }
+    .kpi-box .val.cyan { color: #38BDF8; }
+    .kpi-box .val.red { color: #F43F5E; }
+
+    /* ── Floating Viewport Dock (Bottom-Center) ── */
+    .viewport-dock {
+      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+      background: var(--bg-panel); backdrop-filter: blur(16px);
+      border: 1px solid var(--border-strong); padding: 5px 8px;
+      border-radius: 20px; display: flex; gap: 5px; align-items: center;
+      z-index: 10; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    .dock-btn {
+      background: transparent; color: #94A3B8; border: none;
+      width: 28px; height: 28px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; font-size: 12px;
+      cursor: pointer; transition: all 0.15s; font-family: inherit;
+    }
+    .dock-btn:hover { background: rgba(255, 255, 255, 0.1); color: #F8FAFC; }
+    .dock-sep { width: 1px; height: 16px; background: var(--border-subtle); }
+
+    /* ── Floating Interactive Legend (Bottom-Right) ── */
+    .legend-deck {
+      position: absolute; bottom: 18px; right: 20px;
+      background: var(--bg-panel); backdrop-filter: blur(16px);
+      border: 1px solid var(--border-strong); padding: 8px 14px;
+      border-radius: 8px; display: flex; gap: 14px; font-size: 11px;
+      z-index: 10; color: #94A3B8; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+    .legend-chip {
+      display: flex; align-items: center; gap: 6px; cursor: pointer;
+      transition: color 0.15s;
+    }
+    .legend-chip:hover { color: #F8FAFC; }
+    .legend-pill { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+    /* ── Notification Banner ── */
+    .banner {
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+      background: rgba(9, 14, 26, 0.96); border: 1px solid #2563EB;
+      padding: 7px 18px; border-radius: 8px; font-size: 11.5px; color: #E2E8F0;
+      display: none; z-index: 40; box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+      white-space: nowrap; font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── Slide-Over Object Inspector (Right Drawer) ── */
+    aside.drawer {
+      position: absolute; top: 0; right: 0; width: 420px; height: 100%;
+      background: rgba(9, 14, 25, 0.96); backdrop-filter: blur(24px);
+      border-left: 1px solid var(--border-strong); transform: translateX(100%);
+      transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; flex-direction: column; z-index: 30; padding: 22px;
+      overflow-y: auto; gap: 14px; box-shadow: -10px 0 35px rgba(0, 0, 0, 0.7);
+    }
+    aside.drawer.open { transform: translateX(0); }
+    .drawer-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px;
+    }
+    .drawer-tag {
+      display: inline-block; font-size: 9.5px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #38BDF8;
+      background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 2px 7px; border-radius: 4px; margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .drawer-title {
+      font-size: 15px; font-weight: 700; color: #F8FAFC;
+      letter-spacing: -0.01em; line-height: 1.3;
+    }
+    .close-btn {
+      background: transparent; border: none; color: #64748B;
+      font-size: 20px; cursor: pointer; line-height: 1; padding: 4px;
+      transition: color 0.15s;
+    }
+    .close-btn:hover { color: #F1F5F9; }
+
+    .card {
+      background: #0C1220; border-radius: 8px; padding: 13px;
+      border: 1px solid var(--border-subtle); display: flex; flex-direction: column; gap: 8px;
+    }
+    .card-title {
+      font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.07em;
+      color: #64748B; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    }
+    .card-content { font-size: 12px; line-height: 1.6; color: #CBD5E1; }
+    table.props-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    table.props-table tr { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    table.props-table tr:last-child { border-bottom: none; }
+    table.props-table td { padding: 6px 0; }
+    table.props-table td.k {
+      color: #64748B; font-family: 'JetBrains Mono', monospace;
+      width: 44%; font-size: 10.5px;
+    }
+    table.props-table td.v {
+      color: #E2E8F0; font-weight: 500; word-break: break-all;
+      font-family: 'JetBrains Mono', monospace; font-size: 10.5px;
+    }
+
+    /* ── Governed Agent Assistant Panel ── */
+    .agent-panel {
+      position: absolute; bottom: 0; right: 0; width: 420px; height: 520px;
+      background: rgba(7, 11, 20, 0.98); backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border-strong); border-top: 1px solid var(--border-strong);
+      display: flex; flex-direction: column; z-index: 25;
+      transform: translateY(100%); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .agent-panel.open { transform: translateY(0); }
+    .agent-header { padding: 14px 16px 10px; border-bottom: 1px solid var(--border-subtle); }
+    .agent-title-row { display: flex; justify-content: space-between; align-items: flex-start; }
+    .agent-title { font-size: 13px; font-weight: 700; color: #F1F5F9; letter-spacing: -0.01em; }
+    .agent-subtitle {
+      font-size: 9.5px; color: #64748B; margin-top: 2px;
+      font-family: 'JetBrains Mono', monospace; letter-spacing: 0.04em;
+    }
+    .agent-messages {
+      flex: 1; overflow-y: auto; padding: 12px 14px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .agent-message {
+      font-size: 12px; line-height: 1.6; padding: 9px 12px;
+      border-radius: 6px; max-width: 100%;
+    }
+    .agent-msg-system { background: #0A0F1D; color: #64748B; border: 1px solid var(--border-subtle); }
+    .agent-msg-user { background: #0E2244; color: #93C5FD; border: 1px solid #1E3A5F; align-self: flex-end; max-width: 90%; }
+    .agent-msg-answer { background: #071C12; color: #6EE7B7; border: 1px solid rgba(16, 185, 129, 0.25); }
+    .agent-msg-guardrail { background: #200B0E; color: #FCA5A5; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .agent-msg-escalation { font-size: 10px; color: #64748B; margin-top: 5px; font-family: 'JetBrains Mono', monospace; }
+    .agent-msg-citation { font-size: 10px; color: #475569; margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+    /* Confidence badge — requirement 3 */
+    .confidence-badge { display:inline-block; font-size:9.5px; font-weight:700; padding:2px 7px; border-radius:3px; margin-bottom:5px; font-family:'JetBrains Mono',monospace; letter-spacing:0.07em; }
+    .conf-high { background:#052E16; color:#4ADE80; border:1px solid #166534; }
+    .conf-medium { background:#1C1400; color:#FBBF24; border:1px solid #78350F; }
+    .conf-low { background:#1F0505; color:#F87171; border:1px solid #7F1D1D; }
+    .conf-uncertain { background:#1A1226; color:#A78BFA; border:1px solid #4C1D95; }
+    /* Source citations block — requirement 2 */
+    .citations-block { margin-top:6px; padding:5px 8px; background:#080C14; border:1px solid #1E293B; border-radius:4px; }
+    .citations-block .cit-title { font-size:9px; color:#475569; font-family:'JetBrains Mono',monospace; margin-bottom:3px; text-transform:uppercase; letter-spacing:0.08em; }
+    .citations-block .cit-item { font-size:10px; color:#6EE7B7; font-family:'JetBrains Mono',monospace; line-height:1.5; }
+    /* Workflow step card — requirement 4 */
+    .workflow-step-card { margin-top:6px; padding:7px 10px; background:#071018; border:1px solid #0C4A6E; border-radius:4px; }
+    .workflow-step-card .wf-title { font-size:9px; color:#38BDF8; font-family:'JetBrains Mono',monospace; text-transform:uppercase; margin-bottom:3px; letter-spacing:0.08em; }
+    .workflow-step-card .wf-step { font-size:11px; color:#BAE6FD; font-weight:600; }
+    .workflow-step-card .wf-desc { font-size:10.5px; color:#94A3B8; margin-top:2px; }
+    .workflow-step-card .wf-team { font-size:10px; color:#475569; margin-top:3px; font-family:'JetBrains Mono',monospace; }
+    /* Missing fields card — requirement 5 */
+    .missing-fields-card { margin-top:6px; padding:7px 10px; background:#130A00; border:1px solid #78350F; border-radius:4px; }
+    .missing-fields-card .mf-title { font-size:9px; color:#F59E0B; font-family:'JetBrains Mono',monospace; text-transform:uppercase; margin-bottom:3px; letter-spacing:0.08em; }
+    .missing-fields-card .mf-item { font-size:10.5px; color:#FDE68A; margin-top:2px; }
+    /* Escalation reason — requirements 6, 14 */
+    .escalation-reason { font-size:10px; color:#F87171; margin-top:4px; font-family:'JetBrains Mono',monospace; }
+    .agent-input-row { display: flex; gap: 7px; padding: 10px 14px; border-top: 1px solid var(--border-subtle); }
+    .agent-input {
+      flex: 1; background: #080D18; border: 1px solid var(--border-strong);
+      color: #E2E8F0; padding: 7px 11px; border-radius: 6px; font-size: 12px;
+      outline: none; font-family: inherit;
+    }
+    .agent-input:focus { border-color: #2563EB; }
+    .agent-send-btn {
+      background: #1D4ED8; color: #FFF; border: none; padding: 7px 15px;
+      border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer;
+    }
+    .agent-toggle-btn {
+      position: absolute; bottom: 18px; right: 480px;
+      background: #1E293B; color: #E2E8F0; border: 1px solid var(--border-strong);
+      padding: 7px 14px; border-radius: 20px; font-size: 11px; font-weight: 600;
+      cursor: pointer; z-index: 15; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      display: flex; align-items: center; gap: 6px; transition: all 0.15s;
+    }
+    .agent-toggle-btn:hover { background: #2563EB; color: #FFF; border-color: #3B82F6; }
+  </style>
+</head>
+<body>
+  <!-- Executive Command Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      </div>
+      <div class="brand-text">
+        <div class="eyebrow">Saveetha Medical College &amp; Hospital &nbsp;&middot;&nbsp; Digital Twin</div>
+        <h1>Operations Intelligence Studio</h1>
+      </div>
+      <div class="live-badge">
+        <span class="live-dot"></span> LIVE RECONCILED
+      </div>
+    </div>
+    <div class="actions-bar">
+      <a href="/dashboard" style="color:#60a5fa;font-size:12px;font-weight:600;text-decoration:none;padding:7px 12px;border:1px solid #1e3a5f;border-radius:6px;background:#0d1f3c;white-space:nowrap;">Admin Dashboard</a>
+      <button class="btn btn-settle" onclick="triggerAction('settle_billing')">
+        <span>&#9889;</span> Settle Billing Hold
+      </button>
+      <button class="btn btn-panic" onclick="triggerAction('resolve_panic')">
+        <span>&#129658;</span> Acknowledge Readback
+      </button>
+      <button class="btn btn-turnaround" onclick="triggerAction('turnaround_bed')">
+        <span>&#10024;</span> Turnaround Bed
+      </button>
+      <button class="btn btn-reset" onclick="triggerAction('reset_ontology')">
+        <span>&#8634;</span> Reset Baseline
+      </button>
+    </div>
+  </header>
+
+  <!-- Sub Navigation & Perspective Ribbon -->
+  <div class="sub-bar">
+    <div class="perspectives-tabs">
+      <button class="tab-btn active" id="tab-bottlenecks" onclick="switchPerspective('bottlenecks')">&#128680; Priority Incidents</button>
+      <button class="tab-btn" id="tab-patient_360" onclick="switchPerspective('patient_360')">&#128100; Patient 360&deg;</button>
+      <button class="tab-btn" id="tab-beds" onclick="switchPerspective('beds')">&#128719;&#65039; Bed Fleet</button>
+      <button class="tab-btn" id="tab-governance" onclick="switchPerspective('governance')">&#127963;&#65039; Governance</button>
+      <button class="tab-btn" id="tab-macro" onclick="switchPerspective('macro')">&#127760; Hospital Overview</button>
+      <button class="tab-btn" id="tab-full_ontology" onclick="switchPerspective('full_ontology')">&#9889; Full Ontology</button>
+    </div>
+
+    <div class="telemetry-indicator">
+      <span>K&ugrave;zu Engine</span>
+      <span class="sep">&middot;</span>
+      <span><b id="totalNodes">1899</b> nodes</span>
+      <span class="sep">&middot;</span>
+      <span><b id="totalEdges">1181</b> edges</span>
+      <span class="sep">&middot;</span>
+      <span>Viewing <b id="viewingCount">&mdash;</b></span>
+    </div>
+
+    <div class="sub-controls">
+      <select class="ctx-select" id="patientSelect" style="display:none;" onchange="loadPatient360(this.value)">
+        <option value="SMCH-857250">Geetha Kuppuswamy (SMCH-857250)</option>
+<option value="SMCH-632093">Suresh Rao (SMCH-632093)</option>
+<option value="SMCH-160468">Revathi Gounder (SMCH-160468)</option>
+<option value="SMCH-323044">Kavitha Swaminathan (SMCH-323044)</option>
+<option value="SMCH-378653">Bhuvaneshwari Gounder (SMCH-378653)</option>
+<option value="SMCH-295899">Saravanan Iyer (SMCH-295899)</option>
+<option value="SMCH-140156">Malathi Naidu (SMCH-140156)</option>
+<option value="SMCH-582289">Aravind Mudaliar (SMCH-582289)</option>
+<option value="SMCH-551512">Poornima Babu (SMCH-551512)</option>
+<option value="SMCH-837100">Lakshmi Mudaliar (SMCH-837100)</option>
+<option value="SMCH-491494">Saraswathi Sethuraman (SMCH-491494)</option>
+<option value="SMCH-704213">Ganesh Pandian (SMCH-704213)</option>
+<option value="SMCH-846879">Swetha Swaminathan (SMCH-846879)</option>
+<option value="SMCH-833505">Murugan Reddy (SMCH-833505)</option>
+<option value="SMCH-990178">Subramanian Sundaram (SMCH-990178)</option>
+
+      </select>
+      <select class="ctx-select" id="wardSelect" style="display:none;" onchange="loadWardBeds(this.value)">
+        
+        <option value="Ward 1A" selected>Ward 1A (General Medicine)</option>
+        <option value="Ward 1B">Ward 1B (General Surgery)</option>
+        <option value="Ward 2B">Ward 2B (Cardiology)</option>
+        <option value="ICU">ICU (Intensive Care)</option>
+        <option value="Emergency">Emergency Triage</option>
+        
+      </select>
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="searchBox" placeholder="Search patient, bed, rule..." oninput="handleSearch(this.value)">
+        <span class="search-shortcut">/</span>
+      </div>
+      <button class="icon-btn" id="freezeBtn" onclick="togglePhysics()">Freeze</button>
+      <button class="icon-btn" onclick="resetZoom()">Fit</button>
+      <button class="icon-btn" onclick="focusBottlenecks()">Focus Blocker</button>
+    </div>
+  </div>
+
+  <!-- Main Viewport -->
+  <main>
+    <div id="banner" class="banner"></div>
+    <div id="network"></div>
+
+    <!-- Floating Operational KPI Deck -->
+    <div class="kpi-deck" id="kpiBar">
+      <div class="kpi-header">
+        <span class="kpi-title">Operational Bottleneck Radar</span>
+        <span class="kpi-pulse"></span>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi-box">
+          <span class="lbl">Blocked</span>
+          <span class="val rose" id="kpiBlockers">2</span>
+        </div>
+        <div class="kpi-box">
+          <span class="lbl">SLA Breached</span>
+          <span class="val amber" id="kpiPanics">79</span>
+        </div>
+        <div class="kpi-box">
+          <span class="lbl">Dirty Queue</span>
+          <span class="val cyan" id="kpiBeds">0</span>
+        </div>
+        <div class="kpi-box">
+          <span class="lbl">Revenue Risk</span>
+          <span class="val red" id="kpiRev">&#8377;130,000</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Viewport Controls Dock -->
+    <div class="viewport-dock">
+      <button class="dock-btn" onclick="zoomIn()" title="Zoom In">+</button>
+      <button class="dock-btn" onclick="zoomOut()" title="Zoom Out">&minus;</button>
+      <div class="dock-sep"></div>
+      <button class="dock-btn" onclick="resetZoom()" title="Fit View">&#x26F6;</button>
+      <button class="dock-btn" onclick="focusBottlenecks()" title="Focus Incidents">&#127919;</button>
+      <div class="dock-sep"></div>
+      <button class="dock-btn" onclick="togglePhysics()" title="Toggle Physics Layout">&#9889;</button>
+    </div>
+
+    <!-- Floating Interactive Legend -->
+    <div class="legend-deck">
+      <div class="legend-chip" onclick="filterLegend('Incidents')">
+        <div class="legend-pill" style="background:#F43F5E;"></div> Incident / Hold
+      </div>
+      <div class="legend-chip" onclick="filterLegend('Patients')">
+        <div class="legend-pill" style="background:#0EA5E9;"></div> Patient Twin
+      </div>
+      <div class="legend-chip" onclick="filterLegend('Beds')">
+        <div class="legend-pill" style="background:#818CF8;"></div> Bed Unit
+      </div>
+      <div class="legend-chip" onclick="filterLegend('Governance')">
+        <div class="legend-pill" style="background:#6366F1;"></div> Governance SOP
+      </div>
+      <div class="legend-chip" onclick="filterLegend('Financial')">
+        <div class="legend-pill" style="background:#F59E0B;"></div> Financial Claim
+      </div>
+      <div class="legend-chip" onclick="filterLegend('Staff')">
+        <div class="legend-pill" style="background:#38BDF8;"></div> Clinician
+      </div>
+    </div>
+
+    <!-- Slide-Over Object Inspector -->
+    <aside class="drawer" id="sideDrawer">
+      <div class="drawer-header">
+        <div>
+          <div class="drawer-tag" id="dType">DataPoint Entity</div>
+          <div class="drawer-title" id="dTitle">Entity Details</div>
+        </div>
+        <button class="close-btn" onclick="closeDrawer()">&times;</button>
+      </div>
+      <div id="drawerActionCard" class="card" style="display:none;">
+        <div class="card-title">Governed Remediation Action</div>
+        <button id="drawerActionBtn" class="btn btn-settle" style="width:100%; justify-content:center; padding:9px 14px; font-size:12px;"></button>
+      </div>
+      <div class="card">
+        <div class="card-title">Operational Context &amp; Mandate</div>
+        <div class="card-content" id="dSummary">&mdash;</div>
+      </div>
+      <div class="card">
+        <div class="card-title">Live Telemetry &amp; Properties</div>
+        <table class="props-table" id="dProps"></table>
+      </div>
+    </aside>
+
+    <!-- Governed Agent Panel — Surface 2 -->
+    <div id="agentPanel" class="agent-panel">
+      <div class="agent-header">
+        <div class="agent-title-row">
+          <div>
+            <div class="agent-title">Operations Assistant</div>
+            <div class="agent-subtitle">GOVERNED &nbsp;&middot;&nbsp; GRAPH-GROUNDED &nbsp;&middot;&nbsp; POLICY-CITED</div>
+          </div>
+          <button class="close-btn" onclick="toggleAgentPanel()">&times;</button>
+        </div>
+      </div>
+      <div id="agentMessages" class="agent-messages">
+        <div class="agent-message agent-msg-system">
+          Ask any operational question. I traverse the live graph &mdash; grounded in institutional policies.<br>
+          <span style="color:#60A5FA;font-size:10.5px;font-family:'JetBrains Mono',monospace;">Try: "Why is SMCH-857250's gate pass not printing?"</span>
+        </div>
+      </div>
+      <div class="agent-input-row">
+        <input type="text" id="agentInput" class="agent-input"
+               placeholder="Query operational ontology..."
+               onkeydown="if(event.key==='Enter') sendAgentQuery()">
+        <button class="agent-send-btn" onclick="sendAgentQuery()">Ask</button>
+      </div>
+    </div>
+    <button id="agentToggleBtn" class="agent-toggle-btn" onclick="toggleAgentPanel()">
+      <span>&#129302;</span> Operations Assistant
+    </button>
+  </main>
+
+  <script>
+    let network = null;
+    let currentNodes = [{"id": "9f759bca-78c8-46bb-a8c9-3d7d151d90e7", "label": "GATE PASS READY\nDIS-ADM-42C854\nFinancially Cleared", "color": {"background": "#0A1D16", "border": "#10B981", "highlight": {"background": "#0F2E23", "border": "#34D399"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#ECFDF5", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>GATE PASS READY<br>DIS-ADM-42C854<br>Financially Cleared</b><br>Type: DischargeNode<br>DISCHARGE [DIS-ADM-42C854] Patient SMCH-857250 at Bed Ward3A-B01 | Status: CLEARED | Flags: Clinical=True, Pharmacy=True, Billing=True, Nursing=True | Blocker: All Clearances Satisfied - Ready for Gate Pass | Resolution Route: Discharge Desk (ext. 1027)", "group": "Operational", "type": "DischargeNode", "summary": "DISCHARGE [DIS-ADM-42C854] Patient SMCH-857250 at Bed Ward3A-B01 | Status: CLEARED | Flags: Clinical=True, Pharmacy=True, Billing=True, Nursing=True | Blocker: All Clearances Satisfied - Ready for Gate Pass | Resolution Route: Discharge Desk (ext. 1027)", "properties": {"id": "9f759bca-78c8-46bb-a8c9-3d7d151d90e7", "created_at": 1791499099540, "updated_at": 1791499099540, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "DischargeNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "discharge_id": "DIS-ADM-42C854", "admission_id": "ADM-42C854", "uhid": "SMCH-857250", "bed_id": "Ward3A-B01", "discharge_type": "Standard Medical Discharge", "final_diagnosis": "Adenocarcinoma Rectum Stage IIIB (cT3N1M0)", "clearance_clinical": true, "clearance_pharmacy": true, "clearance_billing": true, "clearance_nursing": true, "is_blocked": false, "blocker_reason": null, "escalation_rule_id": null, "resolution_team_extension": "1028", "gate_pass_issued": true, "status": "ready_for_gate_pass", "dense_summary": "DISCHARGE [DIS-ADM-42C854] Patient SMCH-857250 at Bed Ward3A-B01 | Status: CLEARED | Flags: Clinical=True, Pharmacy=True, Billing=True, Nursing=True | Blocker: All Clearances Satisfied - Ready for Gate Pass | Resolution Route: Discharge Desk (ext. 1027)"}}, {"id": "3359b0c7-300e-4e85-8843-5e76167764cf", "label": "INPATIENT ADMISSION\nADM-42C854\nDx: Adenocarcinoma Rectum St", "color": {"background": "#082020", "border": "#14B8A6", "highlight": {"background": "#0E3030", "border": "#2DD4BF"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0FDFA", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>INPATIENT ADMISSION<br>ADM-42C854<br>Dx: Adenocarcinoma Rectum St</b><br>Type: AdmissionNode<br>ADMISSION [ADM-42C854] Patient: SMCH-857250 | Bed: Ward3A-B01 | Doctor: Dr. T. Hariprasad | Diagnosis: Adenocarcinoma Rectum Stage IIIB (cT3N1M0) | Ward: Ward 3A - Male General Medical | Status: Active", "group": "Admissions", "type": "AdmissionNode", "summary": "ADMISSION [ADM-42C854] Patient: SMCH-857250 | Bed: Ward3A-B01 | Doctor: Dr. T. Hariprasad | Diagnosis: Adenocarcinoma Rectum Stage IIIB (cT3N1M0) | Ward: Ward 3A - Male General Medical | Status: Active", "properties": {"id": "3359b0c7-300e-4e85-8843-5e76167764cf", "created_at": 1791499099399, "updated_at": 1791499099399, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "AdmissionNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "admission_id": "ADM-42C854", "uhid": "SMCH-857250", "bed_id": "Ward3A-B01", "admitting_doctor_id": "Dr. T. Hariprasad", "department_id": "Ward 3A - Male General Medical", "admitting_diagnosis": "Adenocarcinoma Rectum Stage IIIB (cT3N1M0)", "admission_type": "inpatient", "admission_date": "2026-10-06T23:58:14.527310", "discharge_date": null, "status": "active", "has_blocked_discharge": true, "dense_summary": "ADMISSION [ADM-42C854] Patient: SMCH-857250 | Bed: Ward3A-B01 | Doctor: Dr. T. Hariprasad | Diagnosis: Adenocarcinoma Rectum Stage IIIB (cT3N1M0) | Ward: Ward 3A - Male General Medical | Status: Active"}}, {"id": "e7316e6c-ed5f-4a8d-aeab-d3bc01f6570f", "label": "PATIENT TWIN \u00b7 INPATIENT\nGeetha Kuppuswamy (47y/Male)\nUHID: SMCH-857250", "color": {"background": "#0A192A", "border": "#0EA5E9", "highlight": {"background": "#112942", "border": "#38BDF8"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0F9FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>PATIENT TWIN \u00b7 INPATIENT<br>Geetha Kuppuswamy (47y/Male)<br>UHID: SMCH-857250</b><br>Type: PatientNode<br>PATIENT [SMCH-857250] Geetha Kuppuswamy, 47y Male | Status: admitted | Location: Bed Ward3A-B01 (Ward 3A - Male General Medical) | Doctor: Dr. T. Hariprasad | Diagnosis: Adenocarcinoma Rectum Stage IIIB (cT3N1M0)", "group": "Patients", "type": "PatientNode", "summary": "PATIENT [SMCH-857250] Geetha Kuppuswamy, 47y Male | Status: admitted | Location: Bed Ward3A-B01 (Ward 3A - Male General Medical) | Doctor: Dr. T. Hariprasad | Diagnosis: Adenocarcinoma Rectum Stage IIIB (cT3N1M0)", "properties": {"id": "e7316e6c-ed5f-4a8d-aeab-d3bc01f6570f", "created_at": 1791499099436, "updated_at": 1791499099436, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "PatientNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "uhid": "SMCH-857250", "name": "Geetha Kuppuswamy", "age": 47, "gender": "Male", "contact": "+91-9934197954", "registration_date": "2026-10-08T16:58:14.527265", "status": "admitted", "current_bed_id": "Ward3A-B01", "active_admission_id": "ADM-42C854", "dense_summary": "PATIENT [SMCH-857250] Geetha Kuppuswamy, 47y Male | Status: admitted | Location: Bed Ward3A-B01 (Ward 3A - Male General Medical) | Doctor: Dr. T. Hariprasad | Diagnosis: Adenocarcinoma Rectum Stage IIIB (cT3N1M0)"}}, {"id": "eaa12e71-f5f6-44e4-bd2c-f64806f7697e", "label": "BED Ward3A-B01 \u00b7 Ward 3A - Male General Medical\nOccupied\nInpatient Admission", "color": {"background": "#14142B", "border": "#818CF8", "highlight": {"background": "#1E1F42", "border": "#A5B4FC"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#EEF2FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>BED Ward3A-B01 \u00b7 Ward 3A - Male General Medical<br>Occupied<br>Inpatient Admission</b><br>Type: BedNode<br>BED [Ward3A-B01] Ward: Ward 3A - Male General Medical | BedNo: B-01 | Status: occupied | Patient: SMCH-857250", "group": "Beds", "type": "BedNode", "summary": "BED [Ward3A-B01] Ward: Ward 3A - Male General Medical | BedNo: B-01 | Status: occupied | Patient: SMCH-857250", "properties": {"id": "eaa12e71-f5f6-44e4-bd2c-f64806f7697e", "created_at": 1791499099363, "updated_at": 1791499099363, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "BedNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "bed_id": "Ward3A-B01", "ward": "Ward 3A - Male General Medical", "department_id": "Ward 3A - Male General Medical", "bed_type": "General", "status": "occupied", "current_patient_uhid": "SMCH-857250", "active_admission_id": "ADM-42C854", "last_turnaround_timestamp": "2026-10-08T22:38:19.353254+00:00", "dense_summary": "BED [Ward3A-B01] Ward: Ward 3A - Male General Medical | BedNo: B-01 | Status: occupied | Patient: SMCH-857250"}}, {"id": "5bba90bf-0849-4e3a-a3fb-c7227e69c965", "label": "GOVERNANCE SOP\nSOP-DIS-001_Patient_Discharge\nPatient Discharge Procedur", "color": {"background": "#14132B", "border": "#6366F1", "highlight": {"background": "#1F1D42", "border": "#818CF8"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#EEF2FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>GOVERNANCE SOP<br>SOP-DIS-001_Patient_Discharge<br>Patient Discharge Procedur</b><br>Type: SOPNode<br>SOP: Patient Discharge Procedure (SOP-DIS-001) DEPARTMENT: Admission and Discharge VERSION: 2.4 ROLES: discharge, billing, pharmacist, nurse, doctor PURPOSE: Execute 4-point discharge clearance and safe clinical handover. STEPS: Step 1: Execute phase 1 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps. Step 2: Ex", "group": "Governance", "type": "SOPNode", "summary": "SOP: Patient Discharge Procedure (SOP-DIS-001) DEPARTMENT: Admission and Discharge VERSION: 2.4 ROLES: discharge, billing, pharmacist, nurse, doctor PURPOSE: Execute 4-point discharge clearance and safe clinical handover. STEPS: Step 1: Execute phase 1 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps. Step 2: Ex", "properties": {"id": "5bba90bf-0849-4e3a-a3fb-c7227e69c965", "created_at": 1791499099320, "updated_at": 1791499099320, "ontology_valid": false, "ontology_uri": null, "version": "2.4", "topological_rank": 0, "valid_to": null, "type": "SOPNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "doc_id": "SOP-DIS-001_Patient_Discharge", "title": "Patient Discharge Procedure", "department": "Admission and Discharge", "applicable_roles": ["discharge", "billing", "pharmacist", "nurse", "doctor"], "purpose": "SOP: Patient Discharge Procedure (SOP-DIS-001) DEPARTMENT: Admission and Discharge VERSION: 2.4 ROLES: discharge, billin", "step_sequence": [], "blockers": [], "escalations": [], "citation": "SOP-DIS-001 Patient Discharge Procedure v2.4, Section 4", "dense_summary": "SOP: Patient Discharge Procedure (SOP-DIS-001) DEPARTMENT: Admission and Discharge VERSION: 2.4 ROLES: discharge, billing, pharmacist, nurse, doctor PURPOSE: Execute 4-point discharge clearance and safe clinical handover. STEPS: Step 1: Execute phase 1 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps. Step 2: Ex"}}, {"id": "ad7cf42d-dd20-49aa-b92c-0b6b75ac1aa5", "label": "DISCHARGE HOLD \u00b7 SLA\nDIS-ADM-3F3465\nPatient: SMCH-632093 \u00b7 Hold", "color": {"background": "#1F0F16", "border": "#F43F5E", "highlight": {"background": "#2F1522", "border": "#FDA4AF"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#FFF1F2", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>DISCHARGE HOLD \u00b7 SLA<br>DIS-ADM-3F3465<br>Patient: SMCH-632093 \u00b7 Hold</b><br>Type: DischargeNode<br>DISCHARGE [DIS-ADM-3F3465] Patient SMCH-632093 at Bed Ward3A-B02 | Status: BLOCKED | Flags: Clinical=True, Pharmacy=False, Billing=True, Nursing=True | Blocker: Discharge blocked at Step 2: Unused ward medications pending physical return to Pharmacy. | Resolution Route: Billing Desk ext. 1023", "group": "Incidents", "type": "DischargeNode", "summary": "DISCHARGE [DIS-ADM-3F3465] Patient SMCH-632093 at Bed Ward3A-B02 | Status: BLOCKED | Flags: Clinical=True, Pharmacy=False, Billing=True, Nursing=True | Blocker: Discharge blocked at Step 2: Unused ward medications pending physical return to Pharmacy. | Resolution Route: Billing Desk ext. 1023", "properties": {"id": "ad7cf42d-dd20-49aa-b92c-0b6b75ac1aa5", "created_at": 1791499099540, "updated_at": 1791499099540, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "DischargeNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "discharge_id": "DIS-ADM-3F3465", "admission_id": "ADM-3F3465", "uhid": "SMCH-632093", "bed_id": "Ward3A-B02", "discharge_type": "Standard Medical Discharge", "final_diagnosis": "Acute Appendicitis with Localized Peritonitis", "clearance_clinical": true, "clearance_pharmacy": false, "clearance_billing": true, "clearance_nursing": true, "is_blocked": true, "blocker_reason": "Discharge blocked at Step 2: Unused ward medications pending physical return to Pharmacy.", "escalation_rule_id": "R-002", "resolution_team_extension": "1023", "gate_pass_issued": false, "status": "blocked", "dense_summary": "DISCHARGE [DIS-ADM-3F3465] Patient SMCH-632093 at Bed Ward3A-B02 | Status: BLOCKED | Flags: Clinical=True, Pharmacy=False, Billing=True, Nursing=True | Blocker: Discharge blocked at Step 2: Unused ward medications pending physical return to Pharmacy. | Resolution Route: Billing Desk ext. 1023"}}, {"id": "b0b1aa2c-0951-4b06-9023-197050f47ec5", "label": "INPATIENT ADMISSION\nADM-3F3465\nDx: Acute Appendicitis with ", "color": {"background": "#082020", "border": "#14B8A6", "highlight": {"background": "#0E3030", "border": "#2DD4BF"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0FDFA", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>INPATIENT ADMISSION<br>ADM-3F3465<br>Dx: Acute Appendicitis with </b><br>Type: AdmissionNode<br>ADMISSION [ADM-3F3465] Patient: SMCH-632093 | Bed: Ward3A-B02 | Doctor: Dr. A. Shalini | Diagnosis: Acute Appendicitis with Localized Peritonitis | Ward: Ward 3A - Male General Medical | Status: Active", "group": "Admissions", "type": "AdmissionNode", "summary": "ADMISSION [ADM-3F3465] Patient: SMCH-632093 | Bed: Ward3A-B02 | Doctor: Dr. A. Shalini | Diagnosis: Acute Appendicitis with Localized Peritonitis | Ward: Ward 3A - Male General Medical | Status: Active", "properties": {"id": "b0b1aa2c-0951-4b06-9023-197050f47ec5", "created_at": 1791499099399, "updated_at": 1791499099399, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "AdmissionNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "admission_id": "ADM-3F3465", "uhid": "SMCH-632093", "bed_id": "Ward3A-B02", "admitting_doctor_id": "Dr. A. Shalini", "department_id": "Ward 3A - Male General Medical", "admitting_diagnosis": "Acute Appendicitis with Localized Peritonitis", "admission_type": "inpatient", "admission_date": "2026-10-07T19:58:14.527450", "discharge_date": null, "status": "active", "has_blocked_discharge": true, "dense_summary": "ADMISSION [ADM-3F3465] Patient: SMCH-632093 | Bed: Ward3A-B02 | Doctor: Dr. A. Shalini | Diagnosis: Acute Appendicitis with Localized Peritonitis | Ward: Ward 3A - Male General Medical | Status: Active"}}, {"id": "08248e68-4f3f-414c-b5b5-14550b6674f7", "label": "PATIENT TWIN \u00b7 INPATIENT\nSuresh Rao (37y/Female)\nUHID: SMCH-632093", "color": {"background": "#0A192A", "border": "#0EA5E9", "highlight": {"background": "#112942", "border": "#38BDF8"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0F9FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>PATIENT TWIN \u00b7 INPATIENT<br>Suresh Rao (37y/Female)<br>UHID: SMCH-632093</b><br>Type: PatientNode<br>PATIENT [SMCH-632093] Suresh Rao, 37y Female | Status: admitted | Location: Bed Ward3A-B02 (Ward 3A - Male General Medical) | Doctor: Dr. A. Shalini | Diagnosis: Acute Appendicitis with Localized Peritonitis", "group": "Patients", "type": "PatientNode", "summary": "PATIENT [SMCH-632093] Suresh Rao, 37y Female | Status: admitted | Location: Bed Ward3A-B02 (Ward 3A - Male General Medical) | Doctor: Dr. A. Shalini | Diagnosis: Acute Appendicitis with Localized Peritonitis", "properties": {"id": "08248e68-4f3f-414c-b5b5-14550b6674f7", "created_at": 1791499099437, "updated_at": 1791499099437, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "PatientNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "uhid": "SMCH-632093", "name": "Suresh Rao", "age": 37, "gender": "Female", "contact": "+91-9493484306", "registration_date": "2026-10-08T16:58:14.527436", "status": "admitted", "current_bed_id": "Ward3A-B02", "active_admission_id": "ADM-3F3465", "dense_summary": "PATIENT [SMCH-632093] Suresh Rao, 37y Female | Status: admitted | Location: Bed Ward3A-B02 (Ward 3A - Male General Medical) | Doctor: Dr. A. Shalini | Diagnosis: Acute Appendicitis with Localized Peritonitis"}}, {"id": "1d85080f-5919-4d29-8662-0e3dbee8af86", "label": "BED Ward3A-B02 \u00b7 Ward 3A - Male General Medical\nOccupied\nInpatient Admission", "color": {"background": "#14142B", "border": "#818CF8", "highlight": {"background": "#1E1F42", "border": "#A5B4FC"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#EEF2FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>BED Ward3A-B02 \u00b7 Ward 3A - Male General Medical<br>Occupied<br>Inpatient Admission</b><br>Type: BedNode<br>BED [Ward3A-B02] Ward: Ward 3A - Male General Medical | BedNo: B-02 | Status: occupied | Patient: SMCH-632093", "group": "Beds", "type": "BedNode", "summary": "BED [Ward3A-B02] Ward: Ward 3A - Male General Medical | BedNo: B-02 | Status: occupied | Patient: SMCH-632093", "properties": {"id": "1d85080f-5919-4d29-8662-0e3dbee8af86", "created_at": 1791499099363, "updated_at": 1791499099364, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "BedNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "bed_id": "Ward3A-B02", "ward": "Ward 3A - Male General Medical", "department_id": "Ward 3A - Male General Medical", "bed_type": "General", "status": "occupied", "current_patient_uhid": "SMCH-632093", "active_admission_id": "ADM-3F3465", "last_turnaround_timestamp": "2026-10-08T22:38:19.353254+00:00", "dense_summary": "BED [Ward3A-B02] Ward: Ward 3A - Male General Medical | BedNo: B-02 | Status: occupied | Patient: SMCH-632093"}}, {"id": "a7294b8f-50c6-4c87-923c-413d5df4ac49", "label": "DISCHARGE HOLD \u00b7 SLA\nDIS-ADM-14E565\nPatient: SMCH-277944 \u00b7 Hold", "color": {"background": "#1F0F16", "border": "#F43F5E", "highlight": {"background": "#2F1522", "border": "#FDA4AF"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#FFF1F2", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>DISCHARGE HOLD \u00b7 SLA<br>DIS-ADM-14E565<br>Patient: SMCH-277944 \u00b7 Hold</b><br>Type: DischargeNode<br>DISCHARGE [DIS-ADM-14E565] Patient SMCH-277944 at Bed Ward3B-B50 | Status: BLOCKED | Flags: Clinical=True, Pharmacy=True, Billing=False, Nursing=True | Blocker: Discharge blocked at Step 3: Central Billing final invoice/co-pay pending settlement. | Resolution Route: Billing Desk ext. 1028", "group": "Incidents", "type": "DischargeNode", "summary": "DISCHARGE [DIS-ADM-14E565] Patient SMCH-277944 at Bed Ward3B-B50 | Status: BLOCKED | Flags: Clinical=True, Pharmacy=True, Billing=False, Nursing=True | Blocker: Discharge blocked at Step 3: Central Billing final invoice/co-pay pending settlement. | Resolution Route: Billing Desk ext. 1028", "properties": {"id": "a7294b8f-50c6-4c87-923c-413d5df4ac49", "created_at": 1791499099560, "updated_at": 1791499099560, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "DischargeNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "discharge_id": "DIS-ADM-14E565", "admission_id": "ADM-14E565", "uhid": "SMCH-277944", "bed_id": "Ward3B-B50", "discharge_type": "Standard Medical Discharge", "final_diagnosis": "Severe Community Acquired Pneumonia with Type 1 Respiratory Failure", "clearance_clinical": true, "clearance_pharmacy": true, "clearance_billing": false, "clearance_nursing": true, "is_blocked": true, "blocker_reason": "Discharge blocked at Step 3: Central Billing final invoice/co-pay pending settlement.", "escalation_rule_id": "R-008", "resolution_team_extension": "1028", "gate_pass_issued": false, "status": "blocked", "dense_summary": "DISCHARGE [DIS-ADM-14E565] Patient SMCH-277944 at Bed Ward3B-B50 | Status: BLOCKED | Flags: Clinical=True, Pharmacy=True, Billing=False, Nursing=True | Blocker: Discharge blocked at Step 3: Central Billing final invoice/co-pay pending settlement. | Resolution Route: Billing Desk ext. 1028"}}, {"id": "55f2b986-4dd5-4f16-93b5-46d296e3a129", "label": "INPATIENT ADMISSION\nADM-14E565\nDx: Severe Community Acquire", "color": {"background": "#082020", "border": "#14B8A6", "highlight": {"background": "#0E3030", "border": "#2DD4BF"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0FDFA", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>INPATIENT ADMISSION<br>ADM-14E565<br>Dx: Severe Community Acquire</b><br>Type: AdmissionNode<br>ADMISSION [ADM-14E565] Patient: SMCH-277944 | Bed: Ward3B-B50 | Doctor: Dr. L. Balamurugan | Diagnosis: Severe Community Acquired Pneumonia with Type 1 Respiratory Failure | Ward: Ward 3B - Female General Medical | Status: Active", "group": "Admissions", "type": "AdmissionNode", "summary": "ADMISSION [ADM-14E565] Patient: SMCH-277944 | Bed: Ward3B-B50 | Doctor: Dr. L. Balamurugan | Diagnosis: Severe Community Acquired Pneumonia with Type 1 Respiratory Failure | Ward: Ward 3B - Female General Medical | Status: Active", "properties": {"id": "55f2b986-4dd5-4f16-93b5-46d296e3a129", "created_at": 1791499099411, "updated_at": 1791499099411, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "AdmissionNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "admission_id": "ADM-14E565", "uhid": "SMCH-277944", "bed_id": "Ward3B-B50", "admitting_doctor_id": "Dr. L. Balamurugan", "department_id": "Ward 3B - Female General Medical", "admitting_diagnosis": "Severe Community Acquired Pneumonia with Type 1 Respiratory Failure", "admission_type": "inpatient", "admission_date": "2026-10-08T02:58:14.531549", "discharge_date": null, "status": "active", "has_blocked_discharge": true, "dense_summary": "ADMISSION [ADM-14E565] Patient: SMCH-277944 | Bed: Ward3B-B50 | Doctor: Dr. L. Balamurugan | Diagnosis: Severe Community Acquired Pneumonia with Type 1 Respiratory Failure | Ward: Ward 3B - Female General Medical | Status: Active"}}, {"id": "2b3e5b26-68cd-4d75-b6a9-a5fedaac2779", "label": "PATIENT TWIN \u00b7 INPATIENT\nGopal Menon (75y/Female)\nUHID: SMCH-277944", "color": {"background": "#0A192A", "border": "#0EA5E9", "highlight": {"background": "#112942", "border": "#38BDF8"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0F9FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>PATIENT TWIN \u00b7 INPATIENT<br>Gopal Menon (75y/Female)<br>UHID: SMCH-277944</b><br>Type: PatientNode<br>PATIENT [SMCH-277944] Gopal Menon, 75y Female | Status: admitted | Location: Bed Ward3B-B50 (Ward 3B - Female General Medical) | Doctor: Dr. L. Balamurugan | Diagnosis: Severe Community Acquired Pneumonia with Type 1 Respiratory Failure", "group": "Patients", "type": "PatientNode", "summary": "PATIENT [SMCH-277944] Gopal Menon, 75y Female | Status: admitted | Location: Bed Ward3B-B50 (Ward 3B - Female General Medical) | Doctor: Dr. L. Balamurugan | Diagnosis: Severe Community Acquired Pneumonia with Type 1 Respiratory Failure", "properties": {"id": "2b3e5b26-68cd-4d75-b6a9-a5fedaac2779", "created_at": 1791499099457, "updated_at": 1791499099457, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "PatientNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "uhid": "SMCH-277944", "name": "Gopal Menon", "age": 75, "gender": "Female", "contact": "+91-9708748616", "registration_date": "2026-10-08T16:58:14.531541", "status": "admitted", "current_bed_id": "Ward3B-B50", "active_admission_id": "ADM-14E565", "dense_summary": "PATIENT [SMCH-277944] Gopal Menon, 75y Female | Status: admitted | Location: Bed Ward3B-B50 (Ward 3B - Female General Medical) | Doctor: Dr. L. Balamurugan | Diagnosis: Severe Community Acquired Pneumonia with Type 1 Respiratory Failure"}}, {"id": "8388bf94-019a-4ee1-951a-e90bf83ad37a", "label": "BED Ward3B-B50 \u00b7 Ward 3B - Female General Medical\nOccupied\nInpatient Admission", "color": {"background": "#14142B", "border": "#818CF8", "highlight": {"background": "#1E1F42", "border": "#A5B4FC"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#EEF2FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>BED Ward3B-B50 \u00b7 Ward 3B - Female General Medical<br>Occupied<br>Inpatient Admission</b><br>Type: BedNode<br>BED [Ward3B-B50] Ward: Ward 3B - Female General Medical | BedNo: B-50 | Status: occupied | Patient: SMCH-277944", "group": "Beds", "type": "BedNode", "summary": "BED [Ward3B-B50] Ward: Ward 3B - Female General Medical | BedNo: B-50 | Status: occupied | Patient: SMCH-277944", "properties": {"id": "8388bf94-019a-4ee1-951a-e90bf83ad37a", "created_at": 1791499099374, "updated_at": 1791499099374, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "BedNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "bed_id": "Ward3B-B50", "ward": "Ward 3B - Female General Medical", "department_id": "Ward 3B - Female General Medical", "bed_type": "General", "status": "occupied", "current_patient_uhid": "SMCH-277944", "active_admission_id": "ADM-14E565", "last_turnaround_timestamp": "2026-10-08T22:38:19.353254+00:00", "dense_summary": "BED [Ward3B-B50] Ward: Ward 3B - Female General Medical | BedNo: B-50 | Status: occupied | Patient: SMCH-277944"}}, {"id": "33672319-3145-4dd9-82f1-f3906d0dd013", "label": "CRITICAL LAB VALUE\nTroponin I: 2.85 ng/mL\n15m Verbal SLA Breached", "color": {"background": "#240E14", "border": "#FB7185", "highlight": {"background": "#38151E", "border": "#FECDD3"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#FFF1F2", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>CRITICAL LAB VALUE<br>Troponin I: 2.85 ng/mL<br>15m Verbal SLA Breached</b><br>Type: LabPanicAlertNode<br>PANIC LAB [CRIT-ALRT-046BA] Patient: SMCH-761735 (Selvam Ranganathan) | Troponin I: 2.85 ng/mL | Doctor: Dr. T. Hariprasad | Readback Status: Pending-Ack | SLA Breached: True", "group": "Incidents", "type": "LabPanicAlertNode", "summary": "PANIC LAB [CRIT-ALRT-046BA] Patient: SMCH-761735 (Selvam Ranganathan) | Troponin I: 2.85 ng/mL | Doctor: Dr. T. Hariprasad | Readback Status: Pending-Ack | SLA Breached: True", "properties": {"id": "33672319-3145-4dd9-82f1-f3906d0dd013", "created_at": 1791499099589, "updated_at": 1791499099589, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "LabPanicAlertNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "alert_id": "CRIT-ALRT-046BA", "order_id": "LAB-57E192", "uhid": "SMCH-761735", "patient_name": "Selvam Ranganathan", "parameter_name": "Troponin I", "critical_value": "2.85 ng/mL", "alert_time": "2026-10-08T16:58:48.485978", "doctor_contacted": "Dr. T. Hariprasad", "doctor_phone": "+91-98401-22311", "readback_status": "Pending-Ack", "sla_minutes": 15.0, "elapsed_minutes": 22.0, "is_sla_breached": true, "ack_time": null, "dense_summary": "PANIC LAB [CRIT-ALRT-046BA] Patient: SMCH-761735 (Selvam Ranganathan) | Troponin I: 2.85 ng/mL | Doctor: Dr. T. Hariprasad | Readback Status: Pending-Ack | SLA Breached: True"}}, {"id": "0adaf0c4-c0ed-460f-9c31-740e613e73cf", "label": "PATIENT TWIN \u00b7 INPATIENT\nSelvam Ranganathan (82y/Male)\nUHID: SMCH-761735", "color": {"background": "#0A192A", "border": "#0EA5E9", "highlight": {"background": "#112942", "border": "#38BDF8"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0F9FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>PATIENT TWIN \u00b7 INPATIENT<br>Selvam Ranganathan (82y/Male)<br>UHID: SMCH-761735</b><br>Type: PatientNode<br>PATIENT [SMCH-761735] Selvam Ranganathan | Age: 82 | Gender: Male | Critical Panic Lab Alert", "group": "Patients", "type": "PatientNode", "summary": "PATIENT [SMCH-761735] Selvam Ranganathan | Age: 82 | Gender: Male | Critical Panic Lab Alert", "properties": {"id": "0adaf0c4-c0ed-460f-9c31-740e613e73cf", "created_at": 1791499099598, "updated_at": 1791499099598, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "PatientNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "uhid": "SMCH-761735", "name": "Selvam Ranganathan", "age": 82, "gender": "Male", "contact": "+91-9766319294", "registration_date": "2026-10-08T22:38:19.353254+00:00", "status": "critical_alert", "current_bed_id": null, "active_admission_id": null, "dense_summary": "PATIENT [SMCH-761735] Selvam Ranganathan | Age: 82 | Gender: Male | Critical Panic Lab Alert"}}, {"id": "7694ed3d-7fc0-4944-b0ca-8e1362dde8cb", "label": "TREATING CLINICIAN\nDr. K. Venkatraman\nChief of Emergency Care \u00b7 Dept: Emergency Medicine", "color": {"background": "#0A1B30", "border": "#38BDF8", "highlight": {"background": "#102B4C", "border": "#7DD3FC"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0F9FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>TREATING CLINICIAN<br>Dr. K. Venkatraman<br>Chief of Emergency Care \u00b7 Dept: Emergency Medicine</b><br>Type: StaffNode<br>STAFF [STF-002] Dr. K. Venkatraman | Role: Chief of Emergency Care | Dept: Emergency Medicine | Contact: +91-98401-22310", "group": "Staff", "type": "StaffNode", "summary": "STAFF [STF-002] Dr. K. Venkatraman | Role: Chief of Emergency Care | Dept: Emergency Medicine | Contact: +91-98401-22310", "properties": {"id": "7694ed3d-7fc0-4944-b0ca-8e1362dde8cb", "created_at": 1791499099143, "updated_at": 1791499099143, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "StaffNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "staff_id": "STF-002", "name": "Dr. K. Venkatraman", "role": "Chief of Emergency Care", "department_id": "Emergency Medicine", "contact": "+91-98401-22310", "email": null, "dense_summary": "STAFF [STF-002] Dr. K. Venkatraman | Role: Chief of Emergency Care | Dept: Emergency Medicine | Contact: +91-98401-22310"}}, {"id": "11aa7290-199c-4b41-bb9e-7feb34243266", "label": "INSTITUTIONAL POLICY\nPOL-010_Critical_Lab_Panic_Reporting\nCritical Panic Laboratory ", "color": {"background": "#19122D", "border": "#8B5CF6", "highlight": {"background": "#261A45", "border": "#A78BFA"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F5F3FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>INSTITUTIONAL POLICY<br>POL-010_Critical_Lab_Panic_Reporting<br>Critical Panic Laboratory </b><br>Type: PolicyNode<br>POLICY: Critical Panic Laboratory Values Notification Policy (POL-010) DEPARTMENT: Laboratory Operations VERSION: 3.1 ROLES: lab_tech, doctor, nurse ENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).", "group": "Governance", "type": "PolicyNode", "summary": "POLICY: Critical Panic Laboratory Values Notification Policy (POL-010) DEPARTMENT: Laboratory Operations VERSION: 3.1 ROLES: lab_tech, doctor, nurse ENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).", "properties": {"id": "11aa7290-199c-4b41-bb9e-7feb34243266", "created_at": 1791499099284, "updated_at": 1791499099284, "ontology_valid": false, "ontology_uri": null, "version": "3.1", "topological_rank": 0, "valid_to": null, "type": "PolicyNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "doc_id": "POL-010_Critical_Lab_Panic_Reporting", "title": "Critical Panic Laboratory Values Notification Policy", "department": "Laboratory Operations", "mandate": "POLICY: Critical Panic Laboratory Values Notification Policy (POL-010) DEPARTMENT: Laboratory Operations VERSION: 3.1 ROLES: lab_tech, doctor, nurse E", "scope": "Laboratory Operations", "citation": "POL-010 Critical Panic Laboratory Values Notification Policy v3.1", "dense_summary": "POLICY: Critical Panic Laboratory Values Notification Policy (POL-010) DEPARTMENT: Laboratory Operations VERSION: 3.1 ROLES: lab_tech, doctor, nurse ENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH)."}}, {"id": "5d3dd673-7d3b-4b89-8ae7-d23ca75fcb72", "label": "CRITICAL LAB VALUE\npO2 (ABG): 52 mmHg\n15m Verbal SLA Breached", "color": {"background": "#240E14", "border": "#FB7185", "highlight": {"background": "#38151E", "border": "#FECDD3"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#FFF1F2", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>CRITICAL LAB VALUE<br>pO2 (ABG): 52 mmHg<br>15m Verbal SLA Breached</b><br>Type: LabPanicAlertNode<br>PANIC LAB [CRIT-ALRT-30075] Patient: SMCH-190920 (Saravanan Krishnan) | pO2 (ABG): 52 mmHg | Doctor: Dr. S. Senthil Kumar | Readback Status: Pending-Ack | SLA Breached: True", "group": "Incidents", "type": "LabPanicAlertNode", "summary": "PANIC LAB [CRIT-ALRT-30075] Patient: SMCH-190920 (Saravanan Krishnan) | pO2 (ABG): 52 mmHg | Doctor: Dr. S. Senthil Kumar | Readback Status: Pending-Ack | SLA Breached: True", "properties": {"id": "5d3dd673-7d3b-4b89-8ae7-d23ca75fcb72", "created_at": 1791499099589, "updated_at": 1791499099589, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "LabPanicAlertNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "alert_id": "CRIT-ALRT-30075", "order_id": "LAB-C92A42", "uhid": "SMCH-190920", "patient_name": "Saravanan Krishnan", "parameter_name": "pO2 (ABG)", "critical_value": "52 mmHg", "alert_time": "2026-10-08T16:59:34.874719", "doctor_contacted": "Dr. S. Senthil Kumar", "doctor_phone": "+91-98401-22340", "readback_status": "Pending-Ack", "sla_minutes": 15.0, "elapsed_minutes": 22.0, "is_sla_breached": true, "ack_time": null, "dense_summary": "PANIC LAB [CRIT-ALRT-30075] Patient: SMCH-190920 (Saravanan Krishnan) | pO2 (ABG): 52 mmHg | Doctor: Dr. S. Senthil Kumar | Readback Status: Pending-Ack | SLA Breached: True"}}, {"id": "6ffa2c1c-6f4f-41f3-abe4-cb0a234a1c32", "label": "PATIENT TWIN \u00b7 INPATIENT\nSaravanan Krishnan (64y/Female)\nUHID: SMCH-190920", "color": {"background": "#0A192A", "border": "#0EA5E9", "highlight": {"background": "#112942", "border": "#38BDF8"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#F0F9FF", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>PATIENT TWIN \u00b7 INPATIENT<br>Saravanan Krishnan (64y/Female)<br>UHID: SMCH-190920</b><br>Type: PatientNode<br>PATIENT [SMCH-190920] Saravanan Krishnan | Age: 64 | Gender: Female | Critical Panic Lab Alert", "group": "Patients", "type": "PatientNode", "summary": "PATIENT [SMCH-190920] Saravanan Krishnan | Age: 64 | Gender: Female | Critical Panic Lab Alert", "properties": {"id": "6ffa2c1c-6f4f-41f3-abe4-cb0a234a1c32", "created_at": 1791499099598, "updated_at": 1791499099598, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "PatientNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "uhid": "SMCH-190920", "name": "Saravanan Krishnan", "age": 64, "gender": "Female", "contact": "+91-9851414530", "registration_date": "2026-10-08T22:38:19.353254+00:00", "status": "critical_alert", "current_bed_id": null, "active_admission_id": null, "dense_summary": "PATIENT [SMCH-190920] Saravanan Krishnan | Age: 64 | Gender: Female | Critical Panic Lab Alert"}}, {"id": "5ba6f020-b185-4405-a743-ac056d36aaaf", "label": "TPA CLAIM DENIED\nNHA-PMJAY-934B7C36 \u00b7 \u20b921,236\nStar Health Insurance \u00b7 Appeal Req.", "color": {"background": "#241408", "border": "#F59E0B", "highlight": {"background": "#381E0C", "border": "#FCD34D"}}, "shape": "box", "shapeProperties": {"borderRadius": 7}, "margin": {"top": 9, "bottom": 9, "left": 13, "right": 13}, "borderWidth": 1.5, "borderWidthSelected": 2.5, "font": {"color": "#FFFBEB", "size": 11, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"}, "shadow": {"enabled": true, "color": "rgba(0, 0, 0, 0.6)", "size": 10, "x": 0, "y": 4}, "title": "<b>TPA CLAIM DENIED<br>NHA-PMJAY-934B7C36 \u00b7 \u20b921,236<br>Star Health Insurance \u00b7 Appeal Req.</b><br>Type: ClaimNode<br>CLAIM [NHA-PMJAY-934B7C36] Patient: SMCH-838544 | Scheme: Star Health | Status: rejected | Preauth: Rs 21,235.56 | Denial: Clause 4.2 Query: Pre-existing hypertension non-disclosure dispute.", "group": "Financial", "type": "ClaimNode", "summary": "CLAIM [NHA-PMJAY-934B7C36] Patient: SMCH-838544 | Scheme: Star Health | Status: rejected | Preauth: Rs 21,235.56 | Denial: Clause 4.2 Query: Pre-existing hypertension non-disclosure dispute.", "properties": {"id": "5ba6f020-b185-4405-a743-ac056d36aaaf", "created_at": 1791499099628, "updated_at": 1791499099628, "ontology_valid": false, "ontology_uri": null, "version": 1, "topological_rank": 0, "valid_to": null, "type": "ClaimNode", "belongs_to_set": null, "source_pipeline": null, "source_task": null, "source_node_set": null, "source_user": null, "source_content_hash": null, "feedback_weight": 0.5, "importance_weight": 0.5, "claim_id": "NHA-PMJAY-934B7C36", "admission_id": "INV-261008-FECDCE", "uhid": "SMCH-838544", "insurer": "Star Health Insurance", "tpa": "Star Health / MediAssist TPA", "policy_number": "TMS-AUTH-55479", "claim_amount": 21235.56, "approved_amount": 21235.56, "status": "rejected", "rejection_reason": "Clause 4.2 Query: Pre-existing hypertension non-disclosure dispute.", "rejection_clause": "Clause 4.2 Non-disclosure", "requires_dispute_appeal": true, "dense_summary": "CLAIM [NHA-PMJAY-934B7C36] Patient: SMCH-838544 | Scheme: Star Health | Status: rejected | Preauth: Rs 21,235.56 | Denial: Clause 4.2 Query: Pre-existing hypertension non-disclosure dispute."}}];
+    let currentEdges = [{"from": "3359b0c7-300e-4e85-8843-5e76167764cf", "to": "9f759bca-78c8-46bb-a8c9-3d7d151d90e7", "label": "Discharge Order", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: HAS_DISCHARGE_ORDER"}, {"from": "e7316e6c-ed5f-4a8d-aeab-d3bc01f6570f", "to": "3359b0c7-300e-4e85-8843-5e76167764cf", "label": "Inpatient Admission", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: HAS_ADMISSION"}, {"from": "3359b0c7-300e-4e85-8843-5e76167764cf", "to": "eaa12e71-f5f6-44e4-bd2c-f64806f7697e", "label": "Assigned Bed", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: ASSIGNED_BED"}, {"from": "e7316e6c-ed5f-4a8d-aeab-d3bc01f6570f", "to": "eaa12e71-f5f6-44e4-bd2c-f64806f7697e", "label": "Occupies Bed", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: OCCUPIES"}, {"from": "9f759bca-78c8-46bb-a8c9-3d7d151d90e7", "to": "5bba90bf-0849-4e3a-a3fb-c7227e69c965", "label": "SOP Clearance Satisfied", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#10B981", "highlight": "#34D399", "opacity": 0.9}, "width": 2.0, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: GOVERNED_BY_SOP"}, {"from": "b0b1aa2c-0951-4b06-9023-197050f47ec5", "to": "ad7cf42d-dd20-49aa-b92c-0b6b75ac1aa5", "label": "Discharge Order", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: HAS_DISCHARGE_ORDER"}, {"from": "08248e68-4f3f-414c-b5b5-14550b6674f7", "to": "b0b1aa2c-0951-4b06-9023-197050f47ec5", "label": "Inpatient Admission", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: HAS_ADMISSION"}, {"from": "b0b1aa2c-0951-4b06-9023-197050f47ec5", "to": "1d85080f-5919-4d29-8662-0e3dbee8af86", "label": "Assigned Bed", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: ASSIGNED_BED"}, {"from": "08248e68-4f3f-414c-b5b5-14550b6674f7", "to": "1d85080f-5919-4d29-8662-0e3dbee8af86", "label": "Occupies Bed", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: OCCUPIES"}, {"from": "ad7cf42d-dd20-49aa-b92c-0b6b75ac1aa5", "to": "5bba90bf-0849-4e3a-a3fb-c7227e69c965", "label": "Governed by SOP-DIS-001", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: GOVERNED_BY_SOP"}, {"from": "55f2b986-4dd5-4f16-93b5-46d296e3a129", "to": "a7294b8f-50c6-4c87-923c-413d5df4ac49", "label": "Discharge Order", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: HAS_DISCHARGE_ORDER"}, {"from": "2b3e5b26-68cd-4d75-b6a9-a5fedaac2779", "to": "55f2b986-4dd5-4f16-93b5-46d296e3a129", "label": "Inpatient Admission", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: HAS_ADMISSION"}, {"from": "55f2b986-4dd5-4f16-93b5-46d296e3a129", "to": "8388bf94-019a-4ee1-951a-e90bf83ad37a", "label": "Assigned Bed", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: ASSIGNED_BED"}, {"from": "2b3e5b26-68cd-4d75-b6a9-a5fedaac2779", "to": "8388bf94-019a-4ee1-951a-e90bf83ad37a", "label": "Occupies Bed", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: OCCUPIES"}, {"from": "a7294b8f-50c6-4c87-923c-413d5df4ac49", "to": "5bba90bf-0849-4e3a-a3fb-c7227e69c965", "label": "Governed by SOP-DIS-001", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: GOVERNED_BY_SOP"}, {"from": "0adaf0c4-c0ed-460f-9c31-740e613e73cf", "to": "33672319-3145-4dd9-82f1-f3906d0dd013", "label": "Critical Troponin I", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#F43F5E", "highlight": "#FDA4AF", "opacity": 0.95}, "width": 2.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: TRIGGERS_PANIC_ALERT"}, {"from": "33672319-3145-4dd9-82f1-f3906d0dd013", "to": "7694ed3d-7fc0-4944-b0ca-8e1362dde8cb", "label": "Physician Paged", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: ALERTS_PHYSICIAN"}, {"from": "33672319-3145-4dd9-82f1-f3906d0dd013", "to": "11aa7290-199c-4b41-bb9e-7feb34243266", "label": "POL-010 15-Min SLA", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: MANDATED_BY_POLICY"}, {"from": "6ffa2c1c-6f4f-41f3-abe4-cb0a234a1c32", "to": "5d3dd673-7d3b-4b89-8ae7-d23ca75fcb72", "label": "Critical pO2 (ABG)", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#F43F5E", "highlight": "#FDA4AF", "opacity": 0.95}, "width": 2.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: TRIGGERS_PANIC_ALERT"}, {"from": "5d3dd673-7d3b-4b89-8ae7-d23ca75fcb72", "to": "7694ed3d-7fc0-4944-b0ca-8e1362dde8cb", "label": "Physician Paged", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: ALERTS_PHYSICIAN"}, {"from": "5d3dd673-7d3b-4b89-8ae7-d23ca75fcb72", "to": "11aa7290-199c-4b41-bb9e-7feb34243266", "label": "POL-010 15-Min SLA", "arrows": {"to": {"enabled": true, "scaleFactor": 0.65, "type": "arrow"}}, "color": {"color": "#334155", "highlight": "#64748B", "opacity": 0.8}, "width": 1.4, "font": {"color": "#94A3B8", "size": 9, "face": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif", "strokeWidth": 0, "background": "#0B111E", "align": "horizontal"}, "smooth": {"type": "cubicBezier", "forceDirection": "none", "roundness": 0.18}, "title": "Relationship: MANDATED_BY_POLICY"}];
+    let currentPerspective = "bottlenecks";
+    let physicsFrozen = false;
+
+    function renderNetwork(nodesList, edgesList) {
+      const container = document.getElementById("network");
+      const data = {
+        nodes: new vis.DataSet(nodesList),
+        edges: new vis.DataSet(edgesList)
+      };
+      const options = {
+        nodes: {
+          shape: 'box',
+          shapeProperties: { borderRadius: 7 },
+          margin: { top: 9, bottom: 9, left: 13, right: 13 },
+          borderWidth: 1.5,
+          borderWidthSelected: 2.5,
+          shadow: { enabled: true, color: 'rgba(0,0,0,0.6)', size: 12, x: 0, y: 4 },
+          font: {
+            face: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
+            size: 11,
+            color: '#F8FAFC'
+          }
+        },
+        edges: {
+          shadow: false,
+          smooth: { type: 'cubicBezier', forceDirection: 'none', roundness: 0.18 },
+          arrows: { to: { enabled: true, scaleFactor: 0.65 } },
+          font: {
+            color: '#94A3B8',
+            size: 9,
+            face: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
+            strokeWidth: 0,
+            background: '#0B111E',
+            align: 'horizontal'
+          }
+        },
+        physics: {
+          enabled: true,
+          solver: 'barnesHut',
+          barnesHut: {
+            gravitationalConstant: -9000,
+            centralGravity: 0.14,
+            springLength: 220,
+            springConstant: 0.045,
+            damping: 0.18,
+            avoidOverlap: 1.0
+          },
+          stabilization: { iterations: 140, updateInterval: 25 }
+        },
+        interaction: {
+          hover: true,
+          hoverConnectedEdges: true,
+          selectConnectedEdges: true,
+          tooltipDelay: 150,
+          zoomView: true,
+          dragView: true,
+          dragNodes: true,
+          navigationButtons: false,
+          keyboard: true
+        }
+      };
+
+      network = new vis.Network(container, data, options);
+
+      network.on("stabilizationIterationsDone", function () {
+        network.setOptions({ physics: false });
+        physicsFrozen = true;
+        document.getElementById("freezeBtn").innerText = "Resume";
+      });
+
+      network.on("click", function(params) {
+        if (params.nodes.length > 0) {
+          const node = nodesList.find(n => n.id === params.nodes[0]);
+          if (node) showDrawer(node);
+        }
+      });
+    }
+
+    async function switchPerspective(perspName) {
+      currentPerspective = perspName;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const activeTab = document.getElementById('tab-' + perspName);
+      if (activeTab) activeTab.classList.add('active');
+
+      document.getElementById('patientSelect').style.display = (perspName === 'patient_360') ? 'inline-block' : 'none';
+      document.getElementById('wardSelect').style.display = (perspName === 'beds') ? 'inline-block' : 'none';
+
+      await loadPerspectiveData(perspName);
+    }
+
+    async function loadPerspectiveData(perspName, extraParams = '') {
+      showBanner(`Loading ${perspName} perspective...`);
+      try {
+        const res = await fetch(`/api/v1/ontology/graph/live?perspective=${perspName}${extraParams}`);
+        const data = await res.json();
+        currentNodes = data.nodes;
+        currentEdges = data.edges;
+        renderNetwork(currentNodes, currentEdges);
+        document.getElementById('viewingCount').innerText = currentNodes.length + ' / ' + document.getElementById('totalNodes').innerText;
+
+        if (data.kpis) {
+          document.getElementById('kpiBlockers').innerText = data.kpis.blocked_discharges;
+          document.getElementById('kpiPanics').innerText = data.kpis.panic_slas_breached;
+          document.getElementById('kpiBeds').innerText = data.kpis.dirty_turnaround_queue;
+          document.getElementById('kpiRev').innerText = '₹' + Number(data.kpis.revenue_at_risk_inr).toLocaleString();
+        }
+        showBanner(`${perspName} &middot; ${data.nodes_count} entities &middot; ${data.edges_count} relationships`);
+      } catch (err) {
+        console.error("Failed to load perspective:", err);
+      }
+    }
+
+    function loadPatient360(uhid) {
+      loadPerspectiveData('patient_360', `&uhid=${encodeURIComponent(uhid)}`);
+    }
+
+    function loadWardBeds(ward) {
+      loadPerspectiveData('beds', `&ward=${encodeURIComponent(ward)}`);
+    }
+
+    async function triggerAction(actionName) {
+      showBanner(`Executing ${actionName}...`);
+      try {
+        const res = await fetch(`/api/v1/ontology/action/${actionName}`, { method: 'POST' });
+        const result = await res.json();
+        showBanner(result.message || 'Action executed successfully');
+        await loadPerspectiveData(currentPerspective);
+      } catch (err) {
+        showBanner(`Action failed: ${err}`);
+      }
+    }
+
+    function showBanner(msg) {
+      const b = document.getElementById("banner");
+      b.innerHTML = msg;
+      b.style.display = "block";
+      setTimeout(() => { b.style.display = "none"; }, 3500);
+    }
+
+    function showDrawer(node) {
+      const drawer = document.getElementById("sideDrawer");
+      drawer.classList.add("open");
+      document.getElementById("dTitle").innerText = node.label.split("\n")[0].trim();
+      document.getElementById("dType").innerText = node.type + " · " + node.group;
+      document.getElementById("dSummary").innerText = node.summary || "No summary available.";
+
+      const actionCard = document.getElementById("drawerActionCard");
+      const actionBtn = document.getElementById("drawerActionBtn");
+      if (node.type === "DischargeNode" && (node.label.includes("HOLD") || node.properties.is_blocked === "True")) {
+        actionCard.style.display = "block";
+        actionBtn.innerText = "Clear Billing Hold & Issue Gate Pass";
+        actionBtn.className = "btn btn-settle";
+        actionBtn.onclick = () => triggerAction('settle_billing');
+      } else if (node.type === "LabPanicAlertNode" && node.properties.readback_status !== "Acknowledged") {
+        actionCard.style.display = "block";
+        actionBtn.innerText = "Acknowledge Readback & Clear SLA";
+        actionBtn.className = "btn btn-panic";
+        actionBtn.onclick = () => triggerAction('resolve_panic');
+      } else if (node.type === "BedNode" && node.properties.status === "dirty") {
+        actionCard.style.display = "block";
+        actionBtn.innerText = "Mark Bed Sanitized & Ready";
+        actionBtn.className = "btn btn-turnaround";
+        actionBtn.onclick = () => triggerAction('turnaround_bed');
+      } else {
+        actionCard.style.display = "none";
+      }
+
+      const propsTable = document.getElementById("dProps");
+      propsTable.innerHTML = "";
+      for (const [k, v] of Object.entries(node.properties || {})) {
+        if (typeof v === 'object' && v !== null) continue;
+        const row = document.createElement("tr");
+        row.innerHTML = `<td class="k">${k}</td><td class="v">${v}</td>`;
+        propsTable.appendChild(row);
+      }
+    }
+
+    function closeDrawer() { document.getElementById("sideDrawer").classList.remove("open"); }
+
+    function resetZoom() {
+      if (network) network.fit({ animation: { duration: 600, easingFunction: 'easeInOutQuad' } });
+    }
+
+    function zoomIn() {
+      if (network) {
+        const scale = network.getScale() * 1.3;
+        network.moveTo({ scale, animation: { duration: 250 } });
+      }
+    }
+
+    function zoomOut() {
+      if (network) {
+        const scale = network.getScale() * 0.77;
+        network.moveTo({ scale, animation: { duration: 250 } });
+      }
+    }
+
+    function togglePhysics() {
+      physicsFrozen = !physicsFrozen;
+      if (network) {
+        network.setOptions({ physics: !physicsFrozen });
+        document.getElementById("freezeBtn").innerText = physicsFrozen ? "Resume" : "Freeze";
+      }
+    }
+
+    function focusBottlenecks() {
+      const blockerNode = currentNodes.find(n => n.label.includes("HOLD") || n.label.includes("CRITICAL") || n.label.includes("DENIED"));
+      if (blockerNode && network) {
+        network.focus(blockerNode.id, { scale: 1.35, animation: { duration: 700 } });
+        showDrawer(blockerNode);
+      }
+    }
+
+    function handleSearch(term) {
+      if (!term || term.trim() === "" || !network) return;
+      const q = term.toLowerCase().trim();
+      const match = currentNodes.find(n => n.label.toLowerCase().includes(q) || n.id.toLowerCase().includes(q) || (n.summary && n.summary.toLowerCase().includes(q)));
+      if (match) {
+        network.focus(match.id, { scale: 1.35, animation: { duration: 500 } });
+        showDrawer(match);
+      }
+    }
+
+    function filterLegend(groupName) {
+      const match = currentNodes.find(n => n.group === groupName);
+      if (match && network) {
+        network.focus(match.id, { scale: 1.25, animation: { duration: 600 } });
+        showDrawer(match);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderNetwork(currentNodes, currentEdges);
+      document.getElementById('viewingCount').innerText = currentNodes.length + ' / ' + document.getElementById('totalNodes').innerText;
+    });
+
+    // ── Governed Agent Panel ──
+    function toggleAgentPanel() {
+      document.getElementById('agentPanel').classList.toggle('open');
+    }
+
+    // Conversation memory — persists for the lifetime of this browser session
+    const agentHistory = [];
+
+    async function sendAgentQuery() {
+      const input = document.getElementById('agentInput');
+      const query = input.value.trim();
+      if (!query) return;
+
+      const messages = document.getElementById('agentMessages');
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'agent-message agent-msg-user';
+      userMsg.innerText = query;
+      messages.appendChild(userMsg);
+      input.value = '';
+
+      const loadingMsg = document.createElement('div');
+      loadingMsg.className = 'agent-message agent-msg-system';
+      loadingMsg.innerText = 'Traversing operational graph…';
+      messages.appendChild(loadingMsg);
+      messages.scrollTop = messages.scrollHeight;
+
+      // Record user turn before sending
+      agentHistory.push({ role: 'user', content: query });
+
+      try {
+        const res = await fetch('/api/v1/agent/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query, conversation_history: agentHistory.slice(-6) })
+        });
+        const data = await res.json();
+        messages.removeChild(loadingMsg);
+
+        // Surface API errors explicitly
+        if (!res.ok || data.detail) {
+          const errDiv = document.createElement('div');
+          errDiv.className = 'agent-message agent-msg-guardrail';
+          errDiv.innerText = 'Agent error: ' + (data.detail || 'HTTP ' + res.status);
+          messages.appendChild(errDiv);
+          agentHistory.pop(); // remove failed user turn
+          messages.scrollTop = messages.scrollHeight;
+          return;
+        }
+
+        const answerText = data.answer || JSON.stringify(data);
+        // Record assistant turn in history
+        agentHistory.push({ role: 'assistant', content: answerText });
+
+        const answerDiv = document.createElement('div');
+
+        if (data.guardrail_triggered) {
+          answerDiv.className = 'agent-message agent-msg-guardrail';
+          // Confidence badge for guardrails
+          if (data.confidence) {
+            const lvl = (data.confidence.level || 'uncertain').toLowerCase();
+            const badge = document.createElement('span');
+            badge.className = 'confidence-badge conf-' + lvl;
+            badge.innerText = lvl.toUpperCase();
+            answerDiv.appendChild(badge);
+            answerDiv.appendChild(document.createElement('br'));
+          }
+          const title = document.createElement('b');
+          title.innerText = data.guardrail_triggered.replace(/_/g, ' ');
+          answerDiv.appendChild(title);
+          answerDiv.appendChild(document.createElement('br'));
+          answerDiv.appendChild(document.createTextNode(data.answer || ''));
+          if (data.escalation) {
+            const esc = document.createElement('div');
+            esc.className = 'agent-msg-escalation';
+            esc.innerText = 'Route to: ' + data.escalation;
+            answerDiv.appendChild(esc);
+          }
+          if (data.escalation_reason) {
+            const er = document.createElement('div');
+            er.className = 'escalation-reason';
+            er.innerText = 'Why: ' + data.escalation_reason;
+            answerDiv.appendChild(er);
+          }
+          if (data.requires_human_approval) {
+            const appr = document.createElement('div');
+            appr.className = 'agent-msg-escalation';
+            appr.innerText = '⚠ Requires supervisor approval before action';
+            answerDiv.appendChild(appr);
+          }
+        } else {
+          answerDiv.className = 'agent-message agent-msg-answer';
+
+          // Confidence badge — requirement 3
+          if (data.confidence) {
+            const lvl = (data.confidence.level || 'uncertain').toLowerCase();
+            const badge = document.createElement('span');
+            badge.className = 'confidence-badge conf-' + lvl;
+            badge.innerText = lvl.toUpperCase();
+            if (data.confidence.reason) badge.title = data.confidence.reason;
+            answerDiv.appendChild(badge);
+            answerDiv.appendChild(document.createElement('br'));
+          }
+
+          // Answer text
+          const answerPara = document.createElement('div');
+          answerPara.style.whiteSpace = 'pre-wrap';
+          answerPara.innerText = answerText;
+          answerDiv.appendChild(answerPara);
+
+          // Missing fields card — requirement 5
+          if (data.missing_fields && data.missing_fields.missing_fields) {
+            const mfc = document.createElement('div');
+            mfc.className = 'missing-fields-card';
+            const mfTitle = document.createElement('div');
+            mfTitle.className = 'mf-title';
+            mfTitle.innerText = 'Missing Required Fields';
+            mfc.appendChild(mfTitle);
+            for (const [field, prompt] of Object.entries(data.missing_fields.missing_fields)) {
+              const item = document.createElement('div');
+              item.className = 'mf-item';
+              item.innerText = '• ' + prompt;
+              mfc.appendChild(item);
+            }
+            answerDiv.appendChild(mfc);
+          }
+
+          // Workflow step card — requirement 4
+          if (data.workflow_step) {
+            const wfc = document.createElement('div');
+            wfc.className = 'workflow-step-card';
+            const wfTitle = document.createElement('div');
+            wfTitle.className = 'wf-title';
+            wfTitle.innerText = 'Next Workflow Step (' + data.workflow_step.step + '/' + data.workflow_step.total_steps + ')';
+            wfc.appendChild(wfTitle);
+            const wfStep = document.createElement('div');
+            wfStep.className = 'wf-step';
+            wfStep.innerText = data.workflow_step.name;
+            wfc.appendChild(wfStep);
+            const wfDesc = document.createElement('div');
+            wfDesc.className = 'wf-desc';
+            wfDesc.innerText = data.workflow_step.description;
+            wfc.appendChild(wfDesc);
+            const wfTeam = document.createElement('div');
+            wfTeam.className = 'wf-team';
+            wfTeam.innerText = data.workflow_step.responsible_team + ' — ' + data.workflow_step.extension;
+            wfc.appendChild(wfTeam);
+            answerDiv.appendChild(wfc);
+          }
+
+          // Source citations — requirement 2
+          if (data.source_citations && data.source_citations.length > 0) {
+            const cit = document.createElement('div');
+            cit.className = 'citations-block';
+            const citTitle = document.createElement('div');
+            citTitle.className = 'cit-title';
+            citTitle.innerText = 'Sources';
+            cit.appendChild(citTitle);
+            data.source_citations.slice(0, 5).forEach(function(c) {
+              const ci = document.createElement('div');
+              ci.className = 'cit-item';
+              ci.innerText = c.type + ' · ' + c.id + (c.section ? ' · ' + c.section : '');
+              cit.appendChild(ci);
+            });
+            answerDiv.appendChild(cit);
+          }
+
+          if (data.requires_human_approval) {
+            const flag = document.createElement('div');
+            flag.className = 'agent-msg-escalation';
+            flag.innerText = '⚠ Requires supervisor approval';
+            answerDiv.appendChild(flag);
+          }
+        }
+        messages.appendChild(answerDiv);
+      } catch (err) {
+        messages.removeChild(loadingMsg);
+        const errDiv = document.createElement('div');
+        errDiv.className = 'agent-message agent-msg-guardrail';
+        errDiv.innerText = 'Agent error: ' + err.message;
+        messages.appendChild(errDiv);
+        agentHistory.pop(); // remove failed user turn
+      }
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+</body>
+</html>

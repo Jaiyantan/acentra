@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-CSS-001_Sterilization_Autoclave",
+  "title": "CSSD Instrument Sterilization Tracking",
+  "file_path": "sops/SOP-CSS-001_Sterilization_Autoclave.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Operation Theatre",
+  "applicable_roles": [
+    "cssd_tech",
+    "ot_nurse"
+  ],
+  "version": "2.1",
+  "content": "SOP: CSSD Instrument Sterilization Tracking (SOP-CSS-001)\nDEPARTMENT: Operation Theatre\nVERSION: 2.1\nROLES: cssd_tech, ot_nurse\nPURPOSE: Biological spore indicator validation and barcode pack tracking.\nSTEPS:\nStep 1: Execute phase 1 of CSSD Instrument Sterilization Tracking in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of CSSD Instrument Sterilization Tracking in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of CSSD Instrument Sterilization Tracking in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of CSSD Instrument Sterilization Tracking in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of CSSD Instrument Sterilization Tracking in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of CSSD Instrument Sterilization Tracking in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Operation Theatre.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-css-001",
+    "operation theatre",
+    "sterilization autoclave",
+    "smch"
+  ],
+  "source_citation": "SOP-CSS-001 CSSD Instrument Sterilization Tracking v2.1, Section 4"
+}

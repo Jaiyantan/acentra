@@ -1,0 +1,27 @@
+{
+  "workflow_id": "WF-CONSULT-01",
+  "name": "Outpatient Consultation & Specialist Routing Workflow",
+  "category": "Ambulatory Operations",
+  "target_journey_transition": "REGISTERED -> TRIAGED",
+  "allowed_roles": ["Receptionist", "Nurse", "Admin"],
+  "is_irreversible": false,
+  "description": "Routes outpatient to the correct specialty clinic, allocates digital queue token, and assigns consulting doctor.",
+  "steps": [
+    {
+      "step_id": "STEP_1_CLINIC_ROUTING",
+      "step_name": "Identify Clinical Specialty from Symptoms",
+      "required_fields": ["uhid", "specialty", "chief_complaint"],
+      "optional_fields": ["referral_doctor_name"],
+      "action_tool": "route_specialty_clinic",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_2_QUEUE_TOKEN",
+      "step_name": "Generate Queue Token & Room Assignment",
+      "required_fields": ["assigned_doctor_id", "consultation_room_no"],
+      "optional_fields": ["priority_senior_citizen"],
+      "action_tool": "generate_opd_token",
+      "irreversible": false
+    }
+  ]
+}

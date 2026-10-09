@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-OT-001_Surgical_Safety_Checklist",
+  "title": "Operation Theatre Surgical Safety Protocol",
+  "file_path": "sops/SOP-OT-001_Surgical_Safety_Checklist.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Operation Theatre",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "anesthetist"
+  ],
+  "version": "4.1",
+  "content": "SOP: Operation Theatre Surgical Safety Protocol (SOP-OT-001)\nDEPARTMENT: Operation Theatre\nVERSION: 4.1\nROLES: doctor, nurse, anesthetist\nPURPOSE: Enforce Sign-In, Time-Out, and Sign-Out verification.\nSTEPS:\nStep 1: Execute phase 1 of Operation Theatre Surgical Safety Protocol in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Operation Theatre Surgical Safety Protocol in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Operation Theatre Surgical Safety Protocol in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Operation Theatre Surgical Safety Protocol in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Operation Theatre Surgical Safety Protocol in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Operation Theatre Surgical Safety Protocol in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\nStep 7: Execute phase 7 of Operation Theatre Surgical Safety Protocol in full compliance with Operation Theatre hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Operation Theatre.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-ot-001",
+    "operation theatre",
+    "surgical safety checklist",
+    "smch"
+  ],
+  "source_citation": "SOP-OT-001 Operation Theatre Surgical Safety Protocol v4.1, Section 4"
+}

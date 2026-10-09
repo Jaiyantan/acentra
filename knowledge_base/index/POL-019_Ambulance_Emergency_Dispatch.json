@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-019_Ambulance_Emergency_Dispatch",
+  "title": "Emergency Fleet Response and Inter-Hospital Transfer Policy",
+  "file_path": "policies/POL-019_Ambulance_Emergency_Dispatch.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Emergency Department",
+  "applicable_roles": [
+    "emergency_team",
+    "driver"
+  ],
+  "version": "2.1",
+  "content": "POLICY: Emergency Fleet Response and Inter-Hospital Transfer Policy (POL-019)\nDEPARTMENT: Emergency Department\nVERSION: 2.1\nROLES: emergency_team, driver\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-019",
+    "emergency department",
+    "ambulance emergency dispatch",
+    "smch"
+  ],
+  "source_citation": "POL-019 Emergency Fleet Response and Inter-Hospital Transfer Policy v2.1"
+}

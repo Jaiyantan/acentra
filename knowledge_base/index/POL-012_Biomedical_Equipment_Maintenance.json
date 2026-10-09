@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-012_Biomedical_Equipment_Maintenance",
+  "title": "Biomedical Equipment Planned Preventive Maintenance Policy",
+  "file_path": "policies/POL-012_Biomedical_Equipment_Maintenance.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Biomedical Engineering",
+  "applicable_roles": [
+    "biomedical_engineer",
+    "nurse"
+  ],
+  "version": "1.8",
+  "content": "POLICY: Biomedical Equipment Planned Preventive Maintenance Policy (POL-012)\nDEPARTMENT: Biomedical Engineering\nVERSION: 1.8\nROLES: biomedical_engineer, nurse\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-012",
+    "biomedical engineering",
+    "biomedical equipment maintenance",
+    "smch"
+  ],
+  "source_citation": "POL-012 Biomedical Equipment Planned Preventive Maintenance Policy v1.8"
+}

@@ -1,0 +1,25 @@
+{
+  "file_id": "Operations_Synthetic_Workbook",
+  "title": "SMCH Operations Master Synthetic Workbook",
+  "file_path": "Operations_Synthetic_Workbook.xlsx",
+  "file_type": "xlsx",
+  "category": "master_workbook",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "MASTER WORKBOOK: Saveetha Medical College and Hospital (SMCH) Operations Master Synthetic Workbook (Operations_Synthetic_Workbook.xlsx).\nCONSOLIDATED SHEETS:\n1. Operations Requests: 20 comprehensive operational request scenarios spanning Admissions, Discharges, LIS, RIS, Billing, Insurance Preauth, Equipment Breakdowns, Bed Transfers, and Incident Reporting.\n2. Approved Knowledge Articles: 30 approved knowledge base articles (KA-001 to KA-030) covering step-by-step system interactions across HIS, LIS, RIS, Billing, EMR, TPA, CSSD, and PACS.\n3. Workflow Information: Complete state machine specifications for 8 core workflows (WF-001 Admission, WF-002 Discharge Clearance, WF-003 Insurance Preauth, WF-004 Bed Transfer, WF-005 STAT Lab Panic Value, WF-006 Incident Reporting, WF-007 Medico-Legal Case, WF-008 Narcotic Drug Control).\n4. Routing Rules: 15 routing rules (R-001 to R-015) defining operational triggers, target teams, SLA hours, priority levels, and escalation criteria.\n5. Field Definitions: 25 structured healthcare operational data field definitions including validation regex patterns, display labels, missing prompts, and document usage.",
+  "tags": [
+    "master",
+    "workbook",
+    "synthetic",
+    "operations",
+    "requests",
+    "workflows",
+    "routing",
+    "fields",
+    "smch"
+  ],
+  "source_citation": "SMCH Operations Master Synthetic Workbook v1.0, Operations Management"
+}

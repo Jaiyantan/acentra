@@ -1,0 +1,20 @@
+{
+  "file_id": "operations_requests",
+  "title": "Hospital Operations Sample Requests Scenario Suite",
+  "file_path": "operations_requests.json",
+  "file_type": "json",
+  "category": "operations_request",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "CORE SPECIFICATION: Hospital Operations Sample Requests Scenario Suite (operations_requests.json) for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "scenarios",
+    "queries",
+    "intents",
+    "smch"
+  ],
+  "source_citation": "Hospital Operations Sample Requests Scenario Suite v1.0"
+}

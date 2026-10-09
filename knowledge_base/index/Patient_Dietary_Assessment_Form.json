@@ -1,0 +1,25 @@
+{
+  "file_id": "Patient_Dietary_Assessment_Form",
+  "title": "Clinical Nutrition & Dietary Requisition",
+  "file_path": "forms/Patient_Dietary_Assessment_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.5",
+  "content": "FORM: Clinical Nutrition & Dietary Requisition (FORM-DIE-01)\nVERSION: v1.5\nFIELDS:\n- Patient UHID\n- Diet Category\n- Calorie Requirement\n- Food Allergies\n- Feeding Tube (Y/N)\n- Dietitian ID",
+  "tags": [
+    "form",
+    "pdf",
+    "form-die-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-DIE-01 Clinical Nutrition & Dietary Requisition v1.5"
+}

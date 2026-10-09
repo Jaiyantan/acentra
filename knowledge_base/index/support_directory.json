@@ -1,0 +1,20 @@
+{
+  "file_id": "support_directory",
+  "title": "Hospital Support and Team Directory",
+  "file_path": "support_directory.json",
+  "file_type": "json",
+  "category": "support_directory",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "CORE SPECIFICATION: Hospital Support and Team Directory (support_directory.json) for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "teams",
+    "extensions",
+    "helpdesk",
+    "smch"
+  ],
+  "source_citation": "Hospital Support and Team Directory v1.0"
+}

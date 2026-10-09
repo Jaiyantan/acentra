@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-017_Bed_Reservation_Buffer_Override",
+  "title": "Emergency Bed Buffer and Surge Bed Allocation Policy",
+  "file_path": "policies/POL-017_Bed_Reservation_Buffer_Override.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Admission and Discharge",
+  "applicable_roles": [
+    "admission",
+    "operations_manager"
+  ],
+  "version": "2.4",
+  "content": "POLICY: Emergency Bed Buffer and Surge Bed Allocation Policy (POL-017)\nDEPARTMENT: Admission and Discharge\nVERSION: 2.4\nROLES: admission, operations_manager\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-017",
+    "admission and discharge",
+    "bed reservation buffer override",
+    "smch"
+  ],
+  "source_citation": "POL-017 Emergency Bed Buffer and Surge Bed Allocation Policy v2.4"
+}

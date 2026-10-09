@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-013_Pharmacy_ePrescription_Dispense",
+  "title": "How to Process and Dispense Digital Inpatient Prescriptions",
+  "file_path": "knowledge_articles/KA-013_Pharmacy_ePrescription_Dispense.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Pharmacy",
+  "applicable_roles": [
+    "pharmacist",
+    "nurse"
+  ],
+  "version": "2.4",
+  "content": "ARTICLE: How to Process and Dispense Digital Inpatient Prescriptions (KA-013)\nSYSTEM: Pharmacy System\nDEPARTMENT: Pharmacy\nVERSION: 2.4\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the Pharmacy System module to execute how to process and dispense digital inpatient prescriptions safely and reliably.\nSTEPS:\nStep 1: Open the Pharmacy System client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Process and Dispense Digital Inpatient Prescriptions and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Pharmacy coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-013",
+    "pharmacy system",
+    "pharmacy",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-013 How to Process and Dispense Digital Inpatient Prescriptions v2.4"
+}

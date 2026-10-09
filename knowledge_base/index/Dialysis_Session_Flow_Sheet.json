@@ -1,0 +1,25 @@
+{
+  "file_id": "Dialysis_Session_Flow_Sheet",
+  "title": "Hemodialysis Pre- & Post-Session Flow Sheet",
+  "file_path": "forms/Dialysis_Session_Flow_Sheet.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.2",
+  "content": "FORM: Hemodialysis Pre- & Post-Session Flow Sheet (FORM-DIA-01)\nVERSION: v2.2\nFIELDS:\n- Patient UHID\n- Pre-Dialysis Weight\n- Post-Dialysis Weight\n- Ultrafiltration Goal\n- Heparin Units\n- Vascular Access",
+  "tags": [
+    "form",
+    "pdf",
+    "form-dia-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-DIA-01 Hemodialysis Pre- & Post-Session Flow Sheet v2.2"
+}

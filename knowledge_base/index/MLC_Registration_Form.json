@@ -1,0 +1,25 @@
+{
+  "file_id": "MLC_Registration_Form",
+  "title": "Medico-Legal Case (MLC) Registration Record",
+  "file_path": "forms/MLC_Registration_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.2",
+  "content": "FORM: Medico-Legal Case (MLC) Registration Record (FORM-MLC-02)\nVERSION: v2.2\nFIELDS:\n- MLC Number\n- Patient UHID\n- Nature of Case\n- Police Station Name\n- Time Intimated\n- Doctor on Duty",
+  "tags": [
+    "form",
+    "pdf",
+    "form-mlc-02",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-MLC-02 Medico-Legal Case (MLC) Registration Record v2.2"
+}

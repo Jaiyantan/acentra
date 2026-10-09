@@ -1,0 +1,25 @@
+{
+  "file_id": "Blood_Request_Form",
+  "title": "Blood Component Requisition & Transfusion Record",
+  "file_path": "forms/Blood_Request_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v3.2",
+  "content": "FORM: Blood Component Requisition & Transfusion Record (FORM-BLD-03)\nVERSION: v3.2\nFIELDS:\n- Patient UHID\n- Blood Group / Rh\n- Component (PRBC/FFP)\n- Units Required\n- Crossmatch Bag No\n- Transfusion Nurse",
+  "tags": [
+    "form",
+    "pdf",
+    "form-bld-03",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-BLD-03 Blood Component Requisition & Transfusion Record v3.2"
+}

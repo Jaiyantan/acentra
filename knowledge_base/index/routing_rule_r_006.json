@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_006",
+  "title": "Escalation Routing Rule R-006: Bill disputed by patient",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Billing",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-006 -- Bill disputed by patient\nTRIGGER TYPE: Intent\nCONDITION: Attender disputes itemized charges\nROUTE TO: Billing (Extension 1028)\nQUEUE: QUEUE_BILLING\nPRIORITY: HIGH\nSLA: 2.0 hour(s)\nESCALATION RATIONALE: Financial grievance requiring itemized tariff audit. Route to Billing Manager ext. 1028. Pause gate pass.\nEXAMPLE QUERY 1: Patient attender refuses to pay extra consumables\nEXAMPLE QUERY 2: Why are we being charged for ICU support?",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-006",
+    "intent",
+    "queue_billing",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-006 (Bill disputed by patient) v1.0"
+}

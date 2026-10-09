@@ -1,0 +1,373 @@
+{
+  "fields": [
+    {
+      "field_name": "uhid",
+      "display_name": "Unique Hospital Identification (UHID)",
+      "type": "text",
+      "required": true,
+      "validation_pattern": "^UHID-\\d{6}$",
+      "select_options": null,
+      "on_missing_message": "Please provide the patient's unique 6-digit UHID in the format UHID-000001.",
+      "used_in_documents": [
+        "Registration Form",
+        "Admission Form",
+        "Consent Form",
+        "Discharge Checklist Form",
+        "Blood Request Form",
+        "Transfer Form",
+        "Insurance Preauth Form"
+      ]
+    },
+    {
+      "field_name": "patient_name",
+      "display_name": "Patient Full Name",
+      "type": "text",
+      "required": true,
+      "validation_pattern": "^[A-Za-z\\s\\.]{2,60}$",
+      "select_options": null,
+      "on_missing_message": "Please enter the patient's legal full name as printed on their identity proof.",
+      "used_in_documents": [
+        "Registration Form",
+        "Admission Form",
+        "Consent Form",
+        "Discharge Checklist Form",
+        "Blood Request Form",
+        "MLC Registration Form"
+      ]
+    },
+    {
+      "field_name": "age",
+      "display_name": "Patient Age",
+      "type": "number",
+      "required": true,
+      "validation_pattern": "^(0|[1-9][0-9]?|1[01][0-9]|120)$",
+      "select_options": null,
+      "on_missing_message": "Please state the patient's current completed age in years.",
+      "used_in_documents": [
+        "Registration Form",
+        "MLC Registration Form"
+      ]
+    },
+    {
+      "field_name": "gender",
+      "display_name": "Patient Gender",
+      "type": "select",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        "Male",
+        "Female",
+        "Other"
+      ],
+      "on_missing_message": "Please select the patient's gender: Male, Female, or Other.",
+      "used_in_documents": [
+        "Registration Form",
+        "MLC Registration Form"
+      ]
+    },
+    {
+      "field_name": "contact",
+      "display_name": "Mobile Phone Number",
+      "type": "text",
+      "required": true,
+      "validation_pattern": "^\\+91-\\d{10}$",
+      "select_options": null,
+      "on_missing_message": "Please provide a valid 10-digit Indian mobile number prefixed with +91-.",
+      "used_in_documents": [
+        "Registration Form"
+      ]
+    },
+    {
+      "field_name": "admission_id",
+      "display_name": "Admission Case Number",
+      "type": "text",
+      "required": true,
+      "validation_pattern": "^ADM-\\d{3}$",
+      "select_options": null,
+      "on_missing_message": "Please specify the 3-digit Admission ID in the format ADM-001.",
+      "used_in_documents": [
+        "Admission Form",
+        "Discharge Checklist Form",
+        "Insurance Preauth Form"
+      ]
+    },
+    {
+      "field_name": "ward",
+      "display_name": "Ward Name",
+      "type": "select",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        "General Ward",
+        "ICU",
+        "Emergency",
+        "Semi-Private",
+        "OT Recovery"
+      ],
+      "on_missing_message": "Please select the target ward: General Ward, ICU, or Emergency.",
+      "used_in_documents": [
+        "Admission Form",
+        "Transfer Form",
+        "Blood Request Form"
+      ]
+    },
+    {
+      "field_name": "bed_id",
+      "display_name": "Bed Identifier",
+      "type": "text",
+      "required": true,
+      "validation_pattern": "^BED-(GW|ICU|ER)-\\d{2}$",
+      "select_options": null,
+      "on_missing_message": "Please provide the bed identifier (e.g. BED-GW-01, BED-ICU-02, BED-ER-01).",
+      "used_in_documents": [
+        "Admission Form",
+        "Transfer Form"
+      ]
+    },
+    {
+      "field_name": "admitting_doctor_id",
+      "display_name": "Admitting Doctor Staff ID",
+      "type": "text",
+      "required": true,
+      "validation_pattern": "^STF-\\d{3}$",
+      "select_options": null,
+      "on_missing_message": "Please provide the Staff ID of the admitting consultant (e.g. STF-001).",
+      "used_in_documents": [
+        "Admission Form"
+      ]
+    },
+    {
+      "field_name": "admitting_diagnosis",
+      "display_name": "Admitting Clinical Diagnosis",
+      "type": "text",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": null,
+      "on_missing_message": "Please enter the provisional admitting diagnosis or presenting chief complaint.",
+      "used_in_documents": [
+        "Admission Form",
+        "Referral Form",
+        "Insurance Preauth Form"
+      ]
+    },
+    {
+      "field_name": "insurance_policy_number",
+      "display_name": "Health Insurance Policy Number",
+      "type": "text",
+      "required": false,
+      "validation_pattern": "^POL-[A-Z0-9-]+$",
+      "select_options": null,
+      "on_missing_message": "Please provide the policy number printed on the patient's health insurance card.",
+      "used_in_documents": [
+        "Admission Form",
+        "Insurance Preauth Form"
+      ]
+    },
+    {
+      "field_name": "insurer_name",
+      "display_name": "Insurance Company Name",
+      "type": "text",
+      "required": false,
+      "validation_pattern": null,
+      "select_options": null,
+      "on_missing_message": "Please specify the health insurance carrier name.",
+      "used_in_documents": [
+        "Admission Form",
+        "Insurance Preauth Form"
+      ]
+    },
+    {
+      "field_name": "tpa_name",
+      "display_name": "Third-Party Administrator (TPA)",
+      "type": "text",
+      "required": false,
+      "validation_pattern": null,
+      "select_options": null,
+      "on_missing_message": "Please provide the name of the managing TPA agency.",
+      "used_in_documents": [
+        "Admission Form",
+        "Insurance Preauth Form"
+      ]
+    },
+    {
+      "field_name": "discharge_type",
+      "display_name": "Discharge Classification",
+      "type": "select",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        "regular",
+        "lama",
+        "dama",
+        "death",
+        "transfer"
+      ],
+      "on_missing_message": "Please select the discharge type: regular, lama, dama, death, or transfer.",
+      "used_in_documents": [
+        "Discharge Checklist Form"
+      ]
+    },
+    {
+      "field_name": "final_diagnosis",
+      "display_name": "Final Clinical Discharge Diagnosis",
+      "type": "text",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": null,
+      "on_missing_message": "Please enter the consultant's final confirmed discharge diagnosis.",
+      "used_in_documents": [
+        "Discharge Checklist Form"
+      ]
+    },
+    {
+      "field_name": "clearance_billing",
+      "display_name": "Billing Department Financial Clearance",
+      "type": "boolean",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        true,
+        false
+      ],
+      "on_missing_message": "Has the patient settled all inpatient bill charges with the Billing Desk (True/False)?",
+      "used_in_documents": [
+        "Discharge Checklist Form"
+      ]
+    },
+    {
+      "field_name": "clearance_pharmacy",
+      "display_name": "Pharmacy Clearance",
+      "type": "boolean",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        true,
+        false
+      ],
+      "on_missing_message": "Has the inpatient pharmacy reconciled returns and dispensed discharge meds (True/False)?",
+      "used_in_documents": [
+        "Discharge Checklist Form"
+      ]
+    },
+    {
+      "field_name": "clearance_nursing",
+      "display_name": "Nursing Care Clearance",
+      "type": "boolean",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        true,
+        false
+      ],
+      "on_missing_message": "Has the ward nurse removed indwelling lines and verified vital stability (True/False)?",
+      "used_in_documents": [
+        "Discharge Checklist Form"
+      ]
+    },
+    {
+      "field_name": "clearance_mrd",
+      "display_name": "Medical Records Archive Clearance",
+      "type": "boolean",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        true,
+        false
+      ],
+      "on_missing_message": "Has the patient physical chart been submitted to MRD for archiving (True/False)?",
+      "used_in_documents": [
+        "Discharge Checklist Form"
+      ]
+    },
+    {
+      "field_name": "test_name",
+      "display_name": "Laboratory Investigation Test Name",
+      "type": "text",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": null,
+      "on_missing_message": "Please enter the diagnostic laboratory test name.",
+      "used_in_documents": [
+        "Blood Request Form",
+        "Referral Form"
+      ]
+    },
+    {
+      "field_name": "result_value",
+      "display_name": "Numerical Diagnostic Result Value",
+      "type": "number",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": null,
+      "on_missing_message": "Please enter the numerical test result value.",
+      "used_in_documents": [
+        "Referral Form"
+      ]
+    },
+    {
+      "field_name": "incident_type",
+      "display_name": "Incident Category",
+      "type": "select",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        "medication_error",
+        "patient_fall",
+        "equipment_failure",
+        "near_miss",
+        "other"
+      ],
+      "on_missing_message": "Please select the incident category: medication_error, patient_fall, equipment_failure, near_miss, or other.",
+      "used_in_documents": [
+        "Incident Report Form"
+      ]
+    },
+    {
+      "field_name": "severity",
+      "display_name": "Safety Incident Severity Level",
+      "type": "select",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "on_missing_message": "Please classify the event severity: low, medium, high, or critical.",
+      "used_in_documents": [
+        "Incident Report Form"
+      ]
+    },
+    {
+      "field_name": "transfer_reason",
+      "display_name": "Reason for Bed / Ward Transfer",
+      "type": "text",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": null,
+      "on_missing_message": "Please state the clinical or administrative reason for the ward transfer.",
+      "used_in_documents": [
+        "Transfer Form"
+      ]
+    },
+    {
+      "field_name": "claim_status",
+      "display_name": "Insurance Claim Lifecycle Status",
+      "type": "select",
+      "required": true,
+      "validation_pattern": null,
+      "select_options": [
+        "draft",
+        "submitted",
+        "approved",
+        "rejected",
+        "resubmitted"
+      ],
+      "on_missing_message": "Please indicate claim status: draft, submitted, approved, rejected, or resubmitted.",
+      "used_in_documents": [
+        "Insurance Preauth Form"
+      ]
+    }
+  ]
+}

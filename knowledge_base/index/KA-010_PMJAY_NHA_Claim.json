@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-010_PMJAY_NHA_Claim",
+  "title": "How to Submit a PMJAY Claim Through the NHA Portal",
+  "file_path": "knowledge_articles/KA-010_PMJAY_NHA_Claim.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Insurance and TPA",
+  "applicable_roles": [
+    "insurance_tpa",
+    "billing"
+  ],
+  "version": "3.1",
+  "content": "ARTICLE: How to Submit a PMJAY Claim Through the NHA Portal (KA-010)\nSYSTEM: NHA Portal\nDEPARTMENT: Insurance and TPA\nVERSION: 3.1\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the NHA Portal module to execute how to submit a pmjay claim through the nha portal safely and reliably.\nSTEPS:\nStep 1: Open the NHA Portal client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Submit a PMJAY Claim Through the NHA Portal and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Insurance and TPA coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-010",
+    "nha portal",
+    "insurance and tpa",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-010 How to Submit a PMJAY Claim Through the NHA Portal v3.1"
+}

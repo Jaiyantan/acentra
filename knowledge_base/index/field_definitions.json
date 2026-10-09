@@ -1,0 +1,20 @@
+{
+  "file_id": "field_definitions",
+  "title": "Hospital Operations Field Definitions Schema",
+  "file_path": "field_definitions.json",
+  "file_type": "json",
+  "category": "field_definition",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "CORE SPECIFICATION: Hospital Operations Field Definitions Schema (field_definitions.json) for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "schema",
+    "fields",
+    "regex",
+    "smch"
+  ],
+  "source_citation": "Hospital Operations Field Definitions Schema v1.0"
+}

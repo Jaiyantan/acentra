@@ -1,0 +1,33 @@
+{
+  "sop_id": "SOP-EMG-001",
+  "title": "Emergency Department Triage and Bed Allocation",
+  "version": "2.1",
+  "department": "Emergency",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Receive patient at triage counter, record vital signs, and assign Emergency Severity Index (ESI Level 1-5)."
+    },
+    {
+      "step": 2,
+      "description": "Generate unique UHID if new patient or retrieve existing medical history via UHID search."
+    },
+    {
+      "step": 3,
+      "description": "Assign patient to acute resuscitation bay or emergency observation bed (BED-ER-01 to BED-ER-10)."
+    },
+    {
+      "step": 4,
+      "description": "Emergency physician performs primary trauma/medical assessment and enters initial diagnostic orders."
+    },
+    {
+      "step": 5,
+      "description": "Determine inpatient admission necessity and notify admitting coordinator for bed blocking."
+    }
+  ],
+  "common_blockers": [
+    "No available resuscitation beds during multi-casualty incidents",
+    "Missing guardian or patient identification for unconscious road traffic accident victims",
+    "Delay in CT Brain imaging authorization for trauma cases"
+  ]
+}

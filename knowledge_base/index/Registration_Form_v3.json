@@ -1,0 +1,25 @@
+{
+  "file_id": "Registration_Form_v3",
+  "title": "Patient Registration Form",
+  "file_path": "forms/Registration_Form_v3.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v3.0",
+  "content": "FORM: Patient Registration Form (FORM-REG-03)\nVERSION: v3.0\nFIELDS:\n- Patient Full Name\n- Age & Gender\n- Contact Number\n- Residential Address\n- Emergency Contact\n- Aadhaar Card No",
+  "tags": [
+    "form",
+    "pdf",
+    "form-reg-03",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-REG-03 Patient Registration Form v3.0"
+}

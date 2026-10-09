@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-016_Billing_Dispute_Waiver_Authority",
+  "title": "Inpatient Billing Concession and Dispute Authority Policy",
+  "file_path": "policies/POL-016_Billing_Dispute_Waiver_Authority.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Billing",
+  "applicable_roles": [
+    "billing",
+    "operations_manager"
+  ],
+  "version": "2.2",
+  "content": "POLICY: Inpatient Billing Concession and Dispute Authority Policy (POL-016)\nDEPARTMENT: Billing\nVERSION: 2.2\nROLES: billing, operations_manager\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-016",
+    "billing",
+    "billing dispute waiver authority",
+    "smch"
+  ],
+  "source_citation": "POL-016 Inpatient Billing Concession and Dispute Authority Policy v2.2"
+}

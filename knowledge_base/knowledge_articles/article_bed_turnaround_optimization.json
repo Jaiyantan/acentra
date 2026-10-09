@@ -1,0 +1,9 @@
+{
+  "article_id": "ART-004",
+  "title": "Optimizing Inpatient Bed Turnaround Time and Terminal Cleaning",
+  "category": "Housekeeping & Bed Management",
+  "author_role": "Operations Manager",
+  "last_updated": "2026-10-01",
+  "summary": "Stepwise procedures for housekeeping staff to clean, disinfect, and release beds from 'maintenance' to 'available'.",
+  "content": "Bed turnaround time (TAT) represents the duration from patient physical departure to bed status update to 'available' in the HIS. Standard TAT targets are under 45 minutes for General Ward beds and under 60 minutes for ICU isolation cubicles. The nursing supervisor must immediately flag housekeeping upon patient exit, triggering linen stripping, terminal ultraviolet surface sanitization, and bed sensor reset."
+}

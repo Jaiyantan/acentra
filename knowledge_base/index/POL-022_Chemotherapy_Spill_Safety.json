@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-022_Chemotherapy_Spill_Safety",
+  "title": "Cytotoxic Chemotherapeutic Drug Handling and Spill Policy",
+  "file_path": "policies/POL-022_Chemotherapy_Spill_Safety.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Oncology",
+  "applicable_roles": [
+    "pharmacist",
+    "nurse"
+  ],
+  "version": "2.1",
+  "content": "POLICY: Cytotoxic Chemotherapeutic Drug Handling and Spill Policy (POL-022)\nDEPARTMENT: Oncology\nVERSION: 2.1\nROLES: pharmacist, nurse\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-022",
+    "oncology",
+    "chemotherapy spill safety",
+    "smch"
+  ],
+  "source_citation": "POL-022 Cytotoxic Chemotherapeutic Drug Handling and Spill Policy v2.1"
+}

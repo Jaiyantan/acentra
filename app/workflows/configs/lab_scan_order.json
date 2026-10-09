@@ -1,0 +1,27 @@
+{
+  "workflow_id": "WF-DIAGNOSTIC-01",
+  "name": "Diagnostic Laboratory & Imaging Requisition Workflow",
+  "category": "Diagnostics",
+  "target_journey_transition": "UNDER_TREATMENT -> INVESTIGATION",
+  "allowed_roles": ["Doctor", "Specialist", "Nurse"],
+  "is_irreversible": false,
+  "description": "Places diagnostic lab or imaging order with urgency flags, sample barcoding, and automated result routing back to doctor.",
+  "steps": [
+    {
+      "step_id": "STEP_1_ORDER_ENTRY",
+      "step_name": "Diagnostic Requisition Entry",
+      "required_fields": ["uhid", "requesting_doctor_id", "test_or_modality_code", "urgency_level"],
+      "optional_fields": ["clinical_indication", "contrast_required"],
+      "action_tool": "create_diagnostic_order",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_2_BARCODE_AND_ROUTING",
+      "step_name": "Sample Barcode Generation & Worklist Dispatch",
+      "required_fields": ["sample_or_study_barcode", "specimen_type"],
+      "optional_fields": ["transit_courier_id"],
+      "action_tool": "dispatch_to_analyzer_or_pacs",
+      "irreversible": false
+    }
+  ]
+}

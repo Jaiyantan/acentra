@@ -1,0 +1,9 @@
+{
+  "article_id": "ART-002",
+  "title": "Managing Pre-Authorization Rejections and Query Turnaround Times",
+  "category": "Revenue Cycle & TPA",
+  "author_role": "Insurance TPA Head",
+  "last_updated": "2026-09-20",
+  "summary": "Protocol for handling common TPA denial codes including pre-existing illness exclusions and missing clinical justifications.",
+  "content": "When a cashless pre-authorization is rejected citing pre-existing condition exclusions (e.g. Clause 4.2), the hospital case manager must cross-reference historical duration declared on the initial assessment form against policy inception date. If the onset is within policy tenure, a consultant certificate of acute presentation without prior chronicity must be submitted with an urgent resubmission request within 2 hours."
+}

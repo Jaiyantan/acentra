@@ -1,0 +1,35 @@
+{
+  "workflow_id": "WF-ADMISSION-01",
+  "name": "Inpatient Admission & Bed Allocation Workflow",
+  "category": "Inpatient Operations",
+  "target_journey_transition": "TRIAGED -> ADMITTED",
+  "allowed_roles": ["Receptionist", "Nurse", "Admin"],
+  "is_irreversible": false,
+  "description": "Validates patient insurance/PM-JAY eligibility, collects signed consent forms, and assigns an active ward bed.",
+  "steps": [
+    {
+      "step_id": "STEP_1_INSURANCE_VERIFY",
+      "step_name": "Verify Insurance & Payment Scheme",
+      "required_fields": ["uhid", "insurance_type", "policy_or_pmjay_id"],
+      "optional_fields": ["tpa_preauth_number"],
+      "action_tool": "verify_insurance_coverage",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_2_BED_ALLOCATION",
+      "step_name": "Allocate Ward Bed & Record Room Category",
+      "required_fields": ["ward_name", "bed_no", "bed_category"],
+      "optional_fields": ["special_nursing_need"],
+      "action_tool": "allocate_inpatient_bed",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_3_CONSENT_COLLECTION",
+      "step_name": "Collect General Admission Consent",
+      "required_fields": ["consent_form_signed", "attendant_name", "attendant_contact"],
+      "optional_fields": ["dietary_preference"],
+      "action_tool": "record_admission_consent",
+      "irreversible": false
+    }
+  ]
+}

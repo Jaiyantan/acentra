@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-RES-001_Restraint_Monitoring",
+  "title": "Physical and Chemical Restraint Monitoring",
+  "file_path": "sops/SOP-RES-001_Restraint_Monitoring.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Psychiatry",
+  "applicable_roles": [
+    "doctor",
+    "nurse"
+  ],
+  "version": "2.1",
+  "content": "SOP: Physical and Chemical Restraint Monitoring (SOP-RES-001)\nDEPARTMENT: Psychiatry\nVERSION: 2.1\nROLES: doctor, nurse\nPURPOSE: Doctor order re-authorization every 12 hours and 2-hour limb checks.\nSTEPS:\nStep 1: Execute phase 1 of Physical and Chemical Restraint Monitoring in full compliance with Psychiatry hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Physical and Chemical Restraint Monitoring in full compliance with Psychiatry hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Physical and Chemical Restraint Monitoring in full compliance with Psychiatry hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Physical and Chemical Restraint Monitoring in full compliance with Psychiatry hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Physical and Chemical Restraint Monitoring in full compliance with Psychiatry hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Psychiatry.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-res-001",
+    "psychiatry",
+    "restraint monitoring",
+    "smch"
+  ],
+  "source_citation": "SOP-RES-001 Physical and Chemical Restraint Monitoring v2.1, Section 4"
+}

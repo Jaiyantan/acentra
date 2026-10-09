@@ -1,0 +1,25 @@
+{
+  "file_id": "Admission_Form_v2",
+  "title": "Inpatient Admission Form",
+  "file_path": "forms/Admission_Form_v2.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.0",
+  "content": "FORM: Inpatient Admission Form (FORM-ADM-02)\nVERSION: v2.0\nFIELDS:\n- Patient UHID\n- Admitting Doctor\n- Allocated Ward\n- Bed Number\n- Provisional Diagnosis\n- Insurance Policy No",
+  "tags": [
+    "form",
+    "pdf",
+    "form-adm-02",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-ADM-02 Inpatient Admission Form v2.0"
+}

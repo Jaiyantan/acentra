@@ -1,0 +1,25 @@
+{
+  "file_id": "Biomedical_Equipment_Uptime_Report",
+  "title": "Life-Support Equipment Uptime & Downtime",
+  "file_path": "reports/Biomedical_Equipment_Uptime_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Life-Support Equipment Uptime & Downtime\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Life-Support Equipment Uptime & Downtime v1.0, SMCH Central Reporting"
+}

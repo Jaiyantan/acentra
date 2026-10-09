@@ -1,0 +1,25 @@
+{
+  "file_id": "Insurance_Preauth_Form",
+  "title": "Cashless Insurance Pre-Authorization Requisition",
+  "file_path": "forms/Insurance_Preauth_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v4.0",
+  "content": "FORM: Cashless Insurance Pre-Authorization Requisition (FORM-INS-04)\nVERSION: v4.0\nFIELDS:\n- Patient UHID\n- Policy Number\n- TPA Name\n- Estimated Cost (Rs)\n- Preauth Sanction\n- TPA Docket ID",
+  "tags": [
+    "form",
+    "pdf",
+    "form-ins-04",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-INS-04 Cashless Insurance Pre-Authorization Requisition v4.0"
+}

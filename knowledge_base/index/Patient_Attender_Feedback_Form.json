@@ -1,0 +1,25 @@
+{
+  "file_id": "Patient_Attender_Feedback_Form",
+  "title": "Inpatient Discharge Experience & Feedback",
+  "file_path": "forms/Patient_Attender_Feedback_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.5",
+  "content": "FORM: Inpatient Discharge Experience & Feedback (FORM-CSAT-01)\nVERSION: v1.5\nFIELDS:\n- Patient UHID\n- Nursing Care Rating\n- Doctor Care Rating\n- Cleanliness Rating\n- Food Quality Rating\n- Overall Score",
+  "tags": [
+    "form",
+    "pdf",
+    "form-csat-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-CSAT-01 Inpatient Discharge Experience & Feedback v1.5"
+}

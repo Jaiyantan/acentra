@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-PHM-002_Narcotic_Drug_Control",
+  "title": "Schedule X and Narcotic Drug Control",
+  "file_path": "sops/SOP-PHM-002_Narcotic_Drug_Control.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Pharmacy",
+  "applicable_roles": [
+    "pharmacist",
+    "doctor",
+    "nurse"
+  ],
+  "version": "2.8",
+  "content": "SOP: Schedule X and Narcotic Drug Control (SOP-PHM-002)\nDEPARTMENT: Pharmacy\nVERSION: 2.8\nROLES: pharmacist, doctor, nurse\nPURPOSE: Statutory double-lock storage and physical ampoule return verification.\nSTEPS:\nStep 1: Execute phase 1 of Schedule X and Narcotic Drug Control in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Schedule X and Narcotic Drug Control in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Schedule X and Narcotic Drug Control in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Schedule X and Narcotic Drug Control in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Schedule X and Narcotic Drug Control in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Pharmacy.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-phm-002",
+    "pharmacy",
+    "narcotic drug control",
+    "smch"
+  ],
+  "source_citation": "SOP-PHM-002 Schedule X and Narcotic Drug Control v2.8, Section 4"
+}

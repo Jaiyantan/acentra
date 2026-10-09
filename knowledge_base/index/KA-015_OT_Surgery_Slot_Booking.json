@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-015_OT_Surgery_Slot_Booking",
+  "title": "How to Book an Operating Theatre Suite Slot",
+  "file_path": "knowledge_articles/KA-015_OT_Surgery_Slot_Booking.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Operation Theatre",
+  "applicable_roles": [
+    "doctor",
+    "nurse"
+  ],
+  "version": "1.6",
+  "content": "ARTICLE: How to Book an Operating Theatre Suite Slot (KA-015)\nSYSTEM: OT Scheduling\nDEPARTMENT: Operation Theatre\nVERSION: 1.6\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the OT Scheduling module to execute how to book an operating theatre suite slot safely and reliably.\nSTEPS:\nStep 1: Open the OT Scheduling client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Book an Operating Theatre Suite Slot and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Operation Theatre coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-015",
+    "ot scheduling",
+    "operation theatre",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-015 How to Book an Operating Theatre Suite Slot v1.6"
+}

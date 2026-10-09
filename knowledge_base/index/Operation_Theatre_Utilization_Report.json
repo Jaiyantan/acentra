@@ -1,0 +1,25 @@
+{
+  "file_id": "Operation_Theatre_Utilization_Report",
+  "title": "Operating Suite Utilization Hours",
+  "file_path": "reports/Operation_Theatre_Utilization_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Operating Suite Utilization Hours\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Operating Suite Utilization Hours v1.0, SMCH Central Reporting"
+}

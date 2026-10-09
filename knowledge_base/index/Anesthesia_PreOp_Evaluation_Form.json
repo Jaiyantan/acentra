@@ -1,0 +1,25 @@
+{
+  "file_id": "Anesthesia_PreOp_Evaluation_Form",
+  "title": "Pre-Anesthesia Assessment & Airway Evaluation",
+  "file_path": "forms/Anesthesia_PreOp_Evaluation_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.5",
+  "content": "FORM: Pre-Anesthesia Assessment & Airway Evaluation (FORM-ANE-01)\nVERSION: v2.5\nFIELDS:\n- Patient UHID\n- Mallampati Class\n- ASA Physical Status\n- NPO Hours Verified\n- Allergy History\n- Anesthetist ID",
+  "tags": [
+    "form",
+    "pdf",
+    "form-ane-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-ANE-01 Pre-Anesthesia Assessment & Airway Evaluation v2.5"
+}

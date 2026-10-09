@@ -1,0 +1,25 @@
+{
+  "file_id": "Hospital_Mortality_Review_Register",
+  "title": "Inpatient Mortality Audit & Root Cause",
+  "file_path": "reports/Hospital_Mortality_Review_Register.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Inpatient Mortality Audit & Root Cause\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Inpatient Mortality Audit & Root Cause v1.0, SMCH Central Reporting"
+}

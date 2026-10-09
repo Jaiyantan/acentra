@@ -1,0 +1,23 @@
+{
+  "file_id": "POL-014_Discharge_Against_Medical_Advice",
+  "title": "Patient Discharge Against Medical Advice (DAMA/LAMA) Policy",
+  "file_path": "policies/POL-014_Discharge_Against_Medical_Advice.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Admission and Discharge",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "operations_manager"
+  ],
+  "version": "2.0",
+  "content": "POLICY: Patient Discharge Against Medical Advice (DAMA/LAMA) Policy (POL-014)\nDEPARTMENT: Admission and Discharge\nVERSION: 2.0\nROLES: doctor, nurse, operations_manager\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-014",
+    "admission and discharge",
+    "discharge against medical advice",
+    "smch"
+  ],
+  "source_citation": "POL-014 Patient Discharge Against Medical Advice (DAMA/LAMA) Policy v2.0"
+}

@@ -1,0 +1,25 @@
+{
+  "file_id": "Death_Intimation_Certification_Form",
+  "title": "Hospital Death Intimation & Summary Record",
+  "file_path": "forms/Death_Intimation_Certification_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.8",
+  "content": "FORM: Hospital Death Intimation & Summary Record (FORM-DTH-01)\nVERSION: v1.8\nFIELDS:\n- Patient UHID\n- Time of Death\n- Immediate Cause\n- Antecedent Cause\n- Police Case (Y/N)\n- Mortuary Release",
+  "tags": [
+    "form",
+    "pdf",
+    "form-dth-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-DTH-01 Hospital Death Intimation & Summary Record v1.8"
+}

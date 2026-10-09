@@ -1,0 +1,25 @@
+{
+  "file_id": "Chemotherapy_Administration_Chart",
+  "title": "Cytotoxic Chemotherapy Administration Protocol",
+  "file_path": "forms/Chemotherapy_Administration_Chart.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.4",
+  "content": "FORM: Cytotoxic Chemotherapy Administration Protocol (FORM-ONC-01)\nVERSION: v2.4\nFIELDS:\n- Patient UHID\n- Chemo Regimen\n- BSA Calculation\n- Pre-Medications Given\n- Extravasation Check\n- Oncology Nurse",
+  "tags": [
+    "form",
+    "pdf",
+    "form-onc-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-ONC-01 Cytotoxic Chemotherapy Administration Protocol v2.4"
+}

@@ -1,0 +1,25 @@
+{
+  "file_id": "Doctor_OPD_Consultation_Footfall",
+  "title": "Specialist OPD Clinic Footfall Audit",
+  "file_path": "reports/Doctor_OPD_Consultation_Footfall.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Specialist OPD Clinic Footfall Audit\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Specialist OPD Clinic Footfall Audit v1.0, SMCH Central Reporting"
+}

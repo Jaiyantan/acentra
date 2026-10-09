@@ -1,0 +1,21 @@
+{
+  "file_id": "SOP-INC-001_Incident_Reporting",
+  "title": "Incident Reporting and Management Procedure",
+  "file_path": "sops/SOP-INC-001_Incident_Reporting.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Quality and Patient Safety",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "2.1",
+  "content": "SOP: Incident Reporting and Management Procedure (SOP-INC-001)\nDEPARTMENT: Quality and Patient Safety\nVERSION: 2.1\nROLES: all_staff\nPURPOSE: Non-punitive adverse event reporting within 1 hour.\nSTEPS:\nStep 1: Execute phase 1 of Incident Reporting and Management Procedure in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Incident Reporting and Management Procedure in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Incident Reporting and Management Procedure in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Incident Reporting and Management Procedure in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Incident Reporting and Management Procedure in full compliance with Quality and Patient Safety hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Quality and Patient Safety.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-inc-001",
+    "quality and patient safety",
+    "incident reporting",
+    "smch"
+  ],
+  "source_citation": "SOP-INC-001 Incident Reporting and Management Procedure v2.1, Section 4"
+}

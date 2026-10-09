@@ -1,0 +1,25 @@
+{
+  "file_id": "Narcotic_Drug_Requisition_Form",
+  "title": "Schedule X Narcotic Drug Issue Voucher",
+  "file_path": "forms/Narcotic_Drug_Requisition_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v3.1",
+  "content": "FORM: Schedule X Narcotic Drug Issue Voucher (FORM-NAR-01)\nVERSION: v3.1\nFIELDS:\n- Patient UHID\n- Drug Name & Dose\n- Prescribing Doctor\n- Administering Nurse\n- Empty Ampoule Ret\n- Pharmacist Sign",
+  "tags": [
+    "form",
+    "pdf",
+    "form-nar-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-NAR-01 Schedule X Narcotic Drug Issue Voucher v3.1"
+}

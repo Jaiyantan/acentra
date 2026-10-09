@@ -1,0 +1,20 @@
+{
+  "file_id": "Escalation_Routing_Matrix",
+  "title": "Hospital Escalation and Routing Matrix",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "xlsx",
+  "category": "routing",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "CORE SPECIFICATION: Hospital Escalation and Routing Matrix (routing_matrix/Escalation_Routing_Matrix.xlsx) for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "routing",
+    "sla",
+    "teams",
+    "smch"
+  ],
+  "source_citation": "Hospital Escalation and Routing Matrix v1.0"
+}

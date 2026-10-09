@@ -1,0 +1,24 @@
+{
+  "file_id": "SOP-ADM-001_Patient_Admission",
+  "title": "Patient Admission Procedure",
+  "file_path": "sops/SOP-ADM-001_Patient_Admission.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Admission and Discharge",
+  "applicable_roles": [
+    "front_office",
+    "admission",
+    "nurse",
+    "doctor"
+  ],
+  "version": "3.1",
+  "content": "SOP: Patient Admission Procedure (SOP-ADM-001)\nDEPARTMENT: Admission and Discharge\nVERSION: 3.1\nROLES: front_office, admission, nurse, doctor\nPURPOSE: Standardize inpatient admission workflow and bed allocation.\nSTEPS:\nStep 1: Execute phase 1 of Patient Admission Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Patient Admission Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Patient Admission Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Patient Admission Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Patient Admission Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Patient Admission Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 7: Execute phase 7 of Patient Admission Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 8: Execute phase 8 of Patient Admission Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Admission and Discharge.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-adm-001",
+    "admission and discharge",
+    "patient admission",
+    "smch"
+  ],
+  "source_citation": "SOP-ADM-001 Patient Admission Procedure v3.1, Section 4"
+}

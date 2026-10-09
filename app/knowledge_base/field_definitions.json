@@ -1,0 +1,78 @@
+{
+  "fields": {
+    "uhid": {
+      "type": "string",
+      "regex": "^SMCH-\\d{6}$",
+      "description": "Unique Universal Health Identifier issued at registration",
+      "prompt_when_missing": "Please enter the patient's 6-digit UHID (e.g. SMCH-102934)."
+    },
+    "insurance_type": {
+      "type": "enum",
+      "allowed_values": ["PM-JAY (Ayushman Bharat)", "CMCHIS (Tamil Nadu Govt)", "Star Health Insurance (TPA)", "ICICI Lombard Health (TPA)", "Self-Paying (Cash/UPI)"],
+      "description": "Category of payment or empanelled insurance scheme",
+      "prompt_when_missing": "Please specify the payment/insurance category (PM-JAY, CMCHIS, Private TPA, or Self-Paying)."
+    },
+    "policy_or_pmjay_id": {
+      "type": "string",
+      "description": "Golden Card number or Insurance Policy Number",
+      "prompt_when_missing": "Please provide the active policy number or PM-JAY Golden Card ID."
+    },
+    "consent_form_signed": {
+      "type": "boolean",
+      "description": "Verification that Form A-1 general admission consent is physically or digitally signed",
+      "prompt_when_missing": "Has the patient or legal guardian signed the General Admission Consent Form? (Yes/No)"
+    },
+    "attendant_contact": {
+      "type": "string",
+      "regex": "^\\+91-[6-9]\\d{9}$",
+      "description": "Primary emergency contact number of the patient's attendant",
+      "prompt_when_missing": "Please provide a valid 10-digit emergency contact phone number for the attendant."
+    },
+    "ward_name": {
+      "type": "string",
+      "description": "Target ward destination in SMCH (e.g. Ward 3A, Ward 4A, MICU)",
+      "prompt_when_missing": "Please choose the designated ward location for the patient."
+    },
+    "bed_no": {
+      "type": "string",
+      "description": "Specific bed identifier within the ward",
+      "prompt_when_missing": "Please provide the allocated bed number (e.g. B-04)."
+    },
+    "test_or_modality_code": {
+      "type": "string",
+      "description": "Diagnostic test identifier or imaging modality (e.g. CBC, Troponin-I, CT-Brain)",
+      "prompt_when_missing": "Please specify the exact diagnostic test or imaging investigation requested."
+    },
+    "urgency_level": {
+      "type": "enum",
+      "allowed_values": ["STAT", "ROUTINE"],
+      "description": "Priority urgency of the order",
+      "prompt_when_missing": "Is this order STAT (immediate) or ROUTINE?"
+    },
+    "allergy_check_passed": {
+      "type": "boolean",
+      "description": "Pharmacist validation that patient has no known contraindications or drug allergies",
+      "prompt_when_missing": "Please confirm that patient allergy cross-check has been performed and passed."
+    },
+    "preauth_approval_code": {
+      "type": "string",
+      "description": "TMS Portal or TPA Insurance Pre-Authorization Approval Code",
+      "prompt_when_missing": "Please enter the pre-authorization approval code issued by the insurer."
+    },
+    "approved_sum_inr": {
+      "type": "number",
+      "description": "Financial sum sanctioned by the insurer in INR",
+      "prompt_when_missing": "Please specify the total sanctioned pre-authorization amount in INR."
+    },
+    "physician_clearance_signoff": {
+      "type": "boolean",
+      "description": "Treating consultant doctor's formal signature granting medical discharge",
+      "prompt_when_missing": "Doctor sign-off required: Has the primary consultant signed the clinical discharge order?"
+    },
+    "vitals_stability_confirmed": {
+      "type": "boolean",
+      "description": "Nursing verification of hemodynamically stable vitals prior to room release",
+      "prompt_when_missing": "Nursing check required: Are patient vitals confirmed stable for discharge?"
+    }
+  }
+}

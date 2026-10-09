@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-002_MRD_Data_Privacy_Policy",
+  "title": "Medical Records Privacy and Data Governance Policy",
+  "file_path": "policies/POL-002_MRD_Data_Privacy_Policy.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Medical Records (MRD / HIM)",
+  "applicable_roles": [
+    "medical_records",
+    "doctor"
+  ],
+  "version": "2.0",
+  "content": "POLICY: Medical Records Privacy and Data Governance Policy (POL-002)\nDEPARTMENT: Medical Records (MRD / HIM)\nVERSION: 2.0\nROLES: medical_records, doctor\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-002",
+    "medical records (mrd / him)",
+    "mrd data privacy policy",
+    "smch"
+  ],
+  "source_citation": "POL-002 Medical Records Privacy and Data Governance Policy v2.0"
+}

@@ -1,0 +1,25 @@
+{
+  "file_id": "Patient_Satisfaction_CSAT_Survey_Report",
+  "title": "Patient Experience CSAT Scoring",
+  "file_path": "reports/Patient_Satisfaction_CSAT_Survey_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Patient Experience CSAT Scoring\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Patient Experience CSAT Scoring v1.0, SMCH Central Reporting"
+}

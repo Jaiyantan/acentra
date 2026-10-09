@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_010",
+  "title": "Escalation Routing Rule R-010: Bed unavailable in requested ward",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-010 -- Bed unavailable in requested ward\nTRIGGER TYPE: Data State\nCONDITION: No vacant beds matching admission\nROUTE TO: Operations Management (Extension 1032)\nQUEUE: QUEUE_FACILITY\nPRIORITY: HIGH\nSLA: 1.0 hour(s)\nESCALATION RATIONALE: Requires buffer override or inter-ward transfer by Operations Manager ext. 1032.\nEXAMPLE QUERY 1: Zero ICU beds available for emergency patient\nEXAMPLE QUERY 2: Need General Ward bed but all 15 occupied",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-010",
+    "data state",
+    "queue_facility",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-010 (Bed unavailable in requested ward) v1.0"
+}

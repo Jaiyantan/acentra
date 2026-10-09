@@ -1,0 +1,9 @@
+{
+  "article_id": "ART-005",
+  "title": "Protocol for Unalerted Critical Panic Laboratory Results",
+  "category": "Laboratory & Quality Assurance",
+  "author_role": "Quality Manager",
+  "last_updated": "2026-10-05",
+  "summary": "Mitigating patient safety hazards caused by unalerted critical diagnostic flags in electronic health systems.",
+  "content": "A high-risk patient safety event occurs when an electronic lab result is flagged as critical (critical_value_flag = true) but the critical_value_alerted field remains false after 30 minutes. Whenever this data state occurs, an automated safety audit query triggers an urgent incident notification to the treating consultant mobile terminal and copies the Chief Medical Officer to prevent delayed medical intervention."
+}

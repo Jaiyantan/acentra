@@ -1,0 +1,25 @@
+{
+  "file_id": "Discharge_Checklist_Form",
+  "title": "Four-Point Discharge Clearance Checklist",
+  "file_path": "forms/Discharge_Checklist_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.4",
+  "content": "FORM: Four-Point Discharge Clearance Checklist (FORM-DIS-02)\nVERSION: v2.4\nFIELDS:\n- Patient UHID\n- Admission ID\n- Doctor Order (Y/N)\n- Billing Cleared (Y/N)\n- Pharmacy Cleared\n- Nursing Cleared",
+  "tags": [
+    "form",
+    "pdf",
+    "form-dis-02",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-DIS-02 Four-Point Discharge Clearance Checklist v2.4"
+}

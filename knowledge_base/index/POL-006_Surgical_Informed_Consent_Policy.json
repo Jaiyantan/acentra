@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-006_Surgical_Informed_Consent_Policy",
+  "title": "Informed Surgical and Anesthesia Consent Policy",
+  "file_path": "policies/POL-006_Surgical_Informed_Consent_Policy.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Operation Theatre",
+  "applicable_roles": [
+    "doctor",
+    "nurse"
+  ],
+  "version": "3.0",
+  "content": "POLICY: Informed Surgical and Anesthesia Consent Policy (POL-006)\nDEPARTMENT: Operation Theatre\nVERSION: 3.0\nROLES: doctor, nurse\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-006",
+    "operation theatre",
+    "surgical informed consent policy",
+    "smch"
+  ],
+  "source_citation": "POL-006 Informed Surgical and Anesthesia Consent Policy v3.0"
+}

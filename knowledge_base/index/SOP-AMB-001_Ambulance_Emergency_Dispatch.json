@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-AMB-001_Ambulance_Emergency_Dispatch",
+  "title": "Emergency Ambulance Dispatch and Fleet Ops",
+  "file_path": "sops/SOP-AMB-001_Ambulance_Emergency_Dispatch.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Emergency Department",
+  "applicable_roles": [
+    "driver",
+    "paramedic",
+    "emergency_team"
+  ],
+  "version": "2.4",
+  "content": "SOP: Emergency Ambulance Dispatch and Fleet Ops (SOP-AMB-001)\nDEPARTMENT: Emergency Department\nVERSION: 2.4\nROLES: driver, paramedic, emergency_team\nPURPOSE: Dispatch ALS ambulance within 5 minutes of emergency call receipt.\nSTEPS:\nStep 1: Execute phase 1 of Emergency Ambulance Dispatch and Fleet Ops in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Emergency Ambulance Dispatch and Fleet Ops in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Emergency Ambulance Dispatch and Fleet Ops in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Emergency Ambulance Dispatch and Fleet Ops in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Emergency Ambulance Dispatch and Fleet Ops in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Emergency Department.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-amb-001",
+    "emergency department",
+    "ambulance emergency dispatch",
+    "smch"
+  ],
+  "source_citation": "SOP-AMB-001 Emergency Ambulance Dispatch and Fleet Ops v2.4, Section 4"
+}

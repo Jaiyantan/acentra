@@ -1,0 +1,25 @@
+{
+  "file_id": "Pharmacy_Stockout_Expiry_Report",
+  "title": "Inpatient Pharmacy Stockout & Expiry Audit",
+  "file_path": "reports/Pharmacy_Stockout_Expiry_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Inpatient Pharmacy Stockout & Expiry Audit\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Inpatient Pharmacy Stockout & Expiry Audit v1.0, SMCH Central Reporting"
+}

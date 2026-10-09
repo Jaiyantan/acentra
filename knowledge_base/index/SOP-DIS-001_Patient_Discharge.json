@@ -1,0 +1,25 @@
+{
+  "file_id": "SOP-DIS-001_Patient_Discharge",
+  "title": "Patient Discharge Procedure",
+  "file_path": "sops/SOP-DIS-001_Patient_Discharge.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Admission and Discharge",
+  "applicable_roles": [
+    "discharge",
+    "billing",
+    "pharmacist",
+    "nurse",
+    "doctor"
+  ],
+  "version": "2.4",
+  "content": "SOP: Patient Discharge Procedure (SOP-DIS-001)\nDEPARTMENT: Admission and Discharge\nVERSION: 2.4\nROLES: discharge, billing, pharmacist, nurse, doctor\nPURPOSE: Execute 4-point discharge clearance and safe clinical handover.\nSTEPS:\nStep 1: Execute phase 1 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\nStep 7: Execute phase 7 of Patient Discharge Procedure in full compliance with Admission and Discharge hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Admission and Discharge.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-dis-001",
+    "admission and discharge",
+    "patient discharge",
+    "smch"
+  ],
+  "source_citation": "SOP-DIS-001 Patient Discharge Procedure v2.4, Section 4"
+}

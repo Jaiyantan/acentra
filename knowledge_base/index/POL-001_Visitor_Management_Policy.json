@@ -1,0 +1,21 @@
+{
+  "file_id": "POL-001_Visitor_Management_Policy",
+  "title": "Hospital Visitor and Attender Management Policy",
+  "file_path": "policies/POL-001_Visitor_Management_Policy.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Operations",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.3",
+  "content": "POLICY: Hospital Visitor and Attender Management Policy (POL-001)\nDEPARTMENT: Operations\nVERSION: 1.3\nROLES: all_staff\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-001",
+    "operations",
+    "visitor management policy",
+    "smch"
+  ],
+  "source_citation": "POL-001 Hospital Visitor and Attender Management Policy v1.3"
+}

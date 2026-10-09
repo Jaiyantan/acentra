@@ -1,0 +1,27 @@
+{
+  "workflow_id": "WF-PHARM-01",
+  "name": "Medication Validation & Pharmacy Dispensing Workflow",
+  "category": "Pharmacy Operations",
+  "target_journey_transition": "UNDER_TREATMENT -> UNDER_TREATMENT",
+  "allowed_roles": ["Pharmacist"],
+  "is_irreversible": false,
+  "description": "Cross-checks prescriptions against known patient allergies, drug-drug interactions (DDI), checks stock, and logs batch numbers.",
+  "steps": [
+    {
+      "step_id": "STEP_1_PRESCRIPTION_VALIDATION",
+      "step_name": "Validate Prescription & Cross-Check Allergies",
+      "required_fields": ["rx_id", "uhid", "pharmacist_id", "allergy_check_passed"],
+      "optional_fields": ["ddi_severity_notes"],
+      "action_tool": "validate_prescription_safety",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_2_INVENTORY_DISPENSE",
+      "step_name": "Decrement Stock & Record Batch/Expiry",
+      "required_fields": ["item_id", "batch_no", "qty_dispensed", "expiry_date_verified"],
+      "optional_fields": ["storage_location"],
+      "action_tool": "dispense_medication_inventory",
+      "irreversible": false
+    }
+  ]
+}

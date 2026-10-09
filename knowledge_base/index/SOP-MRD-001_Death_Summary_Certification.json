@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-MRD-001_Death_Summary_Certification",
+  "title": "Inpatient Death Summary and Handover",
+  "file_path": "sops/SOP-MRD-001_Death_Summary_Certification.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Medical Records (MRD / HIM)",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "medical_records"
+  ],
+  "version": "2.3",
+  "content": "SOP: Inpatient Death Summary and Handover (SOP-MRD-001)\nDEPARTMENT: Medical Records (MRD / HIM)\nVERSION: 2.3\nROLES: doctor, nurse, medical_records\nPURPOSE: Clinical death certification and dignified mortuary handover.\nSTEPS:\nStep 1: Execute phase 1 of Inpatient Death Summary and Handover in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Inpatient Death Summary and Handover in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Inpatient Death Summary and Handover in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Inpatient Death Summary and Handover in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Inpatient Death Summary and Handover in full compliance with Medical Records (MRD / HIM) hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Medical Records (MRD / HIM).\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-mrd-001",
+    "medical records (mrd / him)",
+    "death summary certification",
+    "smch"
+  ],
+  "source_citation": "SOP-MRD-001 Inpatient Death Summary and Handover v2.3, Section 4"
+}

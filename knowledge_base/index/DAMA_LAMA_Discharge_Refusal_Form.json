@@ -1,0 +1,25 @@
+{
+  "file_id": "DAMA_LAMA_Discharge_Refusal_Form",
+  "title": "Discharge Against Medical Advice (DAMA/LAMA)",
+  "file_path": "forms/DAMA_LAMA_Discharge_Refusal_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.1",
+  "content": "FORM: Discharge Against Medical Advice (DAMA/LAMA) (FORM-DAM-01)\nVERSION: v2.1\nFIELDS:\n- Patient UHID\n- Clinical Warnings\n- Refusal Rationale\n- Complication Risks\n- Attender Signature\n- Witness Name",
+  "tags": [
+    "form",
+    "pdf",
+    "form-dam-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-DAM-01 Discharge Against Medical Advice (DAMA/LAMA) v2.1"
+}

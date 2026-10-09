@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_013",
+  "title": "Escalation Routing Rule R-013: Patient complaint about staff",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Quality and Patient Safety",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-013 -- Patient complaint about staff\nTRIGGER TYPE: Grievance\nCONDITION: Attender registers formal service complaint\nROUTE TO: Quality and Patient Safety (Extension 1032)\nQUEUE: QUEUE_QUALITY\nPRIORITY: HIGH\nSLA: 4.0 hour(s)\nESCALATION RATIONALE: Patient satisfaction and NABH compliance. Log in Quality Portal, dispatch to Quality Manager ext. 1032.\nEXAMPLE QUERY 1: Attender complained of delay in breakfast\nEXAMPLE QUERY 2: Complaint regarding rude behavior at counter",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-013",
+    "grievance",
+    "queue_quality",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-013 (Patient complaint about staff) v1.0"
+}

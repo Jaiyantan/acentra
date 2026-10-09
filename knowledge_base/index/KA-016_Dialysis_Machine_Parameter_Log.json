@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-016_Dialysis_Machine_Parameter_Log",
+  "title": "How to Log Dialysis Ultrafiltration and Dialysate Flow",
+  "file_path": "knowledge_articles/KA-016_Dialysis_Machine_Parameter_Log.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Nephrology and Dialysis",
+  "applicable_roles": [
+    "dialysis_tech",
+    "doctor"
+  ],
+  "version": "2.2",
+  "content": "ARTICLE: How to Log Dialysis Ultrafiltration and Dialysate Flow (KA-016)\nSYSTEM: Dialysis System\nDEPARTMENT: Nephrology and Dialysis\nVERSION: 2.2\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the Dialysis System module to execute how to log dialysis ultrafiltration and dialysate flow safely and reliably.\nSTEPS:\nStep 1: Open the Dialysis System client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Log Dialysis Ultrafiltration and Dialysate Flow and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Nephrology and Dialysis coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-016",
+    "dialysis system",
+    "nephrology and dialysis",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-016 How to Log Dialysis Ultrafiltration and Dialysate Flow v2.2"
+}

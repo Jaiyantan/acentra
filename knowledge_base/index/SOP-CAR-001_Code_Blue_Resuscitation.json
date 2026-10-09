@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-CAR-001_Code_Blue_Resuscitation",
+  "title": "Cardiopulmonary Arrest Code Blue Response",
+  "file_path": "sops/SOP-CAR-001_Code_Blue_Resuscitation.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Cardiology",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "icu_team"
+  ],
+  "version": "3.5",
+  "content": "SOP: Cardiopulmonary Arrest Code Blue Response (SOP-CAR-001)\nDEPARTMENT: Cardiology\nVERSION: 3.5\nROLES: doctor, nurse, icu_team\nPURPOSE: Mobilize crash cart and emergency airway team under 3 minutes.\nSTEPS:\nStep 1: Execute phase 1 of Cardiopulmonary Arrest Code Blue Response in full compliance with Cardiology hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Cardiopulmonary Arrest Code Blue Response in full compliance with Cardiology hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Cardiopulmonary Arrest Code Blue Response in full compliance with Cardiology hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Cardiopulmonary Arrest Code Blue Response in full compliance with Cardiology hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Cardiopulmonary Arrest Code Blue Response in full compliance with Cardiology hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Cardiopulmonary Arrest Code Blue Response in full compliance with Cardiology hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Cardiology.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-car-001",
+    "cardiology",
+    "code blue resuscitation",
+    "smch"
+  ],
+  "source_citation": "SOP-CAR-001 Cardiopulmonary Arrest Code Blue Response v3.5, Section 4"
+}

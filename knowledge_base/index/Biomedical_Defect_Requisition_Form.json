@@ -1,0 +1,25 @@
+{
+  "file_id": "Biomedical_Defect_Requisition_Form",
+  "title": "Biomedical Equipment Fault & Repair Slip",
+  "file_path": "forms/Biomedical_Defect_Requisition_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.6",
+  "content": "FORM: Biomedical Equipment Fault & Repair Slip (FORM-BME-01)\nVERSION: v1.6\nFIELDS:\n- Device Asset Tag\n- Ward / ICU Bed\n- Defect Description\n- Safety Hazard (Y/N)\n- Replacement Given\n- Engineer Status",
+  "tags": [
+    "form",
+    "pdf",
+    "form-bme-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-BME-01 Biomedical Equipment Fault & Repair Slip v1.6"
+}

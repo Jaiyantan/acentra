@@ -1,0 +1,25 @@
+{
+  "file_id": "Transfer_Form",
+  "title": "Patient Bed and Ward Transfer Form",
+  "file_path": "forms/Transfer_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.3",
+  "content": "FORM: Patient Bed and Ward Transfer Form (FORM-TRF-01)\nVERSION: v1.3\nFIELDS:\n- Patient UHID\n- Current Bed ID\n- Destination Bed ID\n- Transfer Type\n- Vitals at Handover\n- Nurse Signature",
+  "tags": [
+    "form",
+    "pdf",
+    "form-trf-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-TRF-01 Patient Bed and Ward Transfer Form v1.3"
+}

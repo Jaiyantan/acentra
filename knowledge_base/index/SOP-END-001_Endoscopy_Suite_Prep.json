@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-END-001_Endoscopy_Suite_Prep",
+  "title": "Endoscopy and Colonoscopy Procedure Protocol",
+  "file_path": "sops/SOP-END-001_Endoscopy_Suite_Prep.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Gastroenterology",
+  "applicable_roles": [
+    "doctor",
+    "endoscopy_nurse"
+  ],
+  "version": "1.8",
+  "content": "SOP: Endoscopy and Colonoscopy Procedure Protocol (SOP-END-001)\nDEPARTMENT: Gastroenterology\nVERSION: 1.8\nROLES: doctor, endoscopy_nurse\nPURPOSE: Patient conscious sedation monitoring and enzymatic scope disinfection.\nSTEPS:\nStep 1: Execute phase 1 of Endoscopy and Colonoscopy Procedure Protocol in full compliance with Gastroenterology hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Endoscopy and Colonoscopy Procedure Protocol in full compliance with Gastroenterology hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Endoscopy and Colonoscopy Procedure Protocol in full compliance with Gastroenterology hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Endoscopy and Colonoscopy Procedure Protocol in full compliance with Gastroenterology hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Endoscopy and Colonoscopy Procedure Protocol in full compliance with Gastroenterology hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Endoscopy and Colonoscopy Procedure Protocol in full compliance with Gastroenterology hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Gastroenterology.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-end-001",
+    "gastroenterology",
+    "endoscopy suite prep",
+    "smch"
+  ],
+  "source_citation": "SOP-END-001 Endoscopy and Colonoscopy Procedure Protocol v1.8, Section 4"
+}

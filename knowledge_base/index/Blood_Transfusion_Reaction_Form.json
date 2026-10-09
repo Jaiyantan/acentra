@@ -1,0 +1,25 @@
+{
+  "file_id": "Blood_Transfusion_Reaction_Form",
+  "title": "Adverse Transfusion Reaction Investigation",
+  "file_path": "forms/Blood_Transfusion_Reaction_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.7",
+  "content": "FORM: Adverse Transfusion Reaction Investigation (FORM-BTR-01)\nVERSION: v1.7\nFIELDS:\n- Patient UHID\n- Bag Number\n- Symptoms Observed\n- Stop Time\n- Urine Free Hb\n- Pathologist Report",
+  "tags": [
+    "form",
+    "pdf",
+    "form-btr-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-BTR-01 Adverse Transfusion Reaction Investigation v1.7"
+}

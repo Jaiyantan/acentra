@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_014",
+  "title": "Escalation Routing Rule R-014: Narcotic drug query",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Clinical Review",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-014 -- Narcotic drug query\nTRIGGER TYPE: Drug Schedule\nCONDITION: Schedule X or controlled substance query\nROUTE TO: Clinical Review (Extension 1012)\nQUEUE: QUEUE_CLINICAL\nPRIORITY: URGENT\nSLA: 0.5 hour(s)\nESCALATION RATIONALE: Statutory narcotic register compliance and dual sign-off required. Schedule X requires consultant prescription and dual-nurse witnessing. Contact Clinical Review ext. 1012.\nEXAMPLE QUERY 1: Need emergency dose of Inj Morphine 10mg\nEXAMPLE QUERY 2: How do I request Fentanyl ampoule?",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-014",
+    "drug schedule",
+    "queue_clinical",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-014 (Narcotic drug query) v1.0"
+}

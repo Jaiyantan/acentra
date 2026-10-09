@@ -1,0 +1,25 @@
+{
+  "file_id": "Discharge_Clearance_Status_Report_Template",
+  "title": "Four-Point Discharge Clearance Audit",
+  "file_path": "reports/Discharge_Clearance_Status_Report_Template.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Four-Point Discharge Clearance Audit\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Four-Point Discharge Clearance Audit v1.0, SMCH Central Reporting"
+}

@@ -1,0 +1,22 @@
+{
+  "file_id": "KA-023_Biometric_Aadhaar_eKYC_Verify",
+  "title": "How to Execute Biometric Aadhaar Verification at OPD Counter",
+  "file_path": "knowledge_articles/KA-023_Biometric_Aadhaar_eKYC_Verify.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Front Office and Registration",
+  "applicable_roles": [
+    "front_office"
+  ],
+  "version": "2.2",
+  "content": "ARTICLE: How to Execute Biometric Aadhaar Verification at OPD Counter (KA-023)\nSYSTEM: Registration Terminal\nDEPARTMENT: Front Office and Registration\nVERSION: 2.2\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the Registration Terminal module to execute how to execute biometric aadhaar verification at opd counter safely and reliably.\nSTEPS:\nStep 1: Open the Registration Terminal client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Execute Biometric Aadhaar Verification at OPD Counter and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Front Office and Registration coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-023",
+    "registration terminal",
+    "front office and registration",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-023 How to Execute Biometric Aadhaar Verification at OPD Counter v2.2"
+}

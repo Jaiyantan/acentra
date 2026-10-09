@@ -1,0 +1,22 @@
+{
+  "file_id": "KA-011_EMR_Doctor_Clinical_Notes",
+  "title": "How to Document Daily Progress Notes in the EMR",
+  "file_path": "knowledge_articles/KA-011_EMR_Doctor_Clinical_Notes.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Clinical Services",
+  "applicable_roles": [
+    "doctor"
+  ],
+  "version": "2.1",
+  "content": "ARTICLE: How to Document Daily Progress Notes in the EMR (KA-011)\nSYSTEM: EMR System\nDEPARTMENT: Clinical Services\nVERSION: 2.1\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the EMR System module to execute how to document daily progress notes in the emr safely and reliably.\nSTEPS:\nStep 1: Open the EMR System client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Document Daily Progress Notes in the EMR and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Clinical Services coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-011",
+    "emr system",
+    "clinical services",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-011 How to Document Daily Progress Notes in the EMR v2.1"
+}

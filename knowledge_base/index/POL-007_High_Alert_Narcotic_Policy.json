@@ -1,0 +1,23 @@
+{
+  "file_id": "POL-007_High_Alert_Narcotic_Policy",
+  "title": "Schedule X and High-Alert Medication Custody Policy",
+  "file_path": "policies/POL-007_High_Alert_Narcotic_Policy.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Pharmacy",
+  "applicable_roles": [
+    "pharmacist",
+    "nurse",
+    "doctor"
+  ],
+  "version": "2.8",
+  "content": "POLICY: Schedule X and High-Alert Medication Custody Policy (POL-007)\nDEPARTMENT: Pharmacy\nVERSION: 2.8\nROLES: pharmacist, nurse, doctor\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-007",
+    "pharmacy",
+    "high alert narcotic policy",
+    "smch"
+  ],
+  "source_citation": "POL-007 Schedule X and High-Alert Medication Custody Policy v2.8"
+}

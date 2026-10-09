@@ -1,0 +1,122 @@
+[
+  {
+    "article_id": "KB-ADM-101",
+    "title": "Inpatient Admission Criteria, Bed Allocation & Consent Protocol",
+    "department": "Inpatient Operations",
+    "policy_code": "SMCH-SOP-ADM-101",
+    "effective_date": "2026-01-15",
+    "citation_tag": "SMCH Policy Manual §ADM.101",
+    "sections": [
+      {
+        "section_id": "SEC-1",
+        "title": "Admission Documentation & Consent Verification",
+        "content": "Every inpatient admission requires a validated UHID, government-issued photo identity proof, signed General Admission Consent Form (Form A-1), and primary attendant contact details. If the patient is incapacitated, consent must be executed by the legal next of kin.",
+        "allowed_roles": ["Receptionist", "Nurse", "Doctor", "Admin"]
+      },
+      {
+        "section_id": "SEC-2",
+        "title": "Bed Allocation & Category Eligibility",
+        "content": "General Ward beds (Wards 3A, 3B, 4A, 5A) are assigned directly under PM-JAY and CMCHIS schemes with zero upfront deposit. Private Deluxe rooms (Ward 7B) require insurer TPA pre-authorization or an initial room tariff deposit of ₹15,000 INR.",
+        "allowed_roles": ["Receptionist", "Billing Staff", "Admin"]
+      }
+    ]
+  },
+  {
+    "article_id": "KB-INS-204",
+    "title": "PM-JAY (Ayushman Bharat) Pre-Authorization & TMS Guidelines",
+    "department": "Billing & Insurance",
+    "policy_code": "SMCH-SOP-INS-204",
+    "effective_date": "2026-02-01",
+    "citation_tag": "SMCH Insurance Manual §PMJAY.204",
+    "sections": [
+      {
+        "section_id": "SEC-1",
+        "title": "Golden Card Verification & Pre-Auth Turnaround",
+        "content": "PM-JAY pre-authorization must be submitted via the National Health Authority Transaction Management System (TMS) within 24 hours of emergency admission and prior to planned surgical procedures. Mandated documents include Golden Card number, clinical summary, and admitting ICD-10 code.",
+        "allowed_roles": ["Billing Staff", "Admin"]
+      },
+      {
+        "section_id": "SEC-2",
+        "title": "Irreversible Financial Authorization Gate",
+        "content": "Claim settlement approvals exceeding ₹25,000 INR cannot be finalized by automated systems or operational assistants. Final financial sign-off requires explicit verification by the Medical Superintendent or Authorized Hospital Administrator.",
+        "allowed_roles": ["Admin"]
+      }
+    ]
+  },
+  {
+    "article_id": "KB-PHARM-302",
+    "title": "Schedule X Controlled Substances & High-Alert Medication Dispensing",
+    "department": "Pharmacy Operations",
+    "policy_code": "SMCH-SOP-PHARM-302",
+    "effective_date": "2026-03-10",
+    "citation_tag": "SMCH Pharmacy Formulary §PHARM.302",
+    "sections": [
+      {
+        "section_id": "SEC-1",
+        "title": "Narcotic Register Maintenance (Morphine & Fentanyl)",
+        "content": "Schedule X drugs require physical counter-signing by the prescribing consultant and administering staff nurse. Daily ampoule reconciliation is mandatory before shift turnover. Assistant tools may verify stock counts but must never authorize narcotic dispensing autonomously.",
+        "allowed_roles": ["Pharmacist", "Doctor", "Admin"]
+      },
+      {
+        "section_id": "SEC-2",
+        "title": "Look-Alike Sound-Alike (LASA) Independent Double Check",
+        "content": "High-alert medications (Heparin, Potassium Chloride, Epinephrine) mandate an independent double-check by two licensed healthcare workers prior to injection to prevent fatal dosage swap incidents.",
+        "allowed_roles": ["Pharmacist", "Nurse", "Doctor"]
+      }
+    ]
+  },
+  {
+    "article_id": "KB-EMERG-401",
+    "title": "Emergency Department Triage & Door-to-Doctor Standards",
+    "department": "Emergency Medicine",
+    "policy_code": "SMCH-SOP-ED-401",
+    "effective_date": "2026-01-20",
+    "citation_tag": "NABH Emergency Standards §ED.401",
+    "sections": [
+      {
+        "section_id": "SEC-1",
+        "title": "Triage Priority Classification",
+        "content": "P1 (Resuscitation) requires immediate doctor evaluation within 0 minutes. P2 (Emergent) requires evaluation within 15 minutes. P3 (Non-urgent) requires evaluation within 60 minutes. Ambulance telemetry handovers must be logged into the emergency ledger within 5 minutes of arrival.",
+        "allowed_roles": ["Nurse", "Doctor", "Admin"]
+      }
+    ]
+  },
+  {
+    "article_id": "KB-MRD-505",
+    "title": "Medical Records Privacy, MLC Intimations & Access Restrictions",
+    "department": "Medical Records",
+    "policy_code": "SMCH-SOP-MRD-505",
+    "effective_date": "2026-04-01",
+    "citation_tag": "SMCH MRD Confidentiality §MRD.505",
+    "sections": [
+      {
+        "section_id": "SEC-1",
+        "title": "Role-Based Record Disclosure Restrictions",
+        "content": "Clinical notes, psychiatric evaluations, and HIV/serology results are strictly confidential. Non-clinical staff (Billing, Receptionists) must never be furnished full clinical case sheets. Medico-Legal Case (MLC) records can only be unsealed upon formal written subpoena by the Investigating Police Officer or Court Order.",
+        "allowed_roles": ["Doctor", "Specialist", "Admin"]
+      }
+    ]
+  },
+  {
+    "article_id": "KB-CARD-601",
+    "title": "Post-Percutaneous Coronary Intervention (PCI) Observation & Discharge Protocol",
+    "department": "Cardiology & Cath Lab",
+    "policy_code": "SMCH-SOP-CARD-601",
+    "effective_date": "2026-03-01",
+    "citation_tag": "SMCH Cardiology SOP §CARD.601",
+    "sections": [
+      {
+        "section_id": "SEC-1",
+        "title": "Post-PCI Sheath Removal & Bedside Hemostasis Observation",
+        "content": "Following elective percutaneous coronary intervention (PCI), patients must undergo a minimum of 24 hours of continuous telemetry cardiac monitoring. Femoral access sites require 6 hours of strict bed rest post manual compression or closure device deployment. Radial access wrist bands must be gradually deflated over 2 to 4 hours per hemodynamic protocol.",
+        "allowed_roles": ["Nurse", "Doctor", "Specialist", "Admin"]
+      },
+      {
+        "section_id": "SEC-2",
+        "title": "Clinical Discharge Clearance Criteria & Dual Antiplatelet Therapy",
+        "content": "Discharge clearance requires stable 12-lead ECG without ischemic changes, access site free of hematoma or bruit, ambulation tolerance without dyspnea, and verified initiation of Dual Antiplatelet Therapy (DAPT: Aspirin + Ticagrelor/Clopidogrel). Discharge summary must be signed by the primary Interventional Cardiologist.",
+        "allowed_roles": ["Doctor", "Specialist", "Admin"]
+      }
+    ]
+  }
+]

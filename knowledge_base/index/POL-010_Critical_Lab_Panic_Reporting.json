@@ -1,0 +1,23 @@
+{
+  "file_id": "POL-010_Critical_Lab_Panic_Reporting",
+  "title": "Critical Panic Laboratory Values Notification Policy",
+  "file_path": "policies/POL-010_Critical_Lab_Panic_Reporting.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Laboratory Operations",
+  "applicable_roles": [
+    "lab_tech",
+    "doctor",
+    "nurse"
+  ],
+  "version": "3.1",
+  "content": "POLICY: Critical Panic Laboratory Values Notification Policy (POL-010)\nDEPARTMENT: Laboratory Operations\nVERSION: 3.1\nROLES: lab_tech, doctor, nurse\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-010",
+    "laboratory operations",
+    "critical lab panic reporting",
+    "smch"
+  ],
+  "source_citation": "POL-010 Critical Panic Laboratory Values Notification Policy v3.1"
+}

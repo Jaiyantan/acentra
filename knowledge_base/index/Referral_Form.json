@@ -1,0 +1,25 @@
+{
+  "file_id": "Referral_Form",
+  "title": "Inter-Departmental Clinical Referral Form",
+  "file_path": "forms/Referral_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.2",
+  "content": "FORM: Inter-Departmental Clinical Referral Form (FORM-REF-01)\nVERSION: v1.2\nFIELDS:\n- Patient UHID\n- Referring Doctor\n- Referred Specialty\n- Urgency (Routine/STAT)\n- Clinical Summary\n- Specialist Notes",
+  "tags": [
+    "form",
+    "pdf",
+    "form-ref-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-REF-01 Inter-Departmental Clinical Referral Form v1.2"
+}

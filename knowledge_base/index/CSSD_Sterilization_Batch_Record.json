@@ -1,0 +1,25 @@
+{
+  "file_id": "CSSD_Sterilization_Batch_Record",
+  "title": "CSSD Autoclave Biological Indicator Log",
+  "file_path": "forms/CSSD_Sterilization_Batch_Record.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.0",
+  "content": "FORM: CSSD Autoclave Biological Indicator Log (FORM-CSS-01)\nVERSION: v2.0\nFIELDS:\n- Autoclave Chamber\n- Cycle Number\n- Biological Spore Pass\n- Chemical Integrator\n- Tray Barcode List\n- CSSD Supervisor",
+  "tags": [
+    "form",
+    "pdf",
+    "form-css-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-CSS-01 CSSD Autoclave Biological Indicator Log v2.0"
+}

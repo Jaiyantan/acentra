@@ -1,0 +1,25 @@
+{
+  "file_id": "Ambulance_Emergency_Trip_Sheet",
+  "title": "ALS Ambulance Trip & Pre-Hospital Care Record",
+  "file_path": "forms/Ambulance_Emergency_Trip_Sheet.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.0",
+  "content": "FORM: ALS Ambulance Trip & Pre-Hospital Care Record (FORM-AMB-01)\nVERSION: v2.0\nFIELDS:\n- Patient UHID / Name\n- Dispatch Time\n- On-Scene Vitals\n- Interventions Given\n- Arrival Hospital\n- Paramedic Sign",
+  "tags": [
+    "form",
+    "pdf",
+    "form-amb-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-AMB-01 ALS Ambulance Trip & Pre-Hospital Care Record v2.0"
+}

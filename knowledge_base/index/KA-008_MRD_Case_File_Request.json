@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-008_MRD_Case_File_Request",
+  "title": "How to Request a Physical Patient Case File from Medical Records",
+  "file_path": "knowledge_articles/KA-008_MRD_Case_File_Request.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Medical Records (MRD / HIM)",
+  "applicable_roles": [
+    "doctor",
+    "medical_records"
+  ],
+  "version": "1.5",
+  "content": "ARTICLE: How to Request a Physical Patient Case File from Medical Records (KA-008)\nSYSTEM: MRD Archive\nDEPARTMENT: Medical Records (MRD / HIM)\nVERSION: 1.5\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the MRD Archive module to execute how to request a physical patient case file from medical records safely and reliably.\nSTEPS:\nStep 1: Open the MRD Archive client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Request a Physical Patient Case File from Medical Records and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Medical Records (MRD / HIM) coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-008",
+    "mrd archive",
+    "medical records (mrd / him)",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-008 How to Request a Physical Patient Case File from Medical Records v1.5"
+}

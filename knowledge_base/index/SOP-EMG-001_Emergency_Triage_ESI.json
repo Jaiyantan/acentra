@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-EMG-001_Emergency_Triage_ESI",
+  "title": "Emergency Department Triage and Resuscitation",
+  "file_path": "sops/SOP-EMG-001_Emergency_Triage_ESI.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Emergency Department",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "triage_officer"
+  ],
+  "version": "3.0",
+  "content": "SOP: Emergency Department Triage and Resuscitation (SOP-EMG-001)\nDEPARTMENT: Emergency Department\nVERSION: 3.0\nROLES: doctor, nurse, triage_officer\nPURPOSE: Categorize arrivals into ESI Levels 1 to 5 and direct to resuscitation bay.\nSTEPS:\nStep 1: Execute phase 1 of Emergency Department Triage and Resuscitation in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Emergency Department Triage and Resuscitation in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Emergency Department Triage and Resuscitation in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Emergency Department Triage and Resuscitation in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Emergency Department Triage and Resuscitation in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Emergency Department Triage and Resuscitation in full compliance with Emergency Department hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Emergency Department.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-emg-001",
+    "emergency department",
+    "emergency triage esi",
+    "smch"
+  ],
+  "source_citation": "SOP-EMG-001 Emergency Department Triage and Resuscitation v3.0, Section 4"
+}

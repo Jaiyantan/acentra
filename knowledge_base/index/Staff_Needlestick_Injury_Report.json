@@ -1,0 +1,25 @@
+{
+  "file_id": "Staff_Needlestick_Injury_Report",
+  "title": "Occupational Needlestick / Sharps Exposure",
+  "file_path": "forms/Staff_Needlestick_Injury_Report.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v2.1",
+  "content": "FORM: Occupational Needlestick / Sharps Exposure (FORM-NSI-01)\nVERSION: v2.1\nFIELDS:\n- Staff ID & Name\n- Exposure Source UHID\n- Device Involved\n- First Aid Administered\n- HIV/HBV Source Stat\n- Infection Lead",
+  "tags": [
+    "form",
+    "pdf",
+    "form-nsi-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-NSI-01 Occupational Needlestick / Sharps Exposure v2.1"
+}

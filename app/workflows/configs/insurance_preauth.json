@@ -1,0 +1,36 @@
+{
+  "workflow_id": "WF-INSURANCE-01",
+  "name": "Insurance Pre-Authorization & PM-JAY Claim Workflow",
+  "category": "Revenue Cycle",
+  "target_journey_transition": "ADMITTED -> UNDER_TREATMENT",
+  "allowed_roles": ["Billing Staff", "Admin"],
+  "is_irreversible": true,
+  "approval_role": "Admin",
+  "description": "Checks insurer policy eligibility, submits TMS portal pre-auth, and executes final financial claim approval gated by human verification.",
+  "steps": [
+    {
+      "step_id": "STEP_1_ELIGIBILITY_LOOKUP",
+      "step_name": "Verify Coverage Eligibility & Scheme Code",
+      "required_fields": ["uhid", "insurance_scheme", "policy_number", "estimated_amount_inr"],
+      "optional_fields": ["tpa_contact_email"],
+      "action_tool": "verify_policy_coverage",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_2_PREAUTH_SUBMISSION",
+      "step_name": "Submit Pre-Auth Requisition",
+      "required_fields": ["icd10_diagnosis_code", "clinical_summary", "expected_los_days"],
+      "optional_fields": ["prior_authorization_form_url"],
+      "action_tool": "submit_preauth_request",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_3_FINAL_CLAIM_APPROVAL",
+      "step_name": "Final Financial Pre-Auth Authorization Gate",
+      "required_fields": ["preauth_approval_code", "approved_sum_inr", "authorized_by_tpa"],
+      "optional_fields": ["co_pay_amount_inr"],
+      "action_tool": "approve_insurance_claim",
+      "irreversible": true
+    }
+  ]
+}

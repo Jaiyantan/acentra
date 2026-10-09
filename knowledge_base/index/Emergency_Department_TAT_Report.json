@@ -1,0 +1,25 @@
+{
+  "file_id": "Emergency_Department_TAT_Report",
+  "title": "Emergency Triage Door-to-Doctor TAT",
+  "file_path": "reports/Emergency_Department_TAT_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Emergency Triage Door-to-Doctor TAT\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Emergency Triage Door-to-Doctor TAT v1.0, SMCH Central Reporting"
+}

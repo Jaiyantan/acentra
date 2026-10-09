@@ -1,0 +1,25 @@
+{
+  "file_id": "Ticket_Resolution_Report_Template",
+  "title": "Operational Ticket Resolution Registry",
+  "file_path": "reports/Ticket_Resolution_Report_Template.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Operational Ticket Resolution Registry\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Operational Ticket Resolution Registry v1.0, SMCH Central Reporting"
+}

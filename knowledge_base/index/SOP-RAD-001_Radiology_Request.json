@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-RAD-001_Radiology_Request",
+  "title": "Radiology Request and Reporting Procedure",
+  "file_path": "sops/SOP-RAD-001_Radiology_Request.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Radiology Operations",
+  "applicable_roles": [
+    "doctor",
+    "rad_tech"
+  ],
+  "version": "1.8",
+  "content": "SOP: Radiology Request and Reporting Procedure (SOP-RAD-001)\nDEPARTMENT: Radiology Operations\nVERSION: 1.8\nROLES: doctor, rad_tech\nPURPOSE: Safe diagnostic imaging acquisition and urgent PACS reporting.\nSTEPS:\nStep 1: Execute phase 1 of Radiology Request and Reporting Procedure in full compliance with Radiology Operations hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Radiology Request and Reporting Procedure in full compliance with Radiology Operations hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Radiology Request and Reporting Procedure in full compliance with Radiology Operations hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Radiology Request and Reporting Procedure in full compliance with Radiology Operations hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Radiology Request and Reporting Procedure in full compliance with Radiology Operations hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Radiology Operations.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-rad-001",
+    "radiology operations",
+    "radiology request",
+    "smch"
+  ],
+  "source_citation": "SOP-RAD-001 Radiology Request and Reporting Procedure v1.8, Section 4"
+}

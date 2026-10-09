@@ -1,0 +1,22 @@
+{
+  "file_id": "POL-003_Cashless_Insurance_Policy",
+  "title": "TPA and Cashless Hospitalization Authorization Policy",
+  "file_path": "policies/POL-003_Cashless_Insurance_Policy.docx",
+  "file_type": "docx",
+  "category": "policy",
+  "department": "Insurance and TPA",
+  "applicable_roles": [
+    "insurance_tpa",
+    "billing"
+  ],
+  "version": "1.5",
+  "content": "POLICY: TPA and Cashless Hospitalization Authorization Policy (POL-003)\nDEPARTMENT: Insurance and TPA\nVERSION: 1.5\nROLES: insurance_tpa, billing\nENFORCEMENT: Official institutional compliance policy at Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "policy",
+    "pol-003",
+    "insurance and tpa",
+    "cashless insurance policy",
+    "smch"
+  ],
+  "source_citation": "POL-003 TPA and Cashless Hospitalization Authorization Policy v1.5"
+}

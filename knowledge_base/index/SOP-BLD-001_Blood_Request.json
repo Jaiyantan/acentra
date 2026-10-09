@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-BLD-001_Blood_Request",
+  "title": "Blood Request and Transfusion Procedure",
+  "file_path": "sops/SOP-BLD-001_Blood_Request.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Blood Bank",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "lab_tech"
+  ],
+  "version": "3.2",
+  "content": "SOP: Blood Request and Transfusion Procedure (SOP-BLD-001)\nDEPARTMENT: Blood Bank\nVERSION: 3.2\nROLES: doctor, nurse, lab_tech\nPURPOSE: Compatible blood component testing and dual-nurse verification.\nSTEPS:\nStep 1: Execute phase 1 of Blood Request and Transfusion Procedure in full compliance with Blood Bank hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Blood Request and Transfusion Procedure in full compliance with Blood Bank hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Blood Request and Transfusion Procedure in full compliance with Blood Bank hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Blood Request and Transfusion Procedure in full compliance with Blood Bank hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Blood Request and Transfusion Procedure in full compliance with Blood Bank hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Blood Request and Transfusion Procedure in full compliance with Blood Bank hospital policy, verifying patient UHID and audit stamps.\nStep 7: Execute phase 7 of Blood Request and Transfusion Procedure in full compliance with Blood Bank hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Blood Bank.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-bld-001",
+    "blood bank",
+    "blood request",
+    "smch"
+  ],
+  "source_citation": "SOP-BLD-001 Blood Request and Transfusion Procedure v3.2, Section 4"
+}

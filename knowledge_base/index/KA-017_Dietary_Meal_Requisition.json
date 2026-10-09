@@ -1,0 +1,23 @@
+{
+  "file_id": "KA-017_Dietary_Meal_Requisition",
+  "title": "How to Requisition Therapeutic Diets in Pantry Portal",
+  "file_path": "knowledge_articles/KA-017_Dietary_Meal_Requisition.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Facility Management",
+  "applicable_roles": [
+    "nurse",
+    "dietitian"
+  ],
+  "version": "1.5",
+  "content": "ARTICLE: How to Requisition Therapeutic Diets in Pantry Portal (KA-017)\nSYSTEM: Dietary Portal\nDEPARTMENT: Facility Management\nVERSION: 1.5\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the Dietary Portal module to execute how to requisition therapeutic diets in pantry portal safely and reliably.\nSTEPS:\nStep 1: Open the Dietary Portal client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Requisition Therapeutic Diets in Pantry Portal and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Facility Management coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-017",
+    "dietary portal",
+    "facility management",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-017 How to Requisition Therapeutic Diets in Pantry Portal v1.5"
+}

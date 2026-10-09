@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_012",
+  "title": "Escalation Routing Rule R-012: MLC case registration needed",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Medical Records (MRD / HIM)",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-012 -- MLC case registration needed\nTRIGGER TYPE: Event\nCONDITION: Trauma, poisoning, or assault presentation\nROUTE TO: Medical Records (MRD / HIM) (Extension 1030)\nQUEUE: QUEUE_MRD\nPRIORITY: URGENT\nSLA: 1.0 hour(s)\nESCALATION RATIONALE: Statutory police intimation mandatory within 1 hour for medico-legal cases. Contact Medical Records ext. 1030.\nEXAMPLE QUERY 1: Road traffic accident victim in emergency bay\nEXAMPLE QUERY 2: Suspected domestic assault requires MLC",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-012",
+    "event",
+    "queue_mrd",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-012 (MLC case registration needed) v1.0"
+}

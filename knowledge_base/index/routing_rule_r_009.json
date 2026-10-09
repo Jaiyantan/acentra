@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_009",
+  "title": "Escalation Routing Rule R-009: Critical lab result unalerted",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Clinical Review",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-009 -- Critical lab result unalerted\nTRIGGER TYPE: Data State\nCONDITION: critical_value_flag TRUE but doctor_alerted FALSE\nROUTE TO: Clinical Review (Extension 1012)\nQUEUE: QUEUE_CLINICAL\nPRIORITY: URGENT\nSLA: 0.5 hour(s)\nESCALATION RATIONALE: Severe patient safety hazard. Mandatory verbal readback within 15 minutes of critical result. Contact Clinical Review ext. 1012.\nEXAMPLE QUERY 1: Potassium 6.8 mmol/L but doctor not alerted for 30m\nEXAMPLE QUERY 2: Platelets under 20000 with alert unexecuted",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-009",
+    "data state",
+    "queue_clinical",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-009 (Critical lab result unalerted) v1.0"
+}

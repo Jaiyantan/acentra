@@ -1,0 +1,25 @@
+{
+  "file_id": "Staff_Needlestick_Occupational_Report",
+  "title": "Occupational Needlestick & Biohazard Exposures",
+  "file_path": "reports/Staff_Needlestick_Occupational_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Occupational Needlestick & Biohazard Exposures\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Occupational Needlestick & Biohazard Exposures v1.0, SMCH Central Reporting"
+}

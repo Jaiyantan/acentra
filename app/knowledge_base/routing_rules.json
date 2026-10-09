@@ -1,0 +1,70 @@
+{
+  "escalation_teams": [
+    {
+      "team_id": "account_management",
+      "team_name": "Account Management & Payer Liaison Team",
+      "email": "accounts-tpa@smch.saveetha.edu",
+      "trigger": "Account-specific",
+      "description": "Requests tied to specific individual policy numbers, member disputes, corporate billing contracts, or dedicated insurance sponsor accounts.",
+      "sla_minutes": 30
+    },
+    {
+      "team_id": "clinical_review",
+      "team_name": "Clinical Governance & Medical Review Board",
+      "email": "clinical-review@smch.saveetha.edu",
+      "trigger": "Clinical",
+      "description": "Any inquiry touching medical judgment, medication dosages, diagnosis interpretation, or patient symptoms. The assistant MUST NOT provide clinical advice.",
+      "sla_minutes": 10
+    },
+    {
+      "team_id": "compliance_senior_ops",
+      "team_name": "Compliance, Legal & Senior Operations Team",
+      "email": "compliance-officer@smch.saveetha.edu",
+      "trigger": "Sensitive",
+      "description": "Requests involving sensitive PII, Medico-Legal Case (MLC) files, regulatory audit non-conformances, or privilege elevation requests.",
+      "sla_minutes": 20
+    },
+    {
+      "team_id": "general_triage",
+      "team_name": "Central Operations Triage Desk",
+      "email": "central-triage@smch.saveetha.edu",
+      "trigger": "Unclear",
+      "description": "Requests with ambiguous phrasing, multiple conflicting intents, or incomplete context where automated parsing cannot safely deduce user goal.",
+      "sla_minutes": 15
+    },
+    {
+      "team_id": "subject_matter_team",
+      "team_name": "Departmental Subject-Matter Specialist Desk",
+      "email": "sme-desk@smch.saveetha.edu",
+      "trigger": "Low-confidence",
+      "description": "Requests where the system parsed the intent but retrieval confidence is below threshold (<70%) or policies contain conflicting departmental rules.",
+      "sla_minutes": 45
+    }
+  ],
+  "routing_rules": [
+    {
+      "rule_id": "RULE-CLINICAL-01",
+      "pattern": ["should i give", "dosage", "prescribe", "diagnosis", "symptoms", "pain medication", "adjust insulin", "is it safe to take"],
+      "action": "ESCALATE_IMMEDIATELY",
+      "target_team": "clinical_review",
+      "hard_boundary": true,
+      "message": "Clinical inquiries touch medical judgment and must not be answered by an operational assistant. Escalated to Clinical Review Board."
+    },
+    {
+      "rule_id": "RULE-SENSITIVE-01",
+      "pattern": ["mlc", "police subpoena", "confidential case sheet", "override permissions", "bypass", "release unredacted"],
+      "action": "ESCALATE_IMMEDIATELY",
+      "target_team": "compliance_senior_ops",
+      "hard_boundary": true,
+      "message": "Sensitive legal, compliance, or access-override inquiry detected. Escalated to Compliance & Senior Operations."
+    },
+    {
+      "rule_id": "RULE-ACCOUNT-01",
+      "pattern": ["policy #", "tpa dispute", "claim rejected for member", "sponsor contract", "member id"],
+      "action": "ESCALATE",
+      "target_team": "account_management",
+      "hard_boundary": false,
+      "message": "Member-specific payer account request routed to Account Management Team."
+    }
+  ]
+}

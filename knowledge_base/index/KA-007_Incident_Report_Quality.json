@@ -1,0 +1,22 @@
+{
+  "file_id": "KA-007_Incident_Report_Quality",
+  "title": "How to Fill and Submit an Incident Report",
+  "file_path": "knowledge_articles/KA-007_Incident_Report_Quality.docx",
+  "file_type": "docx",
+  "category": "knowledge_article",
+  "department": "Quality and Patient Safety",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "2.2",
+  "content": "ARTICLE: How to Fill and Submit an Incident Report (KA-007)\nSYSTEM: Quality Portal\nDEPARTMENT: Quality and Patient Safety\nVERSION: 2.2\nOVERVIEW: This comprehensive operating guide details how hospital personnel should interact with the Quality Portal module to execute how to fill and submit an incident report safely and reliably.\nSTEPS:\nStep 1: Open the Quality Portal client terminal on any networked SMCH workstation and log in with role credentials.\nStep 2: Enter the patient's unique UHID or Case Number to load active records.\nStep 3: Access the designated submenu corresponding to How to Fill and Submit an Incident Report and verify current patient status.\nStep 4: Input all required clinical or administrative parameters, ensuring mandatory fields are validated.\nStep 5: Verify preview confirmation modal and click 'Submit' to persist changes to the database.\nStep 6: Print barcode, acknowledgement chit, or receipt as required by hospital compliance.\n- [ISSUE & FIX] Connection timeout: Verify LAN cable connection or contact IT Helpdesk.\n- [ISSUE & FIX] Permission Denied: Ensure user account has the assigned role in staff master permissions.\nContact Quality and Patient Safety coordinator or IT Operations Support at Extension 1033 (Email: it@smch.in).",
+  "tags": [
+    "knowledge article",
+    "ka-007",
+    "quality portal",
+    "quality and patient safety",
+    "smch",
+    "guide"
+  ],
+  "source_citation": "KA-007 How to Fill and Submit an Incident Report v2.2"
+}

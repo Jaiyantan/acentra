@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-BIL-001_Billing_Finalisation",
+  "title": "Billing Finalisation Procedure",
+  "file_path": "sops/SOP-BIL-001_Billing_Finalisation.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Billing",
+  "applicable_roles": [
+    "billing",
+    "insurance_tpa"
+  ],
+  "version": "3.0",
+  "content": "SOP: Billing Finalisation Procedure (SOP-BIL-001)\nDEPARTMENT: Billing\nVERSION: 3.0\nROLES: billing, insurance_tpa\nPURPOSE: Consolidated inpatient charge auditing and tax invoice generation.\nSTEPS:\nStep 1: Execute phase 1 of Billing Finalisation Procedure in full compliance with Billing hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Billing Finalisation Procedure in full compliance with Billing hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Billing Finalisation Procedure in full compliance with Billing hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Billing Finalisation Procedure in full compliance with Billing hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Billing Finalisation Procedure in full compliance with Billing hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Billing Finalisation Procedure in full compliance with Billing hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Billing.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-bil-001",
+    "billing",
+    "billing finalisation",
+    "smch"
+  ],
+  "source_citation": "SOP-BIL-001 Billing Finalisation Procedure v3.0, Section 4"
+}

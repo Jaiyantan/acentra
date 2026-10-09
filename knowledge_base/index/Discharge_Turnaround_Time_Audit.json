@@ -1,0 +1,25 @@
+{
+  "file_id": "Discharge_Turnaround_Time_Audit",
+  "title": "Discharge Order to Physical Exit TAT",
+  "file_path": "reports/Discharge_Turnaround_Time_Audit.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Discharge Order to Physical Exit TAT\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Discharge Order to Physical Exit TAT v1.0, SMCH Central Reporting"
+}

@@ -1,0 +1,20 @@
+{
+  "file_id": "workflow_sessions_placeholder",
+  "title": "Workflow Sessions Session Storage Placeholder",
+  "file_path": "workflow_sessions_placeholder.json",
+  "file_type": "json",
+  "category": "workflow_session",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "CORE SPECIFICATION: Workflow Sessions Session Storage Placeholder (workflow_sessions_placeholder.json) for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "workflow",
+    "session",
+    "runtime",
+    "smch"
+  ],
+  "source_citation": "Workflow Sessions Session Storage Placeholder v1.0"
+}

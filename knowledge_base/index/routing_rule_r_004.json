@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_004",
+  "title": "Escalation Routing Rule R-004: Insurance claim rejected",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Insurance and TPA",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-004 -- Insurance claim rejected\nTRIGGER TYPE: Data State\nCONDITION: Cashless claim status updated to rejected\nROUTE TO: Insurance and TPA (Extension 1029)\nQUEUE: QUEUE_INSURANCE\nPRIORITY: HIGH\nSLA: 2.0 hour(s)\nESCALATION RATIONALE: Requires urgent dispute filing, RFI appeal, or financial counseling. Contact Insurance TPA Desk ext. 1029.\nEXAMPLE QUERY 1: Claim CLM-002 rejected citing clause 4.2\nEXAMPLE QUERY 2: Why did Star Health deny cashless approval?",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-004",
+    "data state",
+    "queue_insurance",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-004 (Insurance claim rejected) v1.0"
+}

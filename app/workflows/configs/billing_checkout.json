@@ -1,0 +1,27 @@
+{
+  "workflow_id": "WF-BILLING-01",
+  "name": "Itemized Billing & Revenue Reconciliation Workflow",
+  "category": "Revenue Cycle",
+  "target_journey_transition": "RECOVERY -> DISCHARGE_PENDING",
+  "allowed_roles": ["Billing Staff", "Admin"],
+  "is_irreversible": false,
+  "description": "Aggregates bed charges, pharmacy items, laboratory tests, and doctor fees into an itemized invoice, linking insurance coverage and calculating patient co-pay.",
+  "steps": [
+    {
+      "step_id": "STEP_1_ITEMIZED_AGGREGATION",
+      "step_name": "Aggregate Departmental Charges & Consumables",
+      "required_fields": ["uhid", "admission_or_encounter_id", "billing_staff_id"],
+      "optional_fields": ["discounts_authorized_by"],
+      "action_tool": "aggregate_patient_charges",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_2_COPAY_CALCULATION",
+      "step_name": "Reconcile Insurance Coverage & Deductibles",
+      "required_fields": ["total_charges_inr", "insurance_covered_inr", "net_patient_payable_inr"],
+      "optional_fields": ["payment_mode_selected"],
+      "action_tool": "generate_reconciled_invoice",
+      "irreversible": false
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "workflow_id": "WF-SURGERY-01",
+  "name": "Surgical Pre-Op Clearance & OT Authorization Workflow",
+  "category": "Surgical Operations",
+  "target_journey_transition": "INVESTIGATION -> SURGERY",
+  "allowed_roles": ["Doctor", "Specialist", "Admin"],
+  "is_irreversible": true,
+  "approval_role": "Specialist",
+  "description": "Validates anesthesia PAC clearance, WHO checklist sign-in, implant availability, and requires surgeon authorization for theatre transfer.",
+  "steps": [
+    {
+      "step_id": "STEP_1_PAC_CLEARANCE",
+      "step_name": "Pre-Anesthetic Check (PAC) Clearance",
+      "required_fields": ["uhid", "pac_fit_status", "anesthesiologist_id", "airway_mallampati_score"],
+      "optional_fields": ["blood_crossmatched_units"],
+      "action_tool": "record_pac_clearance",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_2_THEATRE_ALLOCATION",
+      "step_name": "Allocate OT Suite & Verify Implants",
+      "required_fields": ["ot_room_id", "primary_surgeon_id", "scheduled_start_time", "implants_verified"],
+      "optional_fields": ["special_instruments_ready"],
+      "action_tool": "schedule_theatre_slot",
+      "irreversible": false
+    },
+    {
+      "step_id": "STEP_3_FINAL_SURGICAL_GO_AHEAD",
+      "step_name": "Final Knife-to-Skin Authorization Gate",
+      "required_fields": ["lead_surgeon_signoff", "who_sign_in_completed", "site_marking_verified"],
+      "optional_fields": ["antibiotic_prophylaxis_time"],
+      "action_tool": "authorize_surgical_entry",
+      "irreversible": true
+    }
+  ]
+}

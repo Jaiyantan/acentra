@@ -1,0 +1,25 @@
+{
+  "file_id": "CSSD_Sterilization_Efficiency_Report",
+  "title": "CSSD Autoclave Cycles & Pack Integrity",
+  "file_path": "reports/CSSD_Sterilization_Efficiency_Report.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: CSSD Autoclave Cycles & Pack Integrity\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "CSSD Autoclave Cycles & Pack Integrity v1.0, SMCH Central Reporting"
+}

@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_003",
+  "title": "Escalation Routing Rule R-003: Diagnosis question asked",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Clinical Review",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-003 -- Diagnosis question asked\nTRIGGER TYPE: Intent\nCONDITION: Interpretation of clinical symptoms\nROUTE TO: Clinical Review (Extension 1012)\nQUEUE: QUEUE_CLINICAL\nPRIORITY: URGENT\nSLA: 1.0 hour(s)\nESCALATION RATIONALE: Diagnostic responsibility lies exclusively with licensed physician. AI cannot interpret ECG or assign diagnoses.\nEXAMPLE QUERY 1: Can you confirm if this ECG shows STEMI?\nEXAMPLE QUERY 2: What is the diagnosis for this patient?",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-003",
+    "intent",
+    "queue_clinical",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-003 (Diagnosis question asked) v1.0"
+}

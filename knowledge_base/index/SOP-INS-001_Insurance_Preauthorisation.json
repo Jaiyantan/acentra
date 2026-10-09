@@ -1,0 +1,23 @@
+{
+  "file_id": "SOP-INS-001_Insurance_Preauthorisation",
+  "title": "Insurance Pre-Authorisation Procedure",
+  "file_path": "sops/SOP-INS-001_Insurance_Preauthorisation.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Insurance and TPA",
+  "applicable_roles": [
+    "insurance_tpa",
+    "admission",
+    "billing"
+  ],
+  "version": "4.0",
+  "content": "SOP: Insurance Pre-Authorisation Procedure (SOP-INS-001)\nDEPARTMENT: Insurance and TPA\nVERSION: 4.0\nROLES: insurance_tpa, admission, billing\nPURPOSE: Ensure timely submission and tracking of cashless pre-authorizations.\nSTEPS:\nStep 1: Execute phase 1 of Insurance Pre-Authorisation Procedure in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of Insurance Pre-Authorisation Procedure in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of Insurance Pre-Authorisation Procedure in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of Insurance Pre-Authorisation Procedure in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of Insurance Pre-Authorisation Procedure in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of Insurance Pre-Authorisation Procedure in full compliance with Insurance and TPA hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Insurance and TPA.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-ins-001",
+    "insurance and tpa",
+    "insurance preauthorisation",
+    "smch"
+  ],
+  "source_citation": "SOP-INS-001 Insurance Pre-Authorisation Procedure v4.0, Section 4"
+}

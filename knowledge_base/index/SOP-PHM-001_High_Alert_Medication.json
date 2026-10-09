@@ -1,0 +1,22 @@
+{
+  "file_id": "SOP-PHM-001_High_Alert_Medication",
+  "title": "High-Alert and LASA Medication Dispensing",
+  "file_path": "sops/SOP-PHM-001_High_Alert_Medication.docx",
+  "file_type": "docx",
+  "category": "sop",
+  "department": "Pharmacy",
+  "applicable_roles": [
+    "pharmacist",
+    "nurse"
+  ],
+  "version": "3.3",
+  "content": "SOP: High-Alert and LASA Medication Dispensing (SOP-PHM-001)\nDEPARTMENT: Pharmacy\nVERSION: 3.3\nROLES: pharmacist, nurse\nPURPOSE: Safeguard insulin, potassium, anticoagulants, and chemotherapeutics.\nSTEPS:\nStep 1: Execute phase 1 of High-Alert and LASA Medication Dispensing in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 2: Execute phase 2 of High-Alert and LASA Medication Dispensing in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 3: Execute phase 3 of High-Alert and LASA Medication Dispensing in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 4: Execute phase 4 of High-Alert and LASA Medication Dispensing in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 5: Execute phase 5 of High-Alert and LASA Medication Dispensing in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\nStep 6: Execute phase 6 of High-Alert and LASA Medication Dispensing in full compliance with Pharmacy hospital policy, verifying patient UHID and audit stamps.\n- [BLOCKER] System connectivity or missing documentation in Pharmacy.\n- [BLOCKER] Bed, reagent, medication, or personnel resource constraints during peak hours.\n- [ESCALATION] Delays exceeding 2 hours must be escalated to the Operations Manager.\n- [ESCALATION] Clinical complications or safety hazards must be escalated immediately to Clinical Review.",
+  "tags": [
+    "sop",
+    "sop-phm-001",
+    "pharmacy",
+    "high alert medication",
+    "smch"
+  ],
+  "source_citation": "SOP-PHM-001 High-Alert and LASA Medication Dispensing v3.3, Section 4"
+}

@@ -1,0 +1,25 @@
+{
+  "file_id": "Consent_Form_General",
+  "title": "General Admission & Treatment Consent",
+  "file_path": "forms/Consent_Form_General.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.5",
+  "content": "FORM: General Admission & Treatment Consent (FORM-CON-01)\nVERSION: v1.5\nFIELDS:\n- Patient UHID\n- Treating Consultant\n- Procedure Name\n- Risk Explanation (Y/N)\n- Patient Signature\n- Witness Signature",
+  "tags": [
+    "form",
+    "pdf",
+    "form-con-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-CON-01 General Admission & Treatment Consent v1.5"
+}

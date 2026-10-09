@@ -1,0 +1,33 @@
+{
+  "sop_id": "SOP-LAB-005",
+  "title": "Critical Panic Laboratory Values Notification and Escalation",
+  "version": "4.0",
+  "department": "Emergency",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Laboratory analyzer flags test result outside critical physiological thresholds (e.g. Potassium > 6.0 mmol/L or < 2.5 mmol/L, Platelets < 20000 /uL)."
+    },
+    {
+      "step": 2,
+      "description": "Medical lab technologist immediately verifies sample integrity, performs repeat run or dilution test, and confirms validity."
+    },
+    {
+      "step": 3,
+      "description": "Duty lab technician places telephone call directly to ward in-charge nurse or primary treating doctor within 15 minutes."
+    },
+    {
+      "step": 4,
+      "description": "Recipient reads back patient UHID, name, test name, and numerical value; call timestamp and staff name logged in LIS."
+    },
+    {
+      "step": 5,
+      "description": "System marks critical_value_alerted as TRUE. If recipient unreachable within 30 minutes, escalate to Operations Manager."
+    }
+  ],
+  "common_blockers": [
+    "Ward telephone line engaged or nurse unable to step away from acute bedside resuscitation",
+    "Missing primary treating consultant mobile contact in EMR staff roster",
+    "Technical communication gap where critical_value_flag is set in database but alert dispatch trigger fails"
+  ]
+}

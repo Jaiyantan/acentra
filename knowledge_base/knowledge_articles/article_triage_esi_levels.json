@@ -1,0 +1,9 @@
+{
+  "article_id": "ART-003",
+  "title": "Emergency Severity Index (ESI) Triage Classification Matrix",
+  "category": "Clinical Triage",
+  "author_role": "Emergency Medical Director",
+  "last_updated": "2026-09-25",
+  "summary": "Standard operating criteria for categorizing arriving emergency cases across ESI Level 1 to 5.",
+  "content": "ESI Level 1 indicates immediate life threat requiring immediate resuscitation (cardiac arrest, respiratory failure). ESI Level 2 signifies high risk, severe pain, or acute altered mental state needing doctor review within 10 minutes. ESI Level 3 represents hemodynamically stable patients needing two or more diagnostic resources (IV fluids, laboratory panels, CT imaging). ESI Level 4 and 5 indicate single-resource and non-urgent minor ailments."
+}

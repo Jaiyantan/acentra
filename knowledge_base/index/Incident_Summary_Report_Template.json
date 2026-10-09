@@ -1,0 +1,25 @@
+{
+  "file_id": "Incident_Summary_Report_Template",
+  "title": "Patient Safety Adverse Event Summary",
+  "file_path": "reports/Incident_Summary_Report_Template.xlsx",
+  "file_type": "xlsx",
+  "category": "report",
+  "department": "Operations Management",
+  "applicable_roles": [
+    "operations_manager",
+    "quality",
+    "billing",
+    "nurse",
+    "doctor"
+  ],
+  "version": "1.0",
+  "content": "EXCEL REPORT: Patient Safety Adverse Event Summary\nMETRICS: Standard operational audit report template for Saveetha Medical College and Hospital (SMCH).",
+  "tags": [
+    "report",
+    "excel",
+    "metrics",
+    "analytics",
+    "smch"
+  ],
+  "source_citation": "Patient Safety Adverse Event Summary v1.0, SMCH Central Reporting"
+}

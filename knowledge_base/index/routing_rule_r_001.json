@@ -1,0 +1,22 @@
+{
+  "file_id": "routing_rule_r_001",
+  "title": "Escalation Routing Rule R-001: Clinical question detected",
+  "file_path": "routing_matrix/Escalation_Routing_Matrix.xlsx",
+  "file_type": "routing_rule",
+  "category": "routing_rule",
+  "department": "Clinical Review",
+  "applicable_roles": [
+    "all_staff"
+  ],
+  "version": "1.0",
+  "content": "ROUTING RULE: R-001 -- Clinical question detected\nTRIGGER TYPE: Intent\nCONDITION: Medical advice or diagnosis asked\nROUTE TO: Clinical Review (Extension 1012)\nQUEUE: QUEUE_CLINICAL\nPRIORITY: URGENT\nSLA: 1.0 hour(s)\nESCALATION RATIONALE: Non-clinicians and AI systems cannot prescribe medical advice. Any clinical question or diagnosis must be routed to Clinical Review.\nEXAMPLE QUERY 1: What antibiotic should I prescribe?\nEXAMPLE QUERY 2: Does this patient need intubation?",
+  "tags": [
+    "routing",
+    "escalation",
+    "r-001",
+    "intent",
+    "queue_clinical",
+    "smch"
+  ],
+  "source_citation": "SMCH Escalation Routing Matrix -- R-001 (Clinical question detected) v1.0"
+}

@@ -1,0 +1,968 @@
+{
+  "hospital_name": "Saveetha Medical College and Hospital (SMCH)",
+  "version": "1.0",
+  "description": "Standardized hospital operations state machine definitions for autonomous agent execution and human-in-the-loop governance.",
+  "workflows": [
+    {
+      "workflow_id": "WF-001",
+      "slug": "patient_admission",
+      "name": "Patient Emergency and Inpatient Admission",
+      "department": "Admission and Discharge",
+      "category": "clinical_operations",
+      "trigger_intents": [
+        "create_admission",
+        "admit_patient",
+        "emergency_admission",
+        "book_bed"
+      ],
+      "allowed_roles": [
+        "doctor",
+        "front_office",
+        "admission",
+        "nurse"
+      ],
+      "description": "Standard five-step admission sequence for emergency and elective inpatients at SMCH.",
+      "requires_human_approval": true,
+      "human_approval_checkpoint": "Step 5: Admission Order Finalization",
+      "states": [
+        {
+          "step_number": 1,
+          "state_name": "Demographic & UHID Verification",
+          "actor": "front_office",
+          "required_fields": [
+            "uhid",
+            "patient_name",
+            "contact"
+          ],
+          "optional_fields": [
+            "age",
+            "gender",
+            "address"
+          ],
+          "endpoint": "GET /api/patients/{uhid}",
+          "validation_rules": {
+            "uhid": "^UHID-\\d{6}$"
+          },
+          "on_missing_message": "Please provide the patient UHID in the format UHID-000001.",
+          "blockers": [
+            "UHID not registered in system"
+          ],
+          "escalation_rule": "R-007",
+          "requires_human_approval": false,
+          "next_state": "Clinical Triage & Department Assessment"
+        },
+        {
+          "step_number": 2,
+          "state_name": "Clinical Triage & Department Assessment",
+          "actor": "doctor",
+          "required_fields": [
+            "admitting_doctor_id, admitting_diagnosis, department_id"
+          ],
+          "optional_fields": [
+            "admission_type"
+          ],
+          "endpoint": "GET /api/departments",
+          "validation_rules": {
+            "department_id": "^DEPT-\\d{3}$"
+          },
+          "on_missing_message": "Admitting consultant and provisional diagnosis are required.",
+          "blockers": [
+            "Consultant credentials expired or unassigned"
+          ],
+          "escalation_rule": "R-001",
+          "requires_human_approval": true,
+          "next_state": "Bed Availability Check & Ward Allocation"
+        },
+        {
+          "step_number": 3,
+          "state_name": "Bed Availability Check & Ward Allocation",
+          "actor": "admission",
+          "required_fields": [
+            "ward",
+            "bed_id"
+          ],
+          "optional_fields": [],
+          "endpoint": "GET /api/beds?ward={ward}",
+          "validation_rules": {
+            "bed_id": "^BED-\\d{4}$"
+          },
+          "on_missing_message": "Specify target ward and vacant bed identifier.",
+          "blockers": [
+            "Ward at 100% capacity",
+            "Target bed already reserved"
+          ],
+          "escalation_rule": "R-010",
+          "requires_human_approval": false,
+          "next_state": "Financial & Insurance Pre-Authorization Check"
+        },
+        {
+          "step_number": 4,
+          "state_name": "Financial & Insurance Pre-Authorization Check",
+          "actor": "insurance_tpa",
+          "required_fields": [
+            "insurance_policy_number",
+            "insurer_name"
+          ],
+          "optional_fields": [
+            "tpa_name",
+            "estimate_amount"
+          ],
+          "endpoint": "GET /api/insurance/claims",
+          "validation_rules": {},
+          "on_missing_message": "Provide insurance policy number or select self-paying status.",
+          "blockers": [
+            "TPA rejection or query pending"
+          ],
+          "escalation_rule": "R-004",
+          "requires_human_approval": false,
+          "next_state": "Admission Finalization & Inpatient Check-In"
+        },
+        {
+          "step_number": 5,
+          "state_name": "Admission Finalization & Inpatient Check-In",
+          "actor": "admission",
+          "required_fields": [
+            "uhid",
+            "bed_id",
+            "admitting_doctor_id",
+            "department_id"
+          ],
+          "optional_fields": [
+            "admission_type"
+          ],
+          "endpoint": "POST /api/admissions",
+          "validation_rules": {
+            "admission_type": [
+              "emergency",
+              "elective",
+              "transfer"
+            ]
+          },
+          "on_missing_message": "Confirm final admission details to allocate bed.",
+          "blockers": [
+            "Race condition: bed claimed during form submission"
+          ],
+          "escalation_rule": "R-010",
+          "requires_human_approval": true,
+          "next_state": "COMPLETED"
+        }
+      ]
+    },
+    {
+      "workflow_id": "WF-002",
+      "slug": "patient_discharge",
+      "name": "Four-Point Inpatient Discharge Clearance",
+      "department": "Admission and Discharge",
+      "category": "clinical_operations",
+      "trigger_intents": [
+        "discharge_patient",
+        "discharge_clearance",
+        "check_discharge_status",
+        "generate_gate_pass"
+      ],
+      "allowed_roles": [
+        "doctor",
+        "nurse",
+        "discharge",
+        "billing"
+      ],
+      "description": "Rigorous four-tier clearance protocol (Clinical, Pharmacy, Billing, Nursing) required before patient discharge.",
+      "requires_human_approval": true,
+      "human_approval_checkpoint": "Step 4: Nursing Ward Clearance & Physical Gate Pass Generation",
+      "states": [
+        {
+          "step_number": 1,
+          "state_name": "Clinical Discharge Order & Summary Sign-off",
+          "actor": "doctor",
+          "required_fields": [
+            "admission_id",
+            "final_diagnosis",
+            "discharge_type"
+          ],
+          "optional_fields": [
+            "discharge_summary"
+          ],
+          "endpoint": "GET /api/admissions/{id}",
+          "validation_rules": {
+            "discharge_type": [
+              "Normal",
+              "DAMA",
+              "LAMA",
+              "Absconded",
+              "Transfer",
+              "Death"
+            ]
+          },
+          "on_missing_message": "Treating consultant must provide digital sign-off and final diagnosis.",
+          "blockers": [
+            "Patient clinically unstable",
+            "Summary unsigned"
+          ],
+          "escalation_rule": "R-001",
+          "requires_human_approval": true,
+          "next_state": "Pharmacy Medication Audit & Return Reconciliation"
+        },
+        {
+          "step_number": 2,
+          "state_name": "Pharmacy Medication Audit & Return Reconciliation",
+          "actor": "nurse",
+          "required_fields": [
+            "admission_id",
+            "clearance_pharmacy"
+          ],
+          "optional_fields": [
+            "unreturned_medications"
+          ],
+          "endpoint": "GET /api/prescriptions",
+          "validation_rules": {
+            "clearance_pharmacy": "boolean"
+          },
+          "on_missing_message": "Confirm unused medication returns to central pharmacy.",
+          "blockers": [
+            "Unreturned injectable or oral doses in ward tray"
+          ],
+          "escalation_rule": "R-002",
+          "requires_human_approval": false,
+          "next_state": "Central Billing Tariff Audit & Co-pay Settlement"
+        },
+        {
+          "step_number": 3,
+          "state_name": "Central Billing Tariff Audit & Co-pay Settlement",
+          "actor": "billing",
+          "required_fields": [
+            "admission_id",
+            "clearance_billing"
+          ],
+          "optional_fields": [
+            "bill_amount",
+            "paid_amount"
+          ],
+          "endpoint": "GET /api/bills/{admission_id}",
+          "validation_rules": {
+            "clearance_billing": "boolean"
+          },
+          "on_missing_message": "Itemized billing audit and co-pay settlement required.",
+          "blockers": [
+            "Outstanding co-pay variance",
+            "Pending TPA final settlement"
+          ],
+          "escalation_rule": "R-008",
+          "requires_human_approval": true,
+          "next_state": "Nursing Ward Clearance & Physical Gate Pass Generation"
+        },
+        {
+          "step_number": 4,
+          "state_name": "Nursing Ward Clearance & Physical Gate Pass Generation",
+          "actor": "discharge",
+          "required_fields": [
+            "admission_id",
+            "uhid",
+            "clearance_nursing"
+          ],
+          "optional_fields": [
+            "gate_pass_number"
+          ],
+          "endpoint": "POST /api/discharges",
+          "validation_rules": {
+            "clearance_nursing": "boolean"
+          },
+          "on_missing_message": "Nursing discharge checklist and IV cannula removal confirmation required.",
+          "blockers": [
+            "Clearance billing is FALSE",
+            "Clearance pharmacy is FALSE"
+          ],
+          "escalation_rule": "R-008",
+          "requires_human_approval": true,
+          "next_state": "COMPLETED"
+        }
+      ]
+    },
+    {
+      "workflow_id": "WF-003",
+      "slug": "insurance_preauth",
+      "name": "Cashless Insurance Pre-Authorization & Query Resolution",
+      "department": "Insurance and TPA",
+      "category": "financial_operations",
+      "trigger_intents": [
+        "submit_preauth",
+        "check_insurance",
+        "tpa_enhancement",
+        "insurance_query"
+      ],
+      "allowed_roles": [
+        "admission",
+        "insurance_tpa",
+        "billing"
+      ],
+      "description": "Pre-admission and concurrent insurance eligibility verification and query reply protocol.",
+      "requires_human_approval": true,
+      "human_approval_checkpoint": "Step 4: Final Pre-Auth Approval & Co-pay Confirmation",
+      "states": [
+        {
+          "step_number": 1,
+          "state_name": "Policy Demographic & Card Verification",
+          "actor": "insurance_tpa",
+          "required_fields": [
+            "uhid",
+            "insurance_policy_number",
+            "insurer_name"
+          ],
+          "optional_fields": [
+            "tpa_name"
+          ],
+          "endpoint": "GET /api/patients/{uhid}",
+          "validation_rules": {},
+          "on_missing_message": "Provide valid cashless policy number and insurer name.",
+          "blockers": [
+            "Policy inactive or expired"
+          ],
+          "escalation_rule": "R-004",
+          "requires_human_approval": false,
+          "next_state": "Treatment Estimate & Pre-Auth Packet Assembly"
+        },
+        {
+          "step_number": 2,
+          "state_name": "Treatment Estimate & Pre-Auth Packet Assembly",
+          "actor": "billing",
+          "required_fields": [
+            "admission_id",
+            "claim_amount",
+            "diagnosis_code"
+          ],
+          "optional_fields": [
+            "estimate_breakdown"
+          ],
+          "endpoint": "POST /api/insurance/claims",
+          "validation_rules": {
+            "claim_amount": "number > 0"
+          },
+          "on_missing_message": "Attach medical package estimate and ICD-10 diagnosis code.",
+          "blockers": [
+            "Treating consultant medical certificate missing"
+          ],
+          "escalation_rule": "R-005",
+          "requires_human_approval": false,
+          "next_state": "TPA Query Response & Additional Documents"
+        },
+        {
+          "step_number": 3,
+          "state_name": "TPA Query Response & Additional Documents",
+          "actor": "insurance_tpa",
+          "required_fields": [
+            "claim_id"
+          ],
+          "optional_fields": [
+            "query_description",
+            "uploaded_documents"
+          ],
+          "endpoint": "GET /api/insurance/claims",
+          "validation_rules": {},
+          "on_missing_message": "Address specific queries raised by TPA auditor.",
+          "blockers": [
+            "Query SLA exceeded (>24h delay)"
+          ],
+          "escalation_rule": "R-005",
+          "requires_human_approval": false,
+          "next_state": "Final Pre-Auth Approval & Co-pay Confirmation"
+        },
+        {
+          "step_number": 4,
+          "state_name": "Final Pre-Auth Approval & Co-pay Confirmation",
+          "actor": "insurance_tpa",
+          "required_fields": [
+            "claim_id",
+            "approved_amount",
+            "claim_status"
+          ],
+          "optional_fields": [
+            "co_pay_amount"
+          ],
+          "endpoint": "GET /api/insurance/claims",
+          "validation_rules": {
+            "claim_status": [
+              "approved",
+              "rejected",
+              "query_raised"
+            ]
+          },
+          "on_missing_message": "Confirm sanctioned amount and patient co-pay responsibility.",
+          "blockers": [
+            "Claim rejected citing exclusion clause"
+          ],
+          "escalation_rule": "R-004",
+          "requires_human_approval": true,
+          "next_state": "COMPLETED"
+        }
+      ]
+    },
+    {
+      "workflow_id": "WF-004",
+      "slug": "bed_transfer",
+      "name": "Inpatient Ward and ICU Bed Transfer",
+      "department": "Admission and Discharge",
+      "category": "clinical_operations",
+      "trigger_intents": [
+        "transfer_patient",
+        "step_up_icu",
+        "step_down_ward",
+        "change_bed"
+      ],
+      "allowed_roles": [
+        "doctor",
+        "nurse",
+        "admission",
+        "operations_manager"
+      ],
+      "description": "Clinical transfer procedure between General Ward, Private Rooms, and Intensive Care Units.",
+      "requires_human_approval": true,
+      "human_approval_checkpoint": "Step 3: Buffer Override & Transfer Approval",
+      "states": [
+        {
+          "step_number": 1,
+          "state_name": "Clinical Bed Transfer Requisition",
+          "actor": "doctor",
+          "required_fields": [
+            "admission_id",
+            "uhid",
+            "current_bed_id",
+            "target_ward",
+            "transfer_reason"
+          ],
+          "optional_fields": [],
+          "endpoint": "GET /api/admissions/{id}",
+          "validation_rules": {},
+          "on_missing_message": "Enter transfer indication (clinical step-up, patient request, or step-down).",
+          "blockers": [
+            "Treating consultant sign-off missing"
+          ],
+          "escalation_rule": "R-001",
+          "requires_human_approval": true,
+          "next_state": "Target Ward Bed Vacancy Verification"
+        },
+        {
+          "step_number": 2,
+          "state_name": "Target Ward Bed Vacancy Verification",
+          "actor": "admission",
+          "required_fields": [
+            "target_ward",
+            "target_bed_id"
+          ],
+          "optional_fields": [],
+          "endpoint": "GET /api/beds?ward={ward}",
+          "validation_rules": {
+            "target_bed_id": "^BED-\\d{4}$"
+          },
+          "on_missing_message": "Select available vacant bed in destination unit.",
+          "blockers": [
+            "Zero vacant beds in target unit"
+          ],
+          "escalation_rule": "R-010",
+          "requires_human_approval": false,
+          "next_state": "Buffer Override & Transfer Approval"
+        },
+        {
+          "step_number": 3,
+          "state_name": "Buffer Override & Transfer Approval",
+          "actor": "operations_manager",
+          "required_fields": [
+            "admission_id",
+            "target_bed_id"
+          ],
+          "optional_fields": [
+            "override_authorized"
+          ],
+          "endpoint": "GET /api/approvals",
+          "validation_rules": {},
+          "on_missing_message": "Operations Manager authorization needed for ICU transfer.",
+          "blockers": [
+            "Facility buffer limit exceeded"
+          ],
+          "escalation_rule": "R-010",
+          "requires_human_approval": true,
+          "next_state": "SBAR Clinical Handover & Bed Status Update"
+        },
+        {
+          "step_number": 4,
+          "state_name": "SBAR Clinical Handover & Bed Status Update",
+          "actor": "nurse",
+          "required_fields": [
+            "admission_id",
+            "previous_bed_id",
+            "target_bed_id"
+          ],
+          "optional_fields": [
+            "handover_notes"
+          ],
+          "endpoint": "POST /api/admissions/transfer",
+          "validation_rules": {},
+          "on_missing_message": "Complete dual-nurse SBAR clinical handover in HIS.",
+          "blockers": [
+            "Patient vitals unstable for physical transport"
+          ],
+          "escalation_rule": "R-001",
+          "requires_human_approval": true,
+          "next_state": "COMPLETED"
+        }
+      ]
+    },
+    {
+      "workflow_id": "WF-005",
+      "slug": "stat_lab_panic_alert",
+      "name": "STAT Critical Lab Investigation & Panic Alert Escalation",
+      "department": "Laboratory Operations",
+      "category": "clinical_operations",
+      "trigger_intents": [
+        "order_lab",
+        "stat_lab",
+        "check_critical_lab",
+        "panic_value_alert"
+      ],
+      "allowed_roles": [
+        "doctor",
+        "nurse",
+        "lab_tech",
+        "quality"
+      ],
+      "description": "Urgent diagnostic ordering, analyzer processing, and statutory 15-minute panic notification workflow.",
+      "requires_human_approval": true,
+      "human_approval_checkpoint": "Step 4: Mandatory 15-Minute Physician Phone Alert & Readback",
+      "states": [
+        {
+          "step_number": 1,
+          "state_name": "Physician Electronic STAT Lab Order",
+          "actor": "doctor",
+          "required_fields": [
+            "uhid",
+            "admission_id",
+            "test_name",
+            "priority"
+          ],
+          "optional_fields": [
+            "ordering_doctor_id"
+          ],
+          "endpoint": "POST /api/orders",
+          "validation_rules": {
+            "priority": [
+              "stat",
+              "urgent",
+              "routine"
+            ]
+          },
+          "on_missing_message": "Specify test panel name and priority (STAT/Routine).",
+          "blockers": [
+            "Inactive admission or invalid test name"
+          ],
+          "escalation_rule": "R-009",
+          "requires_human_approval": false,
+          "next_state": "Bedside Phlebotomy & Barcode Accessioning"
+        },
+        {
+          "step_number": 2,
+          "state_name": "Bedside Phlebotomy & Barcode Accessioning",
+          "actor": "nurse",
+          "required_fields": [
+            "order_id",
+            "sample_barcode"
+          ],
+          "optional_fields": [
+            "phlebotomist_id"
+          ],
+          "endpoint": "GET /api/orders",
+          "validation_rules": {},
+          "on_missing_message": "Scan sample vial barcode and confirm accession.",
+          "blockers": [
+            "Sample hemolyzed or incorrect vial color"
+          ],
+          "escalation_rule": "R-009",
+          "requires_human_approval": false,
+          "next_state": "Analyzer Run & Critical Panic Value Detection"
+        },
+        {
+          "step_number": 3,
+          "state_name": "Analyzer Run & Critical Panic Value Detection",
+          "actor": "lab_tech",
+          "required_fields": [
+            "order_id",
+            "test_name",
+            "result_value"
+          ],
+          "optional_fields": [
+            "critical_value_flag"
+          ],
+          "endpoint": "GET /api/lab-results",
+          "validation_rules": {},
+          "on_missing_message": "Verify analyzer calibration and input findings.",
+          "blockers": [
+            "Analyzer internal quality control out of limits"
+          ],
+          "escalation_rule": "R-011",
+          "requires_human_approval": false,
+          "next_state": "Mandatory 15-Minute Physician Phone Alert & Readback"
+        },
+        {
+          "step_number": 4,
+          "state_name": "Mandatory 15-Minute Physician Phone Alert & Readback",
+          "actor": "lab_tech",
+          "required_fields": [
+            "result_id",
+            "notified_doctor_id",
+            "readback_confirmed"
+          ],
+          "optional_fields": [
+            "alert_timestamp"
+          ],
+          "endpoint": "POST /api/approvals",
+          "validation_rules": {
+            "readback_confirmed": "boolean"
+          },
+          "on_missing_message": "Document verbal readback confirmation from treating doctor.",
+          "blockers": [
+            "Treating physician unreachable for >15 minutes"
+          ],
+          "escalation_rule": "R-009",
+          "requires_human_approval": true,
+          "next_state": "COMPLETED"
+        }
+      ]
+    },
+    {
+      "workflow_id": "WF-006",
+      "slug": "incident_reporting",
+      "name": "Adverse Clinical & Operational Incident Reporting",
+      "department": "Quality and Patient Safety",
+      "category": "quality_safety",
+      "trigger_intents": [
+        "report_incident",
+        "patient_fall",
+        "medication_error",
+        "sentinel_event"
+      ],
+      "allowed_roles": [
+        "all_staff",
+        "nurse",
+        "doctor",
+        "quality",
+        "operations_manager"
+      ],
+      "description": "Incident identification, immediate clinical containment, risk triage, and CAPA resolution.",
+      "requires_human_approval": true,
+      "human_approval_checkpoint": "Step 4: Root Cause Analysis & CAPA Signoff",
+      "states": [
+        {
+          "step_number": 1,
+          "state_name": "Immediate First-Aid & Patient Stabilization",
+          "actor": "nurse",
+          "required_fields": [
+            "uhid",
+            "location"
+          ],
+          "optional_fields": [
+            "immediate_action_taken"
+          ],
+          "endpoint": "GET /api/patients/{uhid}",
+          "validation_rules": {},
+          "on_missing_message": "Document first-aid or immediate clinical containment.",
+          "blockers": [
+            "Severe injury requiring emergency code alert"
+          ],
+          "escalation_rule": "R-001",
+          "requires_human_approval": true,
+          "next_state": "Mandatory Incident Form Submission in HIS"
+        },
+        {
+          "step_number": 2,
+          "state_name": "Mandatory Incident Form Submission in HIS",
+          "actor": "all_staff",
+          "required_fields": [
+            "incident_type",
+            "severity",
+            "description",
+            "reporter_staff_id"
+          ],
+          "optional_fields": [
+            "location"
+          ],
+          "endpoint": "POST /api/tickets",
+          "validation_rules": {
+            "severity": [
+              "minor",
+              "moderate",
+              "severe",
+              "sentinel"
+            ]
+          },
+          "on_missing_message": "Provide objective factual description and severity rating.",
+          "blockers": [
+            "Reporting delayed beyond 2-hour window"
+          ],
+          "escalation_rule": "R-013",
+          "requires_human_approval": false,
+          "next_state": "Quality Department Risk Classification & Triage"
+        },
+        {
+          "step_number": 3,
+          "state_name": "Quality Department Risk Classification & Triage",
+          "actor": "quality",
+          "required_fields": [
+            "ticket_id",
+            "risk_rating"
+          ],
+          "optional_fields": [
+            "sentinel_event_flag"
+          ],
+          "endpoint": "GET /api/tickets",
+          "validation_rules": {},
+          "on_missing_message": "Quality audit classification required.",
+          "blockers": [
+            "Sentinel event requiring immediate board notification"
+          ],
+          "escalation_rule": "R-013",
+          "requires_human_approval": true,
+          "next_state": "Root Cause Analysis & CAPA Signoff"
+        },
+        {
+          "step_number": 4,
+          "state_name": "Root Cause Analysis & CAPA Signoff",
+          "actor": "operations_manager",
+          "required_fields": [
+            "ticket_id",
+            "corrective_action"
+          ],
+          "optional_fields": [
+            "root_cause_category"
+          ],
+          "endpoint": "GET /api/approvals",
+          "validation_rules": {},
+          "on_missing_message": "Final CAPA closure plan must be logged.",
+          "blockers": [
+            "Root cause unassigned"
+          ],
+          "escalation_rule": "R-013",
+          "requires_human_approval": true,
+          "next_state": "COMPLETED"
+        }
+      ]
+    },
+    {
+      "workflow_id": "WF-007",
+      "slug": "medico_legal_case",
+      "name": "Medico-Legal Case (MLC) Protocol & Intimation",
+      "department": "Medical Records (MRD / HIM)",
+      "category": "legal_compliance",
+      "trigger_intents": [
+        "register_mlc",
+        "police_intimation",
+        "trauma_case",
+        "legal_lock"
+      ],
+      "allowed_roles": [
+        "doctor",
+        "medical_records",
+        "operations_manager"
+      ],
+      "description": "Statutory trauma/assault documentation, mandatory 1-hour police intimation, and forensic sealing.",
+      "requires_human_approval": true,
+      "human_approval_checkpoint": "Step 4: MRD Archive Sealing & Legal File Lock",
+      "states": [
+        {
+          "step_number": 1,
+          "state_name": "Emergency MLC Identification & Trauma Stabilization",
+          "actor": "doctor",
+          "required_fields": [
+            "uhid",
+            "trauma_type"
+          ],
+          "optional_fields": [
+            "brought_by",
+            "police_station_jurisdiction"
+          ],
+          "endpoint": "GET /api/patients/{uhid}",
+          "validation_rules": {},
+          "on_missing_message": "Flag patient as MLC and record external trauma injury details.",
+          "blockers": [
+            "Attender refusal to register MLC"
+          ],
+          "escalation_rule": "R-012",
+          "requires_human_approval": true,
+          "next_state": "Police Intimation Memo Dispatch"
+        },
+        {
+          "step_number": 2,
+          "state_name": "Police Intimation Memo Dispatch",
+          "actor": "medical_records",
+          "required_fields": [
+            "uhid",
+            "police_memo_number",
+            "police_station"
+          ],
+          "optional_fields": [
+            "dispatch_timestamp"
+          ],
+          "endpoint": "POST /api/tickets",
+          "validation_rules": {},
+          "on_missing_message": "Transmit written intimation memo to local jurisdiction police station.",
+          "blockers": [
+            "Police acknowledgement delayed beyond statutory 1h SLA"
+          ],
+          "escalation_rule": "R-012",
+          "requires_human_approval": true,
+          "next_state": "Forensic Evidence Collection & Sealing"
+        },
+        {
+          "step_number": 3,
+          "state_name": "Forensic Evidence Collection & Sealing",
+          "actor": "doctor",
+          "required_fields": [
+            "evidence_tag",
+            "sealing_officer"
+          ],
+          "optional_fields": [
+            "seal_timestamp"
+          ],
+          "endpoint": "GET /api/patients/{uhid}",
+          "validation_rules": {},
+          "on_missing_message": "Seal clothing, toxicological samples, or foreign bodies with dual witness.",
+          "blockers": [
+            "Broken chain-of-custody envelope"
+          ],
+          "escalation_rule": "R-012",
+          "requires_human_approval": true,
+          "next_state": "MRD Archive Sealing & Legal File Lock"
+        },
+        {
+          "step_number": 4,
+          "state_name": "MRD Archive Sealing & Legal File Lock",
+          "actor": "medical_records",
+          "required_fields": [
+            "uhid",
+            "mrd_case_file_id"
+          ],
+          "optional_fields": [
+            "legal_lock_status"
+          ],
+          "endpoint": "GET /api/approvals",
+          "validation_rules": {},
+          "on_missing_message": "Place digital and physical lock on MLC case chart.",
+          "blockers": [
+            "Unauthorized attempt to modify clinical entries"
+          ],
+          "escalation_rule": "R-012",
+          "requires_human_approval": true,
+          "next_state": "COMPLETED"
+        }
+      ]
+    },
+    {
+      "workflow_id": "WF-008",
+      "slug": "narcotic_requisition",
+      "name": "High-Alert & Schedule X Narcotic Requisition",
+      "department": "Pharmacy Operations",
+      "category": "clinical_operations",
+      "trigger_intents": [
+        "request_narcotic",
+        "morphine_indent",
+        "fentanyl_order",
+        "schedule_x"
+      ],
+      "allowed_roles": [
+        "doctor",
+        "nurse",
+        "pharmacist"
+      ],
+      "description": "Dual-physician prescription, bedside witnessing, vault logging, and empty ampoule return.",
+      "requires_human_approval": true,
+      "human_approval_checkpoint": "Step 4: Empty Ampoule Return & Wastage Reconciliation",
+      "states": [
+        {
+          "step_number": 1,
+          "state_name": "Senior Consultant Electronic Narcotic Requisition",
+          "actor": "doctor",
+          "required_fields": [
+            "uhid",
+            "drug_name",
+            "dosage",
+            "prescribing_doctor_id"
+          ],
+          "optional_fields": [
+            "route",
+            "indication"
+          ],
+          "endpoint": "POST /api/prescriptions",
+          "validation_rules": {},
+          "on_missing_message": "Schedule X narcotics require senior consultant digital token sign-off.",
+          "blockers": [
+            "Doctor lacks Schedule X prescribing privileges"
+          ],
+          "escalation_rule": "R-014",
+          "requires_human_approval": true,
+          "next_state": "Bedside Dual-Nurse Witnessing & Identification"
+        },
+        {
+          "step_number": 2,
+          "state_name": "Bedside Dual-Nurse Witnessing & Identification",
+          "actor": "nurse",
+          "required_fields": [
+            "prescription_id",
+            "primary_nurse_id",
+            "witness_nurse_id"
+          ],
+          "optional_fields": [],
+          "endpoint": "GET /api/prescriptions",
+          "validation_rules": {},
+          "on_missing_message": "Two registered nurses must countersign administration indent.",
+          "blockers": [
+            "Second witness nurse absent at bedside"
+          ],
+          "escalation_rule": "R-014",
+          "requires_human_approval": true,
+          "next_state": "Central Pharmacy Vault Physical Register Log & Dispense"
+        },
+        {
+          "step_number": 3,
+          "state_name": "Central Pharmacy Vault Physical Register Log & Dispense",
+          "actor": "pharmacist",
+          "required_fields": [
+            "prescription_id",
+            "vault_register_page",
+            "batch_number"
+          ],
+          "optional_fields": [
+            "pharmacist_signoff"
+          ],
+          "endpoint": "GET /api/prescriptions",
+          "validation_rules": {},
+          "on_missing_message": "Record vault register serial number and ampoule batch.",
+          "blockers": [
+            "Narcotic vault physical balance discrepancy"
+          ],
+          "escalation_rule": "R-014",
+          "requires_human_approval": true,
+          "next_state": "Empty Ampoule Return & Wastage Reconciliation"
+        },
+        {
+          "step_number": 4,
+          "state_name": "Empty Ampoule Return & Wastage Reconciliation",
+          "actor": "nurse",
+          "required_fields": [
+            "prescription_id",
+            "ampoule_returned"
+          ],
+          "optional_fields": [
+            "unused_wastage_witness"
+          ],
+          "endpoint": "POST /api/approvals",
+          "validation_rules": {
+            "ampoule_returned": "boolean"
+          },
+          "on_missing_message": "Empty glass ampoule must be returned to pharmacy within 24h.",
+          "blockers": [
+            "Broken ampoule without dual-witness incident memo"
+          ],
+          "escalation_rule": "R-014",
+          "requires_human_approval": true,
+          "next_state": "COMPLETED"
+        }
+      ]
+    }
+  ]
+}

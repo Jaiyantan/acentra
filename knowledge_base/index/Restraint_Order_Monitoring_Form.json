@@ -1,0 +1,25 @@
+{
+  "file_id": "Restraint_Order_Monitoring_Form",
+  "title": "Physical & Chemical Restraint Order Chart",
+  "file_path": "forms/Restraint_Order_Monitoring_Form.pdf",
+  "file_type": "pdf",
+  "category": "form",
+  "department": "Clinical Operations",
+  "applicable_roles": [
+    "doctor",
+    "nurse",
+    "admission",
+    "discharge",
+    "front_office"
+  ],
+  "version": "v1.9",
+  "content": "FORM: Physical & Chemical Restraint Order Chart (FORM-RST-01)\nVERSION: v1.9\nFIELDS:\n- Patient UHID\n- Clinical Indication\n- Restraint Type\n- Circulation Check\n- Doctor Re-eval\n- Nurse Check 2h",
+  "tags": [
+    "form",
+    "pdf",
+    "form-rst-01",
+    "template",
+    "smch"
+  ],
+  "source_citation": "FORM-RST-01 Physical & Chemical Restraint Order Chart v1.9"
+}

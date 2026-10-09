@@ -1,0 +1,33 @@
+{
+  "sop_id": "SOP-DIS-003",
+  "title": "Four-Point Discharge Clearance and Exit Protocol",
+  "version": "1.8",
+  "department": "Discharge",
+  "steps": [
+    {
+      "step": 1,
+      "description": "Consultant enters digital discharge order and drafts discharge summary with follow-up instructions."
+    },
+    {
+      "step": 2,
+      "description": "Ward nurse verifies vitals stability, removes indwelling lines/catheters, and marks nursing clearance as TRUE."
+    },
+    {
+      "step": 3,
+      "description": "Inpatient pharmacy conducts medicine reconciliation, dispenses take-home medicines, and marks pharmacy clearance as TRUE."
+    },
+    {
+      "step": 4,
+      "description": "Central billing audits final consumables, obtains final TPA approval for cashless patients or processes cash settlement, and marks billing clearance as TRUE."
+    },
+    {
+      "step": 5,
+      "description": "Medical Records Department (MRD) checks coding completion, archive status, and marks mrd clearance as TRUE to print patient gate pass."
+    }
+  ],
+  "common_blockers": [
+    "Billing clearance blocked due to pending unbilled pharmacy consumables or unposted diagnostic tests",
+    "TPA final approval query pending regarding length of stay justification",
+    "Delay in consultant signing final typed discharge summary"
+  ]
+}
