@@ -121,6 +121,9 @@ app.include_router(agent_router)
 from app.routers.dashboard_api import router as dashboard_router
 app.include_router(dashboard_router)
 
+from app.routers.baseline_router import router as baseline_router
+app.include_router(baseline_router)
+
 # Mount static folder
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 if os.path.exists(static_dir):
