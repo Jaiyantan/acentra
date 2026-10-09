@@ -1,0 +1,13 @@
+# Development & Testing Dependencies
+-r requirements.txt
+
+pytest>=8.0.0
+pytest-asyncio>=0.23.0
+ruff>=0.3.0
+
+# Optional Advanced Operational Ontology & Embedding Dependencies
+# (Fastembed runs offline CPU embeddings without external API keys)
+# fastembed>=0.2.0
+# lancedb>=0.5.0
+# kuzu>=0.3.0
+# cognee>=0.1.20
