@@ -1,196 +1,307 @@
-# Saveetha Medical College & Hospital (SMCH) Operations Engine
+<div align="center">
 
-A 24/7 **live operational data engine and real-time simulation platform** for Saveetha Medical College and Hospital (SMCH) — a 1,600-bed, NABH-accredited, PM-JAY empanelled tertiary teaching hospital with robotic surgery and ECMO capabilities.
+# Mneme <sub>(Μνήμη)</sub>
 
----
+**/ˈniː.miː/** • *noun* • Greek
 
-## 🏥 Hospital Overview & 3-Layer Data Architecture
+### Autonomous Healthcare Operations Intelligence Platform & Second Brain
 
-As catalogued in the SMCH Operations Data Model:
+Transform fragmented hospital procedures, disconnected documentation, and administrative bottlenecks into grounded operational reasoning, stepwise workflow guidance, and provably secure agentic execution.
 
-1. **Layer 1 (Structured HIS/LIS/RIS/ERP)**: Registrations, billing invoices, lab analyzer outputs, imaging studies, pharmacy dispensing logs, OT scheduling, and queue tokens.
-2. **Layer 2 (Semi-Structured Digital)**: Clinical notes, SOAP ward progress notes, discharge summaries, and PM-JAY / insurance claims.
-3. **Layer 3 (Uncaptured Clinical Intelligence & Operational Gaps)**: Clinical reasoning, order-to-execution latency, oral shift handovers, 90% unreported near-misses, paramedic verbal intake remarks, and critical value telephone acknowledgment latencies.
+<sub>Built by **CyberPhantoms** for the Acentra **Hack to Care** Hackathon</sub>
 
----
+</div>
 
-## ⚡ Live Simulation Engine & Real-Time Behavior
-
-The background simulation engine (`app/simulation/engine.py`) generates dynamic events in the exact cadence of a live hospital day:
-- **Second-by-second ICU Bedside Telemetry**: Real-time multi-parameter streams (HR, Systolic/Diastolic BP, MAP, SpO2, EtCO2, CVP, Temp, Cardiac rhythm).
-- **Ventilator Minute Telemetry**: Mechanical ventilation modes (PRVC, SIMV+PS, PSV), FiO2, PEEP, and Tidal Volume.
-- **Continuous Environmental IoT Telemetry**: Vaccine/insulin refrigerators (2°C–8°C) and Blood Bank cold chambers (4°C & -20°C).
-- **Dialysis Station Telemetry**: 16 stations running live with Blood Flow (Qb), Dialysate Flow (Qd), Venous Pressure, Transmembrane Pressure (TMP), and Ultrafiltration (UF) volume accumulation.
-- **Poisson Event Dispatching**: Walk-in emergency triages, 108 ambulance arrivals, OPD consultations with ICD-10 coding, surgical milestone progression (patient-in -> knife-to-skin -> PACU), analyzer processing on Roche Cobas / Sysmex, and PM-JAY claims via the NHA TMS portal.
+> *"Deliberate well before venturing into an action; to say 'we will think about it' after starting is a flaw."* — Thirukkural 467 (Guiding principle of CyberPhantoms)
 
 ---
 
-## 🌐 Departmental API Directory & Live Endpoints
+## Overview
 
-All endpoints are live, active, and accessible at `http://localhost:8000`.
+Modern healthcare operations employees are overwhelmed by fragmentation — managing procedures, documents, reports, workflow engines, and support channels across disjointed legacy systems. **Mneme** addresses this challenge through a **two-system architecture**:
 
-### 1. Emergency Department (`/api/emergency`)
-- `GET /api/emergency/triage`: Active triage queue categorized by P1 (Resuscitation), P2 (Urgent), P3 (Non-urgent) with time-to-doctor metrics and Glasgow Coma Scale.
-- `POST /api/emergency/triage`: Register emergency walk-in or ambulance arrivals.
-- `GET /api/emergency/ambulances`: 108 Ambulance arrivals, paramedic notes, and transit vitals.
-- `GET /api/emergency/dispositions`: Dispositions (ICU Admission, Ward 5A, Cath Lab, Observation, DAMA).
-- `GET /api/emergency/stats`: Live emergency occupancy and door-to-doctor averages.
+```mermaid
+flowchart LR
+    subgraph S1["System 1: Hospital Simulation Environment"]
+        TWIN["SMCH 1,600-Bed Digital Twin<br/>16 Clinical & Diagnostic Depts"]
+        SIM_DB[("54 SQLite Tables<br/>WAL Mode")]
+        EVENTS["24/7 Poisson Event Generator<br/>ICU · Vent · Cold-Chain Telemetry"]
+        TWIN --- SIM_DB
+        SIM_DB --- EVENTS
+    end
 
-### 2. Outpatient Department (`/api/opd`)
-- `GET /api/opd/registrations`: UHID master registration index and payment classifications.
-- `GET /api/opd/tokens`: Active token queues per consultation room across 16+ clinical specialties.
-- `GET /api/opd/consultations`: Doctor consultation notes with provisional diagnosis and ICD-10 coding.
-- `GET /api/opd/prescriptions`: Digital e-prescriptions issued by OPD consultants.
+    subgraph S2["System 2: Mneme Intelligence Platform"]
+        BRAIN["Second Brain & Knowledge Graph<br/>Cognee Kùzu · LanceDB · 152+ SOPs"]
+        AGENT["Governed Operations Assistant<br/>Stepwise Guidance · Missing-Field Gate"]
+        SEC["Agentic Security Layer<br/>6-Vector Defense · 8-Role RBAC · Audit"]
+        BRAIN --- AGENT
+        AGENT --- SEC
+    end
 
-### 3. Inpatient Department (`/api/ipd`)
-- `GET /api/ipd/admissions`: Active admitted inpatient census.
-- `GET /api/ipd/beds`: 1,600-bed occupancy tracker across all general wards, special rooms, and HDUs.
-- `GET /api/ipd/progress-notes`: Morning and evening consultant ward rounds SOAP notes (Subjective, Objective, Assessment, Plan).
-- `GET /api/ipd/nursing-charts`: Ward vital charts (q4h/q8h), intake/output (I/O) fluid balance records.
+    S1 <-->|Bi-directional Telemetry & Governed Tool Calls| S2
+    U[Hospital Operations Staff<br/>Doctor · Nurse · Billing · Admin] -->|Natural Language / UI| S2
+```
 
-### 4. ICU & Critical Care (`/api/icu`)
-- `GET /api/icu/beds`: Critical care beds with APACHE II and SOFA severity scoring.
-- `GET /api/icu/telemetry/live`: Real-time bedside monitor telemetry (HR, BP, SpO2, EtCO2, CVP, Temp).
-- `GET /api/icu/ventilators`: Live mechanical ventilator telemetry (mode, FiO2 %, PEEP, tidal volume).
-- `GET /api/icu/titration`: Infusion pump titration logs (Noradrenaline, Vasopressin, Propofol, Insulin).
-- `GET /api/icu/abg`: Arterial Blood Gas (ABG) panels (pH, pCO2, pO2, HCO3, Base Excess, Lactate).
+### The Two Systems
 
-### 5. Operation Theatre Complex (`/api/ot`)
-- `GET /api/ot/schedule`: Master surgical slate across OT 1 to OT 6 (including DaVinci Xi Robotic Suite).
-- `GET /api/ot/checklists`: WHO Surgical Safety Checklist compliance (Sign In, Time Out, Sign Out).
-- `GET /api/ot/implants`: Regulatory implant and prosthetics tracking (batch number, serial number, lot number, regulatory barcode).
+1. **The Hospital Simulation Environment (SMCH Digital Twin)**  
+   A high-fidelity, live operational substrate simulating **Saveetha Medical College and Hospital (SMCH)** — a 1,600-bed, NABH-accredited tertiary teaching facility. Operating 24/7 in SQLite WAL mode across 54 tables, it generates dynamic clinical events in the cadence of a real hospital day: second-by-second ICU bedside telemetry, mechanical ventilator telemetry, IoT cold-chain temperature monitoring, 18 dialysis stations, walk-in emergency triages, and Ayushman Bharat PM-JAY claim adjudication.
 
-### 6. Laboratory Information System (`/api/laboratory`)
-- `GET /api/laboratory/orders`: Lab requisitions across Pathology, Biochemistry, Hematology, Microbiology.
-- `GET /api/laboratory/samples`: Phlebotomy barcode logs and courier transit latency tracking.
-- `GET /api/laboratory/analyzer-raw`: Raw automated machine results from Roche Cobas 8000 and Sysmex XN-1000 with reference ranges and abnormal flags.
-- `GET /api/laboratory/critical-alerts`: Mandatory NABH Critical Value telephone panic alerts.
-- `POST /api/laboratory/critical-alerts/{alert_id}/acknowledge`: Doctor telephone acknowledgment log.
-
-### 7. Radiology & Imaging RIS/PACS (`/api/radiology`)
-- `GET /api/radiology/orders`: Imaging worklist (CT 128-slice, 3T MRI, Digital X-Ray, Ultrasound).
-- `GET /api/radiology/acquisitions`: PACS DICOM study index and radiation dosimetry (CTDIvol mGy, DLP mGy*cm).
-- `GET /api/radiology/reports`: Radiologist structured reports, findings, impressions, and turnaround time analytics.
-
-### 8. Pharmacy & Cold Chain (`/api/pharmacy`)
-- `GET /api/pharmacy/inventory`: Live stock levels, automated reorder triggers, and expiry tracking.
-- `GET /api/pharmacy/dispensing`: Dispensing logs, batch verification, and Drug-Drug Interaction (DDI) checks.
-- `GET /api/pharmacy/cold-chain`: Real-time vaccine and biological refrigerator IoT temperature telemetry (2°C–8°C).
-- `GET /api/pharmacy/narcotics`: Schedule X controlled substance register (Morphine, Fentanyl) with witness nurse logs.
-
-### 9. Blood Centre BBIS (`/api/blood-bank`)
-- `GET /api/blood-bank/inventory`: Component inventory (PRBC, FFP, Platelets, Cryo) by ABO/Rh group.
-- `GET /api/blood-bank/crossmatch`: Crossmatch requests and compatibility clearance.
-- `GET /api/blood-bank/issues`: Unit issue logs with bedside administration verification.
-- `GET /api/blood-bank/temperature-logs`: Cold room and -20°C deep freezer temperature logs.
-
-### 10. Hemodialysis Unit (`/api/dialysis`)
-- `GET /api/dialysis/sessions`: 16 hemodialysis stations running live with Blood flow (Qb), Dialysate flow (Qd), Venous pressure, TMP, and accumulated ultrafiltration (UF) volume.
-
-### 11. Specialty Clinics (`/api/specialty`)
-- `GET /api/specialty/records`: Cath lab coronary angiograms, endoscopy reports, and neurology studies.
-- `GET /api/specialty/oncology/chemotherapy`: Daycare chemotherapy cycles with CTCAE adverse event grading.
-- `GET /api/specialty/oncology/tumor-boards`: Multidisciplinary Tumor Board meeting consensus records.
-
-### 12. Billing & PM-JAY Insurance (`/api/billing`)
-- `GET /api/billing/invoices`: Itemized hospital invoices broken down by beds, pharmacy, diagnostics, and procedures.
-- `GET /api/billing/claims`: PM-JAY (Ayushman Bharat) and private TPA claim status with TMS pre-authorization codes and settled sums.
-- `GET /api/billing/revenue-summary`: Revenue cycle and collection breakdown.
-
-### 13. Nursing Administration (`/api/nursing`)
-- `GET /api/nursing/rosters`: Shift duty rosters and live nurse-to-patient ratios per ward.
-- `GET /api/nursing/handovers`: SBAR shift-to-shift handovers with verbal nuances and high-risk flags.
-- `GET /api/nursing/incidents`: NABH incident reports (falls, medication errors, pressure injuries).
-
-### 14. Medical Records Department MRD (`/api/mrd`)
-- `GET /api/mrd/mpi`: Master Patient Index search by UHID, patient name, or phone number.
-- `GET /api/mrd/physical-files`: Physical paper case file archive rack location and borrowing log.
-- `GET /api/mrd/mlc`: Medico-Legal Cases (MLC) register and police station intimations.
-
-### 15. Biomedical Engineering & CMMS (`/api/biomedical`)
-- `GET /api/biomedical/equipment`: Critical asset register (DaVinci Xi, MRI, CT, ECMO) with uptime % and calibration dates.
-- `GET /api/biomedical/breakdowns`: Equipment breakdown tickets, assigned engineers, and clinical impact logs.
-- `GET /api/biomedical/staff`: Staff credentialing master with Tamil Nadu Medical Council license expiry monitoring.
-
-### 16. Layer 3: Uncaptured Clinical Intelligence (`/api/uncaptured-gaps`)
-- `GET /api/uncaptured-gaps/all`: Live feed of clinical events unrecorded in traditional HIS.
-- `GET /api/uncaptured-gaps/order-execution-latency`: Real-time tracking of delay between doctor orders and nurse administration (e.g. 195 min delay flag).
-- `GET /api/uncaptured-gaps/near-misses`: The 90% unreported near-miss events (e.g. LASA drug swaps caught before harm).
-- `GET /api/uncaptured-gaps/clinical-reasoning`: Doctor verbal diagnostic rationale and differential decisions.
+2. **Mneme (The Governed Operations Assistant & Second Brain)**  
+   The intelligent reasoning, memory, and governance platform that sits inside the simulation. Mneme ingests 152+ approved standard operating procedures (SOPs), policies, and clinical governance documents, synthesizes a dynamic operational ontology, provides source-cited stepwise workflow guidance, flags missing fields instead of making unsupported assumptions, routes high-stakes requests across 5 dedicated human teams, and provably defends against the 6 unique attack vectors of agentic AI.
 
 ---
 
-## 🤖 AI Operations Assistant, Second Brain & Security Layer (4-Layer Hackathon Architecture)
+## Features
 
-Built directly on top of the live hospital simulation substrate matching **[PS Deep Dive Word by Word.md]** and **[Hack to Care Build Plan.pdf]**:
+### 🏥 System 1: Live Hospital Simulation Substrate
+- **16 Clinical & Diagnostic Departments** — Emergency (P1/P2/P3 triage), OPD, IPD, ICU, OT (DaVinci Xi suite), LIS (Roche Cobas / Sysmex analyzer feeds), RIS/PACS, Pharmacy, Blood Bank (BBIS), Hemodialysis, Specialty Clinics, Billing/PM-JAY, Nursing, MRD, Biomedical CMMS, and Uncaptured Clinical Intelligence.
+- **Continuous Bedside & IoT Telemetry** — Millisecond-level ICU vitals (HR, BP, SpO2, EtCO2, CVP), minute-level mechanical ventilator telemetry (PRVC, SIMV+PS), and IoT refrigerator sensors (2°C–8°C cold chain).
+- **10-State Patient Journey Pipeline** — Tracks patients through `REGISTERED` → `TRIAGED` → `ADMITTED` → `UNDER_TREATMENT` → `INVESTIGATION` → `SURGERY` → `RECOVERY` → `DISCHARGE_PENDING` → `DISCHARGED` → `FOLLOW_UP`.
+- **Interactive Simulation Controls** — Dynamic clock speed scaling (0.5× to 30.0×) and emergency scenario injection (`code_blue`, `mass_casualty`, `critical_lab_troponin`, `cold_chain_breach`, `near_miss_intercept`).
 
-### 17. Workflow Automation Engine (`/api/workflows`)
-Configured entirely via JSON definitions in `app/workflows/configs/`:
-- `GET /api/workflows/configs`: Inspect all 8 JSON-configured hospital workflows (`admission_workflow`, `consultation_request`, `lab_scan_order`, `medication_dispensing`, `insurance_preauth`, `discharge_workflow`, `billing_checkout`, `surgery_clearance`).
-- `GET /api/workflows/configs/{workflow_id}`: Step definitions, required fields, and irreversible action flags.
-- `POST /api/workflows/initiate`: Initiates multi-step workflow with **Missing-Field Detection**. If parameters are missing, automatically transitions to `BLOCKED` status and prompts for required fields rather than making unsupported assumptions.
-- `POST /api/workflows/advance`: Advances active workflow step upon parameter provision, gating irreversible actions on human verification.
-- `GET /api/workflows/active`: Real-time tracking of running workflow instances.
-- `GET /api/workflows/escalations`: 5-Team human escalation log with structured briefs and urgency levels.
-
-### 18. Second Brain & Synthetic Knowledge Base (`/api/knowledge`)
-- `GET /api/knowledge/articles`: Approved SOP articles and operational guidelines with explicit policy citations (`[SMCH Policy Manual §ADM.101]`, `[NABH Emergency Standards §ED.401]`, `[SMCH Cardiology SOP §CARD.601]`).
-- `GET /api/knowledge/workbook`: Complete synthetic workbook containing approved knowledge articles, representative sample requests, routing rules, and field definitions.
-- `POST /api/knowledge/query`: Source-grounded RAG retrieval evaluating Prompt Injection, Clinical Boundaries, Irreversible Actions, and communicating uncertainty explicitly when information is incomplete.
-
-### 19. Security, RBAC & Human-in-the-Loop (`/api/security`)
-Implements all 6 Agentic Security Defenses:
-1. **Prompt Injection & Jailbreak Filter**: Strict data/instruction plane separation blocking DAN mode, instruction overrides, and balance zeroing.
-2. **8-Role RBAC Matrix Enforcement**: Fine-grained role permissions for Receptionist, Nurse, Doctor, Specialist, Pharmacist, Lab/Radiology Tech, Billing Staff, Admin.
-3. **Clinical Boundary Enforcement**: Automatically guards against autonomous drug dosing, escalating to Clinical Review Board.
-4. **Irreversible Action Gating**: High-consequence actions (`discharge_patient`, `approve_insurance_claim`, `cancel_surgery`, `authorize_surgical_entry`) are halted until human clearance.
-5. **Grounding Safety Anchors**: Strict citation-grounded RAG preventing hallucinations.
-6. **Append-Only Security Audit Log**: Immutable record of user inputs, classified intents, tool calls, and RBAC evaluations.
-
-- `GET /api/security/audit-log`: Immutable security and operations audit ledger.
-- `GET /api/security/approvals`: Human Approval Queue for gated irreversible actions.
-- `POST /api/security/approvals/{id}/decide`: 1-click Approve / Reject action verifying reviewer role permissions.
-
-### 20. 10-State Comprehensive Patient Journey Pipeline (`/api/patient-journey`)
-- `GET /api/patient-journey/states`: Defined 10 lifecycle stages:
-  `REGISTERED → TRIAGED → ADMITTED → UNDER_TREATMENT → INVESTIGATION → SURGERY → RECOVERY → DISCHARGE_PENDING → DISCHARGED → FOLLOW_UP`
-- `GET /api/patient-journey/census`: Live hospital-wide patient count across all 10 stages.
-- `GET /api/patient-journey/active`: Active patient journey tracker.
-- `POST /api/patient-journey/transition`: Advance patient lifecycle state with audit validation.
+### 🧠 System 2: Mneme Operations Intelligence & Second Brain
+- **Grounded Second Brain with Exact Citations** — Every response is strictly grounded in approved hospital policies with explicit citations (`[SMCH Policy Manual §ADM.101]`, `[NABH Emergency Standards §ED.401]`), eliminating model hallucinations.
+- **Explicit Uncertainty Communication** — Computes visible confidence scores and proactively halts when data is incomplete or ambiguous, communicating limitations clearly rather than guessing.
+- **Stepwise Workflow Guidance** — Walks staff through routine operational procedures one action at a time — presenting the immediate next step with context rather than dumping an overwhelming multi-step procedure.
+- **Missing-Field Detector & Prompting** — If a workflow is initiated without required parameters, Mneme halts progression, marks the instance `BLOCKED`, and generates explicit prompts asking for the missing data instead of making unsupported assumptions.
+- **5-Team Human Escalation Router** — Automatically classifies and routes complex or sensitive inquiries to specialized human teams:
+  - **Account Management & Payer Liaison Team** *(Account-specific inquiries)*
+  - **Clinical Governance & Medical Review Board** *(Clinical questions & medical boundaries)*
+  - **Compliance, Legal & Senior Operations Team** *(Sensitive data, MLC records, bypasses)*
+  - **Central Operations Triage Desk** *(Ambiguous or unclear requests)*
+  - **Departmental Subject-Matter Specialist Desk** *(Low-confidence requests)*
+- **6-Vector Agentic Security Defense**:
+  1. *Prompt Injection Defense* — Strict data/instruction plane separation blocking DAN mode and prompt injection patterns.
+  2. *Tool Privilege Escalation Defense* — Pre-execution role validation against an 8-Role RBAC Matrix.
+  3. *Memory Poisoning Protection* — Schema and provenance validation on all Second Brain writes.
+  4. *Irreversible Action Human Approval Gate* — High-consequence actions (`discharge_patient`, `approve_insurance_claim`, `cancel_surgery`, `authorize_surgical_entry`) are halted pending human authorization.
+  5. *Cascading Confusion Defense* — Stateful task tracking halts progression on blocked steps rather than propagating errors.
+  6. *Grounding Safety Anchors* — Core safety constraints and RBAC rules re-injected every 10 turns to prevent context drift.
+- **Dynamic Operational Knowledge Graph** — Powered by Cognee with Kùzu graph storage, LanceDB vector embeddings (fastembed offline CPU), and real-time cross-departmental bottleneck radar.
 
 ---
 
-## 📡 Real-Time WebSockets & Streaming Feeds
+## Architecture
 
-| Stream | Protocol | Description |
+```mermaid
+flowchart TD
+    subgraph UI["Interface & Interaction Layer"]
+        DASH["Command Center Dashboard<br/>(http://localhost:8000)"]
+        DOCS["Interactive Swagger API<br/>(/docs & /redoc)"]
+        ONTO_UI["Knowledge Graph Explorer<br/>(/ontology)"]
+        WS_LIVE["WebSocket Live Event Streams<br/>(/ws/live · /ws/icu)"]
+    end
+
+    subgraph SEC_LAYER["Layer 4: Agentic Security & Governance"]
+        PI_FILTER["Prompt Injection Filter"]
+        RBAC_GUARD["8-Role RBAC Matrix Validator"]
+        GATE_ENGINE["Irreversible Action Gate"]
+        AUDIT_LEDGER[("Append-Only Security Audit Log")]
+    end
+
+    subgraph AGENT_LAYER["Layer 3: Mneme Governed Agent Runtime"]
+        INTENT_ENGINE["Intent Classification & Boundaries"]
+        WORKFLOW_ENG["Stateful Workflow Engine"]
+        MISSING_FIELD["Missing-Field Detector & Prompter"]
+        ROUTER_5["5-Team Human Escalation Router"]
+    end
+
+    subgraph ONTO_LAYER["Layer 2: Operational Ontology & Second Brain"]
+        KUZU_GRAPH[("Kùzu Structural Knowledge Graph")]
+        LANCE_VEC[("LanceDB Dense Semantic Vectors")]
+        KB_DOCS["152+ Ingested SOPs, Policies & Reports"]
+        BOTTLENECK["Cross-Departmental Bottleneck Radar"]
+    end
+
+    subgraph SIM_LAYER["Layer 1: SMCH Hospital Simulation Substrate"]
+        POISSON_SIM["24/7 Poisson Hospital Simulation Engine"]
+        SQLITE_DB[("54 SQLite Tables (smch_hospital.db)")]
+        BASE_DB[("14 Baseline Tables (hospital.db)")]
+        TELEMETRY_BUS["Multi-Parameter Telemetry Bus"]
+    end
+
+    UI --> SEC_LAYER
+    SEC_LAYER --> AGENT_LAYER
+    AGENT_LAYER --> ONTO_LAYER
+    ONTO_LAYER --> SIM_LAYER
+```
+
+---
+
+## Tech Stack
+
+| Layer | Technologies | Purpose |
 | :--- | :--- | :--- |
-| `/ws/live` | WebSocket | High-frequency hospital event bus broadcasting all departmental actions |
-| `/ws/icu` | WebSocket | Millisecond-level ICU multi-bed telemetry stream (HR, BP, SpO2, EtCO2, Temp) |
-| `/api/stream/events` | Server-Sent Events | Standard HTTP SSE stream for browser integrations |
-| `/api/stream/recent` | REST GET | Ring buffer of recent hospital events |
+| **Frontend & Command Center** | HTML5, Vanilla JavaScript, CSS3 (Dark Mode), Vis.js (`vis-network`), WebSockets | Real-time Operations Command Center, Knowledge Graph Explorer, and Bedside Telemetry Dashboard |
+| **Backend & API Engine** | Python 3.12, FastAPI, Uvicorn (ASGI), Pydantic v2 | High-throughput asynchronous REST APIs, WebSocket feeds, and Server-Sent Events |
+| **AI, Ontology & Second Brain** | Cognee, Kùzu Graph Engine, LanceDB, FastEmbed (`bge-small-en-v1.5`), Groq / Ollama / Qwen | Dynamic operational ontology, entity resolution, local CPU semantic embeddings, and governed reasoning |
+| **Simulation Substrate** | Python `asyncio`, SQLite 3 (WAL Mode & Normal Sync), Poisson stochastic distribution | 24/7 real-time hospital event generation across 16 departments and 1,600 beds |
+| **Security & Compliance** | Custom Regex Defense, 8-Role RBAC Matrix, Human-in-the-Loop Approval Queue | 6-Vector agentic AI safety defenses, irreversible action gating, and append-only audit ledger |
+| **Document Processing** | `python-docx`, `openpyxl`, `reportlab` | Ingestion and synthesis of 152+ hospital SOPs, clinical policies, and Excel report workbooks |
 
 ---
 
-## 🕹️ Interactive Simulation Controls & Scenario Injection
+## Local Development & Quickstart
 
-- `POST /api/simulation/speed?factor={0.5 to 30.0}`: Speed up or slow down simulated hospital clock.
-- `POST /api/simulation/trigger-scenario?scenario={name}`:
-  - `code_blue`: Cardiac arrest in MICU-02 (Ventricular Fibrillation, CPR team dispatch).
-  - `mass_casualty`: NH-48 Highway bus collision alert (6 severe trauma victims via 108 ambulances).
-  - `critical_lab_troponin`: STAT High-Sensitivity Troponin I = 4.82 ng/mL panic alert to Cardiologist.
-  - `cold_chain_breach`: Vaccine Refrigerator temp spike to 11.4°C compressor alert.
-  - `near_miss_intercept`: High-alert Heparin 25,000U vs 5,000U double-check interception.
-
----
-
-## 🖥️ Running Locally
+### 1. Environment Setup
 
 ```bash
-# Start live simulation server
+# Clone the repository
+git clone git@github.com:Jaiyantan/acentra.git
+cd acentra
+
+# Create and activate Python virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install core runtime dependencies
+pip install -r requirements.txt
+```
+
+### 2. Run the Unified Application
+
+```bash
+# Start the live simulation engine and Mneme assistant
 python run_server.py
 ```
 
-- **Operations Command Center UI**: [http://localhost:8000](http://localhost:8000)
-- **Interactive Swagger API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+*The server initializes the 54-table SQLite schema, launches the 24/7 background simulation engine, and mounts all 23 departmental and governance routers on `http://127.0.0.1:8000`.*
+
+### 3. Access Interactive Interfaces
+
+- **Hospital Command Center UI**: [http://localhost:8000](http://localhost:8000)
+- **Interactive Swagger API Documentation**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Operational Knowledge Graph Explorer**: [http://localhost:8000/ontology](http://localhost:8000/ontology)
 - **Alternative ReDoc**: [http://localhost:8000/redoc](http://localhost:8000/redoc)
 
+---
+
+## Core Operational Endpoints & Capabilities
+
+| Subsystem / Router | Base Route | Key Capabilities |
+| :--- | :--- | :--- |
+| **Emergency Department** | `/api/emergency` | Active triage queue (P1/P2/P3), 108 ambulance intake notes, door-to-doctor metrics |
+| **Outpatient Department (OPD)** | `/api/opd` | Master patient index, room token queues across 16 specialties, ICD-10 e-prescriptions |
+| **Inpatient Department (IPD)** | `/api/ipd` | 1,600-bed occupancy tracker, SOAP consultant ward notes, fluid I/O balance charts |
+| **ICU & Critical Care** | `/api/icu` | Bedside multi-parameter telemetry, mechanical ventilator modes, ABG blood gas panels |
+| **Operation Theatre (OT)** | `/api/ot` | Master surgical slate, DaVinci Xi robotic suite, WHO Surgical Safety Checklists |
+| **Central Diagnostic Lab (LIS)** | `/api/laboratory` | Roche Cobas / Sysmex analyzer feeds, phlebotomy tracking, NABH critical panic alerts |
+| **Radiology & PACS** | `/api/radiology` | 128-slice CT and 3T MRI worklist, DICOM acquisition metadata, radiation dosimetry |
+| **Pharmacy & Cold Chain** | `/api/pharmacy` | Stock inventory, automated reorder triggers, refrigerator IoT telemetry (2°C–8°C), Schedule-X narcotics |
+| **Blood Centre (BBIS)** | `/api/blood-bank` | ABO/Rh component stock (PRBC, FFP, Platelets), crossmatch clearance, freezer logs |
+| **Hemodialysis Unit** | `/api/dialysis` | 18 live dialysis stations (Blood flow Qb, Dialysate Qd, TMP, accumulated UF volume) |
+| **Specialty & Super-Specialty** | `/api/specialty` | Cath lab angiograms, daycare chemotherapy cycles, Multidisciplinary Tumor Boards |
+| **Billing & PM-JAY** | `/api/billing` | Itemized bills, Ayushman Bharat PM-JAY claims via NHA TMS portal, TPA adjudication |
+| **Nursing Administration** | `/api/nursing` | Ward rosters, live nurse-to-patient ratios, SBAR shift handovers, NABH incident audits |
+| **Medical Records (MRD)** | `/api/mrd` | Master Patient Index (MPI), physical file archive rack locator, MLC legal register |
+| **Biomedical CMMS** | `/api/biomedical` | Critical equipment asset register, uptime %, TNMC medical license renewal monitoring |
+| **Uncaptured Intelligence** | `/api/uncaptured-gaps` | Order-to-execution latency tracking, near-misses, doctor unwritten clinical reasoning |
+| **Workflow Automation** | `/api/workflows` | 8 JSON workflows, missing-field detection, 5-team human escalation routing |
+| **Second Brain Knowledge Base** | `/api/knowledge` | Source-grounded RAG retrieval, policy citations, explicit uncertainty scoring |
+| **Security & Governance** | `/api/security` | Append-only audit ledger, human approval queue, 1-click irreversible action clearance |
+| **Patient Journey Pipeline** | `/api/patient-journey` | 10-stage lifecycle state machine (`REGISTERED` → `FOLLOW_UP`) |
+| **Real-Time Streaming** | `/ws/live`, `/ws/icu` | High-frequency hospital event bus and millisecond-level ICU bedside telemetry streams |
+| **Baseline 12 Endpoints** | `/patient/*`, `/beds/*` | The 12 baseline RBAC endpoints verifying `X-Staff-ID` header permissions |
+
+> For the comprehensive catalog of all 23 routers, parameters, and models, see the [API Endpoints Reference](file:///home/kabe/Competions/acentra/docs/api/ENDPOINTS_REFERENCE.md).
+
+---
+
+## Repository Structure
+
+```
+acentra/
+├── run_server.py                    # Unified single-command launcher (all 23 routers)
+├── requirements.txt                 # Core runtime dependencies
+├── requirements-dev.txt             # Development & testing dependencies
+├── pyproject.toml                   # Project metadata, pytest & ruff configuration
+├── .env.example                     # Environment configuration template
+│
+├── app/                             # Core Application Package
+│   ├── config.py                    # Global configuration & multi-path database resolution
+│   ├── database.py                  # SQLite schema definitions & connection pool
+│   ├── main.py                      # FastAPI application & router orchestration
+│   ├── engine/                      # Core Engines
+│   │   ├── security_layer.py        # 6-Vector agentic AI security & 8-role RBAC matrix
+│   │   └── workflow_engine.py       # Stateful stepwise workflow engine & escalation router
+│   ├── simulation/                  # Real-Time Hospital Simulation Substrate
+│   │   ├── engine.py                # 24/7 Poisson background event generator
+│   │   ├── events_bus.py            # Asynchronous pub/sub event bus
+│   │   └── patient_pool.py          # Synthetic clinical cohort generator
+│   ├── ontology/                    # Operational Knowledge Graph & Second Brain
+│   │   ├── builder.py               # Ontology node builder from HIS/LIS/KB
+│   │   ├── models.py                # Graph node & edge schema dataclasses
+│   │   ├── graph_service.py         # Kùzu graph persistence & Cypher query engine
+│   │   ├── governed_agent.py        # Intent classification & safety reasoning
+│   │   ├── semantic_search.py       # LanceDB vector search with fastembed
+│   │   ├── kb_ingestion.py          # 152+ document ingestion pipeline
+│   │   └── cognee_config.py         # Cognee & LLM provider configurations
+│   ├── routers/                     # 23 Departmental & Governance API Routers
+│   ├── static/                      # Hospital Command Center Web Dashboard
+│   └── workflows/configs/           # Declarative JSON workflow definitions
+│
+├── data/                            # SQLite Storage & Schema Definitions
+│   ├── smch_hospital.db             # Primary 54-table simulation database (4.9MB)
+│   ├── hospital.db                  # Baseline 14-table sample database (128KB)
+│   ├── schema.sql                   # Baseline SQLite DDL schema
+│   └── seed.py                      # Synthetic seed data populator
+│
+├── knowledge_base/                  # Operational Knowledge Assets (Tier 2/3)
+│   ├── Operations_Synthetic_Workbook.xlsx
+│   ├── operations_requests.json, routing_rules.json, workflow_definitions.json
+│   ├── knowledge_articles/, policies/, reports/, sops/, index/ (152+ docs)
+│
+├── docs/                            # Deep-Dive Technical Documentation
+│   ├── architecture/                # SMCH Hospital Operations Data Model
+│   ├── specs/                       # PS Deep Dive, Feature Checklist, Build Plan
+│   └── api/                         # Complete Endpoints Reference Catalog
+│
+└── tests/                           # Automated Test Suite (24 Tests)
+    ├── conftest.py                  # Test fixtures & staff authorization headers
+    ├── test_baseline_api.py         # 12 RBAC baseline endpoints validation
+    ├── test_departmental_routers.py # Clinical & operational department tests
+    ├── test_security_engine.py      # Prompt injection & action gating tests
+    └── test_workflow_engine.py      # Missing-field & escalation router tests
+```
+
+---
+
+## Testing & Verification
+
+Run the comprehensive test suite verifying the 12 baseline RBAC endpoints, clinical departments, agentic security layer, and workflow state engine:
+
+```bash
+pytest tests/ -v
+```
+
+```text
+======================== 24 passed, 1 warning in 0.52s =========================
+```
+
+All 24 unit and integration tests execute completely locally with zero external network or cloud dependencies.
+
+---
+
+## Documentation Hub
+
+- [SMCH Hospital Operations Data Model](file:///home/kabe/Competions/acentra/docs/architecture/SMCH%20Hospital%20Operations%20Data%20Model.md)
+- [Problem Statement Deep Dive: Word by Word](file:///home/kabe/Competions/acentra/docs/specs/PS%20Deep%20Dive%20Word%20by%20Word.md)
+- [Feature Checklist: Must Have vs May Have](file:///home/kabe/Competions/acentra/docs/specs/Feature%20Checklist%20Must%20Have%20vs%20May%20Have.md)
+- [Hack to Care Build Plan](file:///home/kabe/Competions/acentra/docs/specs/Hack%20to%20Care%20Build%20Plan.pdf)
+- [Complete API Endpoints Reference](file:///home/kabe/Competions/acentra/docs/api/ENDPOINTS_REFERENCE.md)
+
+---
+
+## Team — CyberPhantoms
+
+- **Ranen Joseph Solomon**
+- **Jaiyantan**
+- **Thirumurugan**
+- **Kabelan**
+
+---
+
+## License
+
+Released under the [MIT License](LICENSE) © 2026 CyberPhantoms.
