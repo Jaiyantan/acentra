@@ -22,7 +22,10 @@ if str(_ROOT) not in sys.path:
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding="utf-8")
 
-from cognee.infrastructure.databases.graph import get_graph_engine
+try:
+    from cognee.infrastructure.databases.graph import get_graph_engine
+except ImportError:
+    get_graph_engine = None
 
 from app.ontology.builder import get_ontology_builder
 from app.ontology.graph_service import get_ontology_graph_service, HTML_OUTPUT_PATH

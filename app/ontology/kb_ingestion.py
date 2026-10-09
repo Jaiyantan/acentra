@@ -22,7 +22,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, Any
 
-import cognee
+try:
+    import cognee
+except ImportError:
+    cognee = None
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 KB_DIR = ROOT_DIR / "knowledge_base"

@@ -23,10 +23,14 @@ from pathlib import Path
 from datetime import datetime
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
-SCHEMA_PATH = ROOT_DIR / "db" / "schema.sql"
+_SCHEMA_CANDIDATES = [
+    ROOT_DIR / "data" / "schema.sql",
+    ROOT_DIR / "db" / "schema.sql",
+]
+SCHEMA_PATH = next((p for p in _SCHEMA_CANDIDATES if p.exists()), _SCHEMA_CANDIDATES[0])
 DB_PATHS = [
-    ROOT_DIR / "hospital.db",
-    ROOT_DIR / "db" / "hospital.db"
+    ROOT_DIR / "data" / "hospital.db",
+    ROOT_DIR / "db" / "hospital.db",
 ]
 
 def get_connection(db_path: Path):

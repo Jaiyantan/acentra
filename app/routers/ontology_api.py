@@ -22,7 +22,12 @@ from app.ontology.graph_service import get_ontology_graph_service
 router = APIRouter(tags=["Operational Ontology"])
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
-VIS_JS_PATH = ROOT_DIR / "vis-network.min.js"
+_VIS_JS_CANDIDATES = [
+    ROOT_DIR / "app" / "static" / "vendor" / "vis-network.min.js",
+    ROOT_DIR / "app" / "static" / "vis-network.min.js",
+    ROOT_DIR / "vis-network.min.js",
+]
+VIS_JS_PATH = next((p for p in _VIS_JS_CANDIDATES if p.exists()), _VIS_JS_CANDIDATES[0])
 
 
 @router.get("/vis-network.min.js")

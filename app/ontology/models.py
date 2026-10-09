@@ -9,7 +9,12 @@ Each DataPoint utilizes dense indexing fields (`dense_summary`) to eliminate tok
 
 from typing import Optional, List, Dict, Any
 from pydantic import Field, SkipValidation
-from cognee.infrastructure.engine.models.DataPoint import DataPoint
+try:
+    from cognee.infrastructure.engine.models.DataPoint import DataPoint
+except ImportError:
+    from pydantic import BaseModel
+    class DataPoint(BaseModel):
+        id: Optional[Any] = None
 
 
 # =========================================================================

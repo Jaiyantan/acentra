@@ -16,11 +16,14 @@ from pathlib import Path
 from datetime import datetime, timezone
 from typing import Dict, List, Tuple, Any, Optional
 
-from cognee.infrastructure.databases.graph import get_graph_engine
+try:
+    from cognee.infrastructure.databases.graph import get_graph_engine
+except ImportError:
+    get_graph_engine = None
 from app.ontology.builder import OntologyBuilder, get_ontology_builder
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
-HTML_OUTPUT_PATH = ROOT_DIR / "ontology_graph.html"
+HTML_OUTPUT_PATH = ROOT_DIR / "app" / "static" / "ontology_graph.html"
 
 # Deterministic namespace for SMCH Ontology
 SMCH_NAMESPACE = uuid.uuid5(uuid.NAMESPACE_DNS, "smch.saveetha.hospital.ontology")
@@ -42,6 +45,13 @@ class OntologyGraphService:
         Synchronizes all operational digital twin objects and governance entities
         directly into Cognee's Graph Engine (Kùzu).
         """
+        if get_graph_engine is None:
+            return {
+                "status": "in_memory_mode",
+                "message": "cognee is not installed. Operational ontology graph is serving in-memory.",
+                "synced_nodes": len(self.builder.departments) + len(self.builder.staff) + len(self.builder.patients),
+                "synced_edges": 0,
+            }
         ge = await get_graph_engine()
 
         nodes: List[Any] = []

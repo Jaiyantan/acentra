@@ -33,10 +33,21 @@ from .models import (
 from .token_optimizer import TokenOptimizer
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
-SMCH_DB_PATH = ROOT_DIR / "smch_hospital.db"
-HOSP_DB_PATH = ROOT_DIR / "hospital.db"
-if not HOSP_DB_PATH.exists():
-    HOSP_DB_PATH = ROOT_DIR / "db" / "hospital.db"
+
+# Resilient database paths (data/ -> db/ -> root)
+_SMCH_CANDIDATES = [
+    ROOT_DIR / "data" / "smch_hospital.db",
+    ROOT_DIR / "db" / "smch_hospital.db",
+    ROOT_DIR / "smch_hospital.db",
+]
+SMCH_DB_PATH = next((p for p in _SMCH_CANDIDATES if p.exists()), _SMCH_CANDIDATES[0])
+
+_HOSP_CANDIDATES = [
+    ROOT_DIR / "data" / "hospital.db",
+    ROOT_DIR / "db" / "hospital.db",
+    ROOT_DIR / "hospital.db",
+]
+HOSP_DB_PATH = next((p for p in _HOSP_CANDIDATES if p.exists()), _HOSP_CANDIDATES[0])
 
 KB_DIR = ROOT_DIR / "knowledge_base"
 INDEX_DIR = KB_DIR / "index"

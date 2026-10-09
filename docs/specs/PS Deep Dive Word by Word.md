@@ -120,7 +120,7 @@ These are not decorative labels. They are the seven technical competencies the j
 | Tag | What it requires | Covered by the build plan |
 | --- | --- | --- |
 | RAG | Answers grounded in retrieved documents, not model memory | Supermemory retrieves context for every response |
-| Conversational AI | Natural language understanding across multi-turn interactions | Claude handles all language input and output |
+| Conversational AI | Natural language understanding across multi-turn interactions | LLM handles language input and output |
 | Intent classification | Every message categorized before any action is taken | Hermes classifies intent on every inbound message |
 | Workflow automation | Multi-step processes executed with state tracking | Stateful workflow engine with JSON configs |
 | Human-in-the-loop | Humans are involved in escalations and irreversible actions | Escalation queue + irreversible action approval gate |

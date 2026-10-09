@@ -7,7 +7,14 @@ import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DB_PATH = os.path.join(BASE_DIR, "smch_hospital.db")
+
+# Resilient database path resolution (data/ -> db/ -> root)
+_CANDIDATE_PATHS = [
+    BASE_DIR / "data" / "smch_hospital.db",
+    BASE_DIR / "db" / "smch_hospital.db",
+    BASE_DIR / "smch_hospital.db",
+]
+DB_PATH = str(next((p for p in _CANDIDATE_PATHS if p.exists()), _CANDIDATE_PATHS[0]))
 
 HOSPITAL_METADATA = {
     "name": "Saveetha Medical College and Hospital (SMCH)",
